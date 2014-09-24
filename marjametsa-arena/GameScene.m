@@ -9,10 +9,16 @@
 #import "GameScene.h"
 @import CoreMotion;
 
+#define kPlayerSpeed 700
+#define kUpdateInterval (1.0f / 60.0f) //60fps
+
+
 @interface GameScene ()
 @property (nonatomic) SKSpriteNode * player;
 @property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
 @property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
+@property (nonatomic) CMMotionManager *motionManager;
+
 
 @property (nonatomic) int monsterCount;
 
@@ -36,8 +42,66 @@
         
         [self addChild:self.player];
         
+        self.motionManager = [[CMMotionManager alloc] init];
+        self.motionManager.accelerometerUpdateInterval = kUpdateInterval;
+        
+        //if a accelometer is found, start queueing data, and handling it with the given function
+        if ([self.motionManager isAccelerometerAvailable] == YES) {
+            [self.motionManager startAccelerometerUpdatesToQueue:[[NSOperationQueue alloc] init]
+                                                withHandler:^(CMAccelerometerData *data, NSError *error) {
+                 if (error) {
+                     NSLog(@"%@",[error localizedDescription]);
+                 }
+                 
+                 float destX = 0.0;
+                 float destY = 0.0;
+                 float currentX = self.player.position.x;
+                 float currentY = self.player.position.y;
+                 BOOL shouldMove = NO;
+                 
+                 destX = currentX;
+                 destY = currentY;
+                 
+                 if(data.acceleration.y < -0.05 || data.acceleration.y > 0.05) {
+                     destX = currentX - (data.acceleration.y * kPlayerSpeed);
+                     shouldMove = YES;
+                 }
+                
+                 if (data.acceleration.x < -0.05 || data.acceleration.x > 0.05) {
+                     destY = currentY + (data.acceleration.x * kPlayerSpeed);
+                     shouldMove = YES;
+                 }
+                 
+                 if(shouldMove) {
+                     SKAction *action = [SKAction moveTo:[self isInsideLimits:CGPointMake(destX, destY)] duration:1];
+                     [self.player runAction:action];
+                 }
+             }];
+        }
+
     }
     return self;
+}
+
+/*
+ * Function that checks if the given coordinates are within the screen.
+ * If coordinates are ok, returns coordinates, else changes the coordinate to 
+ * coordinate of side + player.width/2
+*/
+- (CGPoint)isInsideLimits:(CGPoint)coordinates {
+    if (coordinates.x < self.player.size.height/2) {
+        coordinates.x = self.player.size.height/2;
+    } else if (coordinates.x > self.frame.size.width-self.player.size.height/2) {
+        coordinates.x = self.frame.size.width-self.player.size.height/2;
+    }
+    
+    if (coordinates.y < self.player.size.width/2) {
+        coordinates.y = self.player.size.width/2;
+    } else if (coordinates.y > self.frame.size.height-self.player.size.width/2) {
+        coordinates.y = self.frame.size.height-self.player.size.width/2;
+    }
+
+    return coordinates;
 }
 
 - (void)updateWithTimeSinceLastUpdate:(CFTimeInterval)timeSinceLast {
@@ -45,7 +109,7 @@
     self.lastSpawnTimeInterval += timeSinceLast;
     if (self.lastSpawnTimeInterval > 1 && self.monsterCount < 4) {
         self.lastSpawnTimeInterval = 0;
-        [self addMonster];
+        //[self addMonster];
         self.monsterCount += 1;
     }
 }
@@ -62,6 +126,10 @@
     }
     
     [self updateWithTimeSinceLastUpdate:timeSinceLast];
+    
+    
+        
+    
     
 }
 

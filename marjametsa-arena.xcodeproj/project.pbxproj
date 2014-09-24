@@ -220,6 +220,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = rb8;
 				TargetAttributes = {
+					11C41AB219D29C5300468EE4 = {
+						DevelopmentTeam = DCGZ38S8Q6;
+					};
 					11C41ADA19D29C5300468EE4 = {
 						TestTargetID = 11C41AB219D29C5300468EE4;
 					};
@@ -402,10 +405,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "marjametsa-arena/marjametsa-arena-Prefix.pch";
 				INFOPLIST_FILE = "marjametsa-arena/marjametsa-arena-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -416,10 +422,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "marjametsa-arena/marjametsa-arena-Prefix.pch";
 				INFOPLIST_FILE = "marjametsa-arena/marjametsa-arena-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
 			};
