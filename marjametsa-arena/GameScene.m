@@ -36,6 +36,10 @@
         bgImage.position = CGPointMake(self.size.width/2, self.size.height/2);
         [self addChild:bgImage];
         
+        [self addMonster:CGPointMake(400, 150) isBoss:YES];
+        [self addMonster:CGPointMake(150, 150) isBoss:NO];
+        [self addMonster:CGPointMake(225, 75) isBoss:NO];
+
         //add the hero to middle of the screen
         self.player = [SKSpriteNode spriteNodeWithImageNamed:@"hero"];
         self.player.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
@@ -134,22 +138,18 @@
 }
 
 
-- (void)addMonster {
+- (void)addMonster:(CGPoint)position isBoss:(BOOL)isBoss{
+    NSString *monsterPicture = @"";
     
-    SKSpriteNode *monster = [SKSpriteNode spriteNodeWithImageNamed:@"monster"];
+    if (isBoss) {
+        monsterPicture = @"boss";
+    } else {
+        monsterPicture = @"monster";
+    }
     
-    //calculates the xy -coordinates for the spawning monster randomly
-    int minY = monster.size.height / 2;
-    int maxY = self.frame.size.height - monster.size.height / 2;
-    int rangeY = maxY - minY;
-    int calculatedY = (arc4random() % rangeY) + minY;
-    
-    int minX = monster.size.width / 2;
-    int maxX = self.frame.size.width - monster.size.width / 2;
-    int rangeX = maxX - minX;
-    int calculatedX = (arc4random() % rangeX) + minX;
-    
-    monster.position = CGPointMake(calculatedX, calculatedY);
+    SKSpriteNode *monster = [SKSpriteNode spriteNodeWithImageNamed:monsterPicture];
+
+    monster.position = position;
     [self addChild:monster];
     
     /*
