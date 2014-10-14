@@ -8,6 +8,8 @@
 
 #import "GameScene.h"
 #import "Hero.h"
+#import "Monster.h"
+#import "Boss.h"
 @import CoreMotion;
 
 #define kPlayerSpeed 700
@@ -16,6 +18,8 @@
 
 @interface GameScene ()
 @property (nonatomic) Hero *player;
+@property (nonatomic) NSMutableArray *monsterArray;
+
 @property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
 @property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
 @property (nonatomic) CMMotionManager *motionManager;
@@ -37,16 +41,20 @@
         bgImage.position = CGPointMake(self.size.width/2, self.size.height/2);
         [self addChild:bgImage];
         
-        [self addMonster:CGPointMake(400, 150) isBoss:YES];
-        [self addMonster:CGPointMake(150, 150) isBoss:NO];
-        [self addMonster:CGPointMake(225, 75) isBoss:NO];
+        
+        self.monsterArray = [[NSMutableArray alloc] initWithCapacity:10];
+        
+        
+        [self addMonster:CGPointMake(400, 150)];
+        [self addMonster:CGPointMake(150, 150)];
+        [self addMonster:CGPointMake(225, 75)];
 
         
         self.player = [[Hero alloc] init];
         
         
         //add the hero to middle of the screen
-        SKSpriteNode *hero = [self.player setUpSprite:self.frame.size.width height:self.frame.size.height];
+        SKSpriteNode *hero = [self.player setUpSprite:self.frame.size.width/2 height:self.frame.size.height/2];
         
         [self addChild:hero];
         
@@ -117,20 +125,18 @@
     return coordinates;
 }
 
+/* THESE CAN BE USED TO SPAWN MONSTERS AT CERTAIN TIMERATE
 - (void)updateWithTimeSinceLastUpdate:(CFTimeInterval)timeSinceLast {
     
     self.lastSpawnTimeInterval += timeSinceLast;
     if (self.lastSpawnTimeInterval > 1 && self.monsterCount < 4) {
         self.lastSpawnTimeInterval = 0;
-        //[self addMonster];
         self.monsterCount += 1;
     }
 }
-
 - (void)update:(NSTimeInterval)currentTime {
     
     //function used to handdle spawning of monsters
-    
     CFTimeInterval timeSinceLast = currentTime - self.lastUpdateTimeInterval;
     self.lastUpdateTimeInterval = currentTime;
     
@@ -139,48 +145,22 @@
     }
     
     [self updateWithTimeSinceLastUpdate:timeSinceLast];
-    
-    
-        
-    
-    
 }
+*/
 
-
-- (void)addMonster:(CGPoint)position isBoss:(BOOL)isBoss{
-    NSString *monsterPicture = @"";
+- (void)addMonster:(CGPoint)position {
     
-    if (isBoss) {
-        monsterPicture = @"boss";
-    } else {
-        monsterPicture = @"monster";
-    }
+    Monster *newMonster = [[Monster alloc] init];
     
-    SKSpriteNode *monster = [SKSpriteNode spriteNodeWithImageNamed:monsterPicture];
-
-    monster.position = position;
-    [self addChild:monster];
+    //onko x ja y oikein?
+    newMonster.character = [newMonster setUpSprite:position.x height:position.y];
     
-    /*
-     * Creates the SKActions for the movement and color changes of monster
-     */
-     
-    SKAction *colorize = [SKAction colorizeWithColor: [UIColor redColor] colorBlendFactor: 0.5 duration: 1];
-    SKAction *wait1 = [SKAction waitForDuration: 3];
-    SKAction *uncolorize = [SKAction colorizeWithColorBlendFactor: 0.0 duration: 1];
-    SKAction *wait2 = [SKAction waitForDuration: 10];
-    SKAction *colorizePulse = [SKAction sequence:@[colorize, wait1, uncolorize, wait2]];
-    SKAction *colorizeForever = [SKAction repeatActionForever:colorizePulse];
+    //TODO: move to monsterInit or setUpSprite
+    [newMonster setUpAI];
     
-    UIBezierPath *circle = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(-49, 0, 100, 100) cornerRadius:100];
-    SKAction *followCircle = [SKAction followPath:circle.CGPath asOffset:YES orientToPath:NO duration:5.0];
+    [self addChild:newMonster.character];
+    [self.monsterArray addObject:newMonster];
     
-    SKAction *oneRevolution = [SKAction rotateByAngle:-M_PI*2 duration:3.0];
-    SKAction *circulateForever = [SKAction repeatActionForever:oneRevolution];
-    SKAction *moveCircleForever = [SKAction repeatActionForever:followCircle];
-    
-    
-    SKAction *group = [SKAction group:@[circulateForever, moveCircleForever, colorizeForever]]; [monster runAction:group];
  }
 
 

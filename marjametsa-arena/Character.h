@@ -7,7 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <SpriteKit/SpriteKit.h>
 
 @interface Character : NSObject
+@property (nonatomic) NSString *image;
+@property (nonatomic) SKSpriteNode *character;
+- (SKSpriteNode*)setUpSprite: (int)width
+                      height:(int)height;
+- (float)getXCoordinate;
+- (float)getYCoordinate;
+- (int)getHeight;
+- (int)getWidth;
+- (void)runAction: (SKAction*)action;
 
 @end

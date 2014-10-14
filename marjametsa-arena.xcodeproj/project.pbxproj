@@ -10,6 +10,8 @@
 		116C663119ED22E500215E51 /* Character.m in Sources */ = {isa = PBXBuildFile; fileRef = 116C663019ED22E500215E51 /* Character.m */; };
 		116C663419ED283400215E51 /* Hero.m in Sources */ = {isa = PBXBuildFile; fileRef = 116C663319ED283400215E51 /* Hero.m */; };
 		116C663919ED2CAE00215E51 /* AICharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = 116C663819ED2CAE00215E51 /* AICharacter.m */; };
+		116C663C19ED447800215E51 /* Monster.m in Sources */ = {isa = PBXBuildFile; fileRef = 116C663B19ED447800215E51 /* Monster.m */; };
+		116C663F19ED547000215E51 /* Boss.m in Sources */ = {isa = PBXBuildFile; fileRef = 116C663E19ED547000215E51 /* Boss.m */; };
 		118EEF5819D2F51500899286 /* boss.png in Resources */ = {isa = PBXBuildFile; fileRef = 118EEF5719D2F51500899286 /* boss.png */; };
 		11C41AB719D29C5300468EE4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11C41AB619D29C5300468EE4 /* Foundation.framework */; };
 		11C41AB919D29C5300468EE4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11C41AB819D29C5300468EE4 /* CoreGraphics.framework */; };
@@ -28,7 +30,7 @@
 		11C41AE719D29C5300468EE4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 11C41AE519D29C5300468EE4 /* InfoPlist.strings */; };
 		11C41AE919D29C5300468EE4 /* marjametsa_arenaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C41AE819D29C5300468EE4 /* marjametsa_arenaTests.m */; };
 		11C41AF519D29D3200468EE4 /* grass_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C41AF219D29D3200468EE4 /* grass_bg.png */; };
-		11C41AF619D29D3200468EE4 /* heropic.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C41AF319D29D3200468EE4 /* heropic.png */; };
+		11C41AF619D29D3200468EE4 /* hero.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C41AF319D29D3200468EE4 /* hero.png */; };
 		11C41AF719D29D3200468EE4 /* monster.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C41AF419D29D3200468EE4 /* monster.png */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +51,10 @@
 		116C663319ED283400215E51 /* Hero.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hero.m; sourceTree = "<group>"; };
 		116C663719ED2CAE00215E51 /* AICharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AICharacter.h; sourceTree = "<group>"; };
 		116C663819ED2CAE00215E51 /* AICharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AICharacter.m; sourceTree = "<group>"; };
+		116C663A19ED447800215E51 /* Monster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Monster.h; sourceTree = "<group>"; };
+		116C663B19ED447800215E51 /* Monster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Monster.m; sourceTree = "<group>"; };
+		116C663D19ED547000215E51 /* Boss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Boss.h; sourceTree = "<group>"; };
+		116C663E19ED547000215E51 /* Boss.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Boss.m; sourceTree = "<group>"; };
 		118EEF5719D2F51500899286 /* boss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boss.png; sourceTree = "<group>"; };
 		11C41AB319D29C5300468EE4 /* marjametsa-arena.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "marjametsa-arena.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		11C41AB619D29C5300468EE4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -73,7 +79,7 @@
 		11C41AE619D29C5300468EE4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		11C41AE819D29C5300468EE4 /* marjametsa_arenaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = marjametsa_arenaTests.m; sourceTree = "<group>"; };
 		11C41AF219D29D3200468EE4 /* grass_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass_bg.png; sourceTree = "<group>"; };
-		11C41AF319D29D3200468EE4 /* heropic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heropic.png; sourceTree = "<group>"; };
+		11C41AF319D29D3200468EE4 /* hero.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hero.png; sourceTree = "<group>"; };
 		11C41AF419D29D3200468EE4 /* monster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monster.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,7 +113,7 @@
 			children = (
 				11C41AF219D29D3200468EE4 /* grass_bg.png */,
 				118EEF5719D2F51500899286 /* boss.png */,
-				11C41AF319D29D3200468EE4 /* heropic.png */,
+				11C41AF319D29D3200468EE4 /* hero.png */,
 				11C41AF419D29D3200468EE4 /* monster.png */,
 			);
 			name = Resources;
@@ -120,6 +126,10 @@
 				116C663019ED22E500215E51 /* Character.m */,
 				116C663719ED2CAE00215E51 /* AICharacter.h */,
 				116C663819ED2CAE00215E51 /* AICharacter.m */,
+				116C663A19ED447800215E51 /* Monster.h */,
+				116C663D19ED547000215E51 /* Boss.h */,
+				116C663E19ED547000215E51 /* Boss.m */,
+				116C663B19ED447800215E51 /* Monster.m */,
 				116C663219ED283400215E51 /* Hero.h */,
 				116C663319ED283400215E51 /* Hero.m */,
 			);
@@ -289,7 +299,7 @@
 				11C41AD619D29C5300468EE4 /* Images.xcassets in Resources */,
 				11C41ACC19D29C5300468EE4 /* Main.storyboard in Resources */,
 				11C41AF719D29D3200468EE4 /* monster.png in Resources */,
-				11C41AF619D29D3200468EE4 /* heropic.png in Resources */,
+				11C41AF619D29D3200468EE4 /* hero.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,7 +322,9 @@
 				116C663419ED283400215E51 /* Hero.m in Sources */,
 				116C663119ED22E500215E51 /* Character.m in Sources */,
 				11C41ACF19D29C5300468EE4 /* ViewController.m in Sources */,
+				116C663C19ED447800215E51 /* Monster.m in Sources */,
 				11C41AC919D29C5300468EE4 /* AppDelegate.m in Sources */,
+				116C663F19ED547000215E51 /* Boss.m in Sources */,
 				116C663919ED2CAE00215E51 /* AICharacter.m in Sources */,
 				11C41AC519D29C5300468EE4 /* main.m in Sources */,
 			);

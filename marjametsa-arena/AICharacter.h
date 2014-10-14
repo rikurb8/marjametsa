@@ -10,4 +10,6 @@
 
 @interface AICharacter : Character
 
+//TODO: params in the future?
+- (void) setUpAI;
 @end

@@ -9,9 +9,36 @@
 #import "Character.h"
 
 @interface Character ()
-@property (nonatomic) NSString *image;
+
 @end
 
 @implementation Character
+
+
+- (SKSpriteNode*)setUpSprite: (int)width
+                      height:(int)height{
+    self.character = [SKSpriteNode spriteNodeWithImageNamed:self.image];
+    self.character.position = CGPointMake(width, height);
+    return self.character;
+}
+
+- (float)getXCoordinate {
+    return self.character.position.x;
+}
+
+- (float)getYCoordinate {
+    return self.character.position.y;
+}
+
+- (void)runAction: (SKAction*)action {
+    [self.character runAction:action];
+}
+
+- (int)getHeight {
+    return self.character.size.height;
+}
+- (int)getWidth {
+    return self.character.size.width;
+}
 
 @end
