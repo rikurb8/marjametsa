@@ -7,6 +7,7 @@
 //
 
 #import "GameScene.h"
+#import "Hero.h"
 @import CoreMotion;
 
 #define kPlayerSpeed 700
@@ -14,7 +15,7 @@
 
 
 @interface GameScene ()
-@property (nonatomic) SKSpriteNode * player;
+@property (nonatomic) Hero *player;
 @property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
 @property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
 @property (nonatomic) CMMotionManager *motionManager;
@@ -40,17 +41,23 @@
         [self addMonster:CGPointMake(150, 150) isBoss:NO];
         [self addMonster:CGPointMake(225, 75) isBoss:NO];
 
-        //add the hero to middle of the screen
-        self.player = [SKSpriteNode spriteNodeWithImageNamed:@"hero"];
-        self.player.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
         
-        [self addChild:self.player];
+        self.player = [[Hero alloc] init];
+        
+        
+        //add the hero to middle of the screen
+        SKSpriteNode *hero = [self.player setUpSprite:self.frame.size.width height:self.frame.size.height];
+        
+        [self addChild:hero];
         
         self.motionManager = [[CMMotionManager alloc] init];
         self.motionManager.accelerometerUpdateInterval = kUpdateInterval;
         
+        
         //if a accelometer is found, start queueing data, and handling it with the given function
         if ([self.motionManager isAccelerometerAvailable] == YES) {
+            
+            //TODO: refactor to own function or somewhere
             [self.motionManager startAccelerometerUpdatesToQueue:[[NSOperationQueue alloc] init]
                                                 withHandler:^(CMAccelerometerData *data, NSError *error) {
                  if (error) {
@@ -59,8 +66,8 @@
                  
                  float destX = 0.0;
                  float destY = 0.0;
-                 float currentX = self.player.position.x;
-                 float currentY = self.player.position.y;
+                 float currentX = [self.player getXCoordinate];
+                 float currentY = [self.player getYCoordinate];
                  BOOL shouldMove = NO;
                  
                  destX = currentX;
@@ -87,22 +94,24 @@
     return self;
 }
 
+
+
 /*
  * Function that checks if the given coordinates are within the screen.
  * If coordinates are ok, returns coordinates, else changes the coordinate to 
  * coordinate of side + player.width/2
 */
 - (CGPoint)isInsideLimits:(CGPoint)coordinates {
-    if (coordinates.x < self.player.size.height/2) {
-        coordinates.x = self.player.size.height/2;
-    } else if (coordinates.x > self.frame.size.width-self.player.size.height/2) {
-        coordinates.x = self.frame.size.width-self.player.size.height/2;
+    if (coordinates.x < [self.player getHeight]/2) {
+        coordinates.x = [self.player getHeight]/2;
+    } else if (coordinates.x > self.frame.size.width-[self.player getHeight]/2) {
+        coordinates.x = self.frame.size.width-[self.player getHeight]/2;
     }
     
-    if (coordinates.y < self.player.size.width/2) {
-        coordinates.y = self.player.size.width/2;
-    } else if (coordinates.y > self.frame.size.height-self.player.size.width/2) {
-        coordinates.y = self.frame.size.height-self.player.size.width/2;
+    if (coordinates.y < [self.player getWidth]/2) {
+        coordinates.y = [self.player getWidth]/2;
+    } else if (coordinates.y > self.frame.size.height-[self.player getWidth]/2) {
+        coordinates.y = self.frame.size.height-[self.player getWidth]/2;
     }
 
     return coordinates;

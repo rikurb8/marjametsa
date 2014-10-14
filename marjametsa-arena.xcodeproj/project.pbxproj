@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		116C663119ED22E500215E51 /* Character.m in Sources */ = {isa = PBXBuildFile; fileRef = 116C663019ED22E500215E51 /* Character.m */; };
+		116C663419ED283400215E51 /* Hero.m in Sources */ = {isa = PBXBuildFile; fileRef = 116C663319ED283400215E51 /* Hero.m */; };
+		116C663919ED2CAE00215E51 /* AICharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = 116C663819ED2CAE00215E51 /* AICharacter.m */; };
 		118EEF5819D2F51500899286 /* boss.png in Resources */ = {isa = PBXBuildFile; fileRef = 118EEF5719D2F51500899286 /* boss.png */; };
 		11C41AB719D29C5300468EE4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11C41AB619D29C5300468EE4 /* Foundation.framework */; };
 		11C41AB919D29C5300468EE4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11C41AB819D29C5300468EE4 /* CoreGraphics.framework */; };
@@ -18,7 +21,6 @@
 		11C41ACC19D29C5300468EE4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11C41ACA19D29C5300468EE4 /* Main.storyboard */; };
 		11C41ACF19D29C5300468EE4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C41ACE19D29C5300468EE4 /* ViewController.m */; };
 		11C41AD219D29C5300468EE4 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C41AD119D29C5300468EE4 /* GameScene.m */; };
-		11C41AD419D29C5300468EE4 /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C41AD319D29C5300468EE4 /* Spaceship.png */; };
 		11C41AD619D29C5300468EE4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11C41AD519D29C5300468EE4 /* Images.xcassets */; };
 		11C41ADD19D29C5300468EE4 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11C41ADC19D29C5300468EE4 /* XCTest.framework */; };
 		11C41ADE19D29C5300468EE4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11C41AB619D29C5300468EE4 /* Foundation.framework */; };
@@ -26,7 +28,7 @@
 		11C41AE719D29C5300468EE4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 11C41AE519D29C5300468EE4 /* InfoPlist.strings */; };
 		11C41AE919D29C5300468EE4 /* marjametsa_arenaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C41AE819D29C5300468EE4 /* marjametsa_arenaTests.m */; };
 		11C41AF519D29D3200468EE4 /* grass_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C41AF219D29D3200468EE4 /* grass_bg.png */; };
-		11C41AF619D29D3200468EE4 /* hero.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C41AF319D29D3200468EE4 /* hero.png */; };
+		11C41AF619D29D3200468EE4 /* heropic.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C41AF319D29D3200468EE4 /* heropic.png */; };
 		11C41AF719D29D3200468EE4 /* monster.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C41AF419D29D3200468EE4 /* monster.png */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +43,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		116C662F19ED22E500215E51 /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Character.h; sourceTree = "<group>"; };
+		116C663019ED22E500215E51 /* Character.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Character.m; sourceTree = "<group>"; };
+		116C663219ED283400215E51 /* Hero.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hero.h; sourceTree = "<group>"; };
+		116C663319ED283400215E51 /* Hero.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hero.m; sourceTree = "<group>"; };
+		116C663719ED2CAE00215E51 /* AICharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AICharacter.h; sourceTree = "<group>"; };
+		116C663819ED2CAE00215E51 /* AICharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AICharacter.m; sourceTree = "<group>"; };
 		118EEF5719D2F51500899286 /* boss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boss.png; sourceTree = "<group>"; };
 		11C41AB319D29C5300468EE4 /* marjametsa-arena.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "marjametsa-arena.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		11C41AB619D29C5300468EE4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -58,7 +66,6 @@
 		11C41ACE19D29C5300468EE4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		11C41AD019D29C5300468EE4 /* GameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		11C41AD119D29C5300468EE4 /* GameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
-		11C41AD319D29C5300468EE4 /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
 		11C41AD519D29C5300468EE4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		11C41ADB19D29C5300468EE4 /* marjametsa-arenaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "marjametsa-arenaTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		11C41ADC19D29C5300468EE4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -66,7 +73,7 @@
 		11C41AE619D29C5300468EE4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		11C41AE819D29C5300468EE4 /* marjametsa_arenaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = marjametsa_arenaTests.m; sourceTree = "<group>"; };
 		11C41AF219D29D3200468EE4 /* grass_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass_bg.png; sourceTree = "<group>"; };
-		11C41AF319D29D3200468EE4 /* hero.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hero.png; sourceTree = "<group>"; };
+		11C41AF319D29D3200468EE4 /* heropic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heropic.png; sourceTree = "<group>"; };
 		11C41AF419D29D3200468EE4 /* monster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monster.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,6 +102,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		116C663519ED293900215E51 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				11C41AF219D29D3200468EE4 /* grass_bg.png */,
+				118EEF5719D2F51500899286 /* boss.png */,
+				11C41AF319D29D3200468EE4 /* heropic.png */,
+				11C41AF419D29D3200468EE4 /* monster.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		116C663619ED295300215E51 /* Characters */ = {
+			isa = PBXGroup;
+			children = (
+				116C662F19ED22E500215E51 /* Character.h */,
+				116C663019ED22E500215E51 /* Character.m */,
+				116C663719ED2CAE00215E51 /* AICharacter.h */,
+				116C663819ED2CAE00215E51 /* AICharacter.m */,
+				116C663219ED283400215E51 /* Hero.h */,
+				116C663319ED283400215E51 /* Hero.m */,
+			);
+			name = Characters;
+			sourceTree = "<group>";
+		};
 		11C41AAA19D29C5300468EE4 = {
 			isa = PBXGroup;
 			children = (
@@ -133,14 +164,11 @@
 				11C41AC819D29C5300468EE4 /* AppDelegate.m */,
 				11C41ACA19D29C5300468EE4 /* Main.storyboard */,
 				11C41ACD19D29C5300468EE4 /* ViewController.h */,
+				116C663619ED295300215E51 /* Characters */,
 				11C41ACE19D29C5300468EE4 /* ViewController.m */,
 				11C41AD019D29C5300468EE4 /* GameScene.h */,
 				11C41AD119D29C5300468EE4 /* GameScene.m */,
-				11C41AD319D29C5300468EE4 /* Spaceship.png */,
-				11C41AF219D29D3200468EE4 /* grass_bg.png */,
-				118EEF5719D2F51500899286 /* boss.png */,
-				11C41AF319D29D3200468EE4 /* hero.png */,
-				11C41AF419D29D3200468EE4 /* monster.png */,
+				116C663519ED293900215E51 /* Resources */,
 				11C41AD519D29C5300468EE4 /* Images.xcassets */,
 				11C41ABF19D29C5300468EE4 /* Supporting Files */,
 			);
@@ -259,10 +287,9 @@
 				11C41AF519D29D3200468EE4 /* grass_bg.png in Resources */,
 				118EEF5819D2F51500899286 /* boss.png in Resources */,
 				11C41AD619D29C5300468EE4 /* Images.xcassets in Resources */,
-				11C41AD419D29C5300468EE4 /* Spaceship.png in Resources */,
 				11C41ACC19D29C5300468EE4 /* Main.storyboard in Resources */,
 				11C41AF719D29D3200468EE4 /* monster.png in Resources */,
-				11C41AF619D29D3200468EE4 /* hero.png in Resources */,
+				11C41AF619D29D3200468EE4 /* heropic.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,8 +309,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				11C41AD219D29C5300468EE4 /* GameScene.m in Sources */,
+				116C663419ED283400215E51 /* Hero.m in Sources */,
+				116C663119ED22E500215E51 /* Character.m in Sources */,
 				11C41ACF19D29C5300468EE4 /* ViewController.m in Sources */,
 				11C41AC919D29C5300468EE4 /* AppDelegate.m in Sources */,
+				116C663919ED2CAE00215E51 /* AICharacter.m in Sources */,
 				11C41AC519D29C5300468EE4 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
