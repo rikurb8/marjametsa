@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 #import "GameScene.h"
+#import "MenuScene.h"
+
 
 @implementation ViewController
 
@@ -16,13 +18,15 @@
     [super viewWillLayoutSubviews];
     
     // Configure the view.
+    
     SKView * skView = (SKView *)self.view;
     if (!skView.scene) {
         skView.showsFPS = YES;
         skView.showsNodeCount = NO;
         
         // Create and configure the scene.
-        SKScene * scene = [GameScene sceneWithSize:skView.bounds.size];
+        //SKScene * scene =
+        SKScene * scene = [MenuScene sceneWithSize:skView.bounds.size];
         scene.scaleMode = SKSceneScaleModeAspectFill;
         
         // Present the scene.
