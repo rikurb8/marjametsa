@@ -25,6 +25,10 @@
 @property (nonatomic) CMMotionManager *motionManager;
 
 @property (nonatomic) int monsterCount;
+@property (nonatomic) int hitCount;
+@property (nonatomic) int secTimer;
+@property (nonatomic) SKLabelNode *hits;
+@property (nonatomic) SKLabelNode *timer;
 - (void) vibrate;
 
 @end
@@ -41,44 +45,29 @@
         bgImage.position = CGPointMake(self.size.width/2, self.size.height/2);
         [self addChild:bgImage];
         
-        //set the scenes gravityfield
+        // Overall physic utilization
         self.physicsWorld.gravity = CGVectorMake(0.0f, 0.0f);
-        
-        // 1 Create a physics body that borders the screen
         SKPhysicsBody* borderBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
-        // 2 Set physicsBody of scene to borderBody
         self.physicsBody = borderBody;
-        // 3 Set the friction of that physicsBody to 0
         self.physicsBody.friction = 0.0f;
-        
         
         self.monsterArray = [[NSMutableArray alloc] initWithCapacity:10];
         
+        // TODO: move these to a generic place where x monster can be summed to diffrent locations
         [self addMonster:CGPointMake(400, 150)];
         [self addMonster:CGPointMake(150, 150)];
         [self addMonster:CGPointMake(225, 75)];
         
-        
-
-        
+        // Initialize the hero and its physic abilities
         self.player = [[Hero alloc] init];
-        
-        
-        //add the hero to middle of the screen
         SKSpriteNode *hero = [self.player setUpSprite:self.frame.size.width/2 height:self.frame.size.height/2];
-        
         [self addChild:hero];
         
         hero.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:hero.frame.size.width/3];
-        
         hero.physicsBody.friction = 0.0f;
-        
         hero.physicsBody.restitution = 0.05f;
-        
         hero.physicsBody.linearDamping = 0.1f;
-        
         hero.physicsBody.mass = 0.05f;
-
         hero.physicsBody.allowsRotation = NO;
         
         
@@ -87,6 +76,13 @@
         tmp.text = @"HITS: 0";
         tmp.position = CGPointMake(150, 10);
         [self addChild:tmp];
+        
+        self.timer = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
+        self.timer.fontSize = 16;
+        self.timer.text = @"TTIMER: 0";
+        self.secTimer = 0;
+        self.timer.position = CGPointMake(250, 10);
+        [self addChild:self.timer];
         
         self.motionManager = [[CMMotionManager alloc] init];
         self.motionManager.accelerometerUpdateInterval = kUpdateInterval;
@@ -139,18 +135,20 @@
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
 }
 
-/* THESE CAN BE USED TO SPAWN MONSTERS AT CERTAIN TIMERATE
 - (void)updateWithTimeSinceLastUpdate:(CFTimeInterval)timeSinceLast {
     
     self.lastSpawnTimeInterval += timeSinceLast;
-    if (self.lastSpawnTimeInterval > 1 && self.monsterCount < 4) {
+    if (self.lastSpawnTimeInterval > 1) {
         self.lastSpawnTimeInterval = 0;
-        self.monsterCount += 1;
+
+        self.secTimer += 1;
+        NSMutableString *tmpSecs = [NSMutableString stringWithString:@"TIMER: "];
+        [tmpSecs appendFormat:@"%i", self.secTimer];
+        self.timer.text = tmpSecs;
     }
 }
+
 - (void)update:(NSTimeInterval)currentTime {
-    
-    //function used to handdle spawning of monsters
     CFTimeInterval timeSinceLast = currentTime - self.lastUpdateTimeInterval;
     self.lastUpdateTimeInterval = currentTime;
     
@@ -160,7 +158,6 @@
     
     [self updateWithTimeSinceLastUpdate:timeSinceLast];
 }
-*/
 
 - (void)addMonster:(CGPoint)position {
     
