@@ -42,13 +42,24 @@
         bgImage.position = CGPointMake(self.size.width/2, self.size.height/2);
         [self addChild:bgImage];
         
+        //set the scenes gravityfield
+        self.physicsWorld.gravity = CGVectorMake(0.0f, 0.0f);
+        
+        // 1 Create a physics body that borders the screen
+        SKPhysicsBody* borderBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
+        // 2 Set physicsBody of scene to borderBody
+        self.physicsBody = borderBody;
+        // 3 Set the friction of that physicsBody to 0
+        self.physicsBody.friction = 0.0f;
+        
         
         self.monsterArray = [[NSMutableArray alloc] initWithCapacity:10];
-        
         
         [self addMonster:CGPointMake(400, 150)];
         [self addMonster:CGPointMake(150, 150)];
         [self addMonster:CGPointMake(225, 75)];
+        
+        
 
         
         self.player = [[Hero alloc] init];
@@ -59,6 +70,17 @@
         
         [self addChild:hero];
         
+        hero.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:hero.frame.size.width/3];
+        // 3
+        hero.physicsBody.friction = 0.0f;
+        // 4
+        hero.physicsBody.restitution = 1.0f;
+        // 5
+        hero.physicsBody.linearDamping = 0.0f;
+        // 6
+        hero.physicsBody.allowsRotation = NO;
+        
+        [hero.physicsBody applyImpulse:CGVectorMake(8.0f, -8.0f)];
         
         SKLabelNode *tmp = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
         tmp.fontSize = 16;
@@ -68,7 +90,6 @@
         
         self.motionManager = [[CMMotionManager alloc] init];
         self.motionManager.accelerometerUpdateInterval = kUpdateInterval;
-        
         
         //if a accelometer is found, start queueing data, and handling it with the given function
         if ([self.motionManager isAccelerometerAvailable] == YES) {
@@ -215,7 +236,21 @@
     //TODO: move to monsterInit or setUpSprite
     [newMonster setUpAI];
     
+   
+    
+    
     [self addChild:newMonster.character];
+    
+    newMonster.character.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:newMonster.character.size];
+    // 3
+    newMonster.character.physicsBody.friction = 0.0f;
+    // 4
+    newMonster.character.physicsBody.restitution = 1.0f;
+    // 5
+    newMonster.character.physicsBody.linearDamping = 0.0f;
+    // 6
+    newMonster.character.physicsBody.allowsRotation = YES;
+    
     [self.monsterArray addObject:newMonster];
     
  }

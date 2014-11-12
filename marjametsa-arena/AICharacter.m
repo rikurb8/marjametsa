@@ -22,18 +22,20 @@
     SKAction *colorizePulse = [SKAction sequence:@[colorize, wait1, uncolorize, wait2]];
     SKAction *colorizeForever = [SKAction repeatActionForever:colorizePulse];
     
-    UIBezierPath *circle = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(-49, 0, 100, 100) cornerRadius:100];
-    SKAction *followCircle = [SKAction followPath:circle.CGPath asOffset:YES orientToPath:NO duration:5.0];
+    //UIBezierPath *circle = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(-49, 0, 100, 100) cornerRadius:100];
+    //SKAction *followCircle = [SKAction followPath:circle.CGPath asOffset:YES orientToPath:NO duration:5.0];
     
-    SKAction *oneRevolution = [SKAction rotateByAngle:-M_PI*2 duration:3.0];
-    SKAction *circulateForever = [SKAction repeatActionForever:oneRevolution];
-    SKAction *moveCircleForever = [SKAction repeatActionForever:followCircle];
+    //SKAction *oneRevolution = [SKAction rotateByAngle:-M_PI*2 duration:3.0];
+    //SKAction *circulateForever = [SKAction repeatActionForever:oneRevolution];
+    //SKAction *moveCircleForever = [SKAction repeatActionForever:followCircle];
     
     
-    SKAction *group = [SKAction group:@[circulateForever, moveCircleForever, colorizeForever]];
+    //SKAction *group = [SKAction group:@[circulateForever, moveCircleForever, colorizeForever]];
 
     
-    [self.character runAction:group];
+    [self.character runAction:colorizeForever];
+
+    
 }
 
 @end
