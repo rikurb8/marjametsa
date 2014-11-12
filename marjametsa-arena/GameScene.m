@@ -26,7 +26,6 @@
 
 @property (nonatomic) int monsterCount;
 - (void) vibrate;
-- (BOOL) isInsideBoundaries;
 
 @end
 
@@ -71,16 +70,17 @@
         [self addChild:hero];
         
         hero.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:hero.frame.size.width/3];
-        // 3
+        
         hero.physicsBody.friction = 0.0f;
-        // 4
-        hero.physicsBody.restitution = 1.0f;
-        // 5
-        hero.physicsBody.linearDamping = 0.0f;
-        // 6
+        
+        hero.physicsBody.restitution = 0.05f;
+        
+        hero.physicsBody.linearDamping = 0.1f;
+        
+        hero.physicsBody.mass = 0.05f;
+
         hero.physicsBody.allowsRotation = NO;
         
-        [hero.physicsBody applyImpulse:CGVectorMake(8.0f, -8.0f)];
         
         SKLabelNode *tmp = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
         tmp.fontSize = 16;
@@ -100,9 +100,8 @@
     return self;
 }
 
-
-
-
+// Setup a listener for updates from the accelometer. All movements that are grater
+// than 0.1 are passed on to the hero as vectors.
 - (void) setUpMotionManager {
     [self.motionManager startAccelerometerUpdatesToQueue:[[NSOperationQueue alloc] init]
                                              withHandler:^(CMAccelerometerData *data, NSError *error) {
@@ -110,50 +109,9 @@
              NSLog(@"%@",[error localizedDescription]);
          }
          
-         float destX = 0.0;
-         float destY = 0.0;
-         float currentX = [self.player getXCoordinate];
-         float currentY = [self.player getYCoordinate];
-         BOOL shouldMove = NO;
-         
-         destX = currentX;
-         destY = currentY;
-         
-         if(data.acceleration.y < -0.05 || data.acceleration.y > 0.05) {
-             destX = currentX - (data.acceleration.y * kPlayerSpeed);
-             shouldMove = YES;
-         }
-         
-         if (data.acceleration.x < -0.05 || data.acceleration.x > 0.05) {
-             destY = currentY + (data.acceleration.x * kPlayerSpeed);
-             shouldMove = YES;
-         }
-         
-         if(shouldMove) {
-             
-             CGPoint newPoint = [self isInsideLimits:CGPointMake(destX, destY)];
-             //boundries where the player is going to be
-             float maxY = newPoint.y + ([self.player getHeight]/2);
-             float minY = newPoint.y - ([self.player getHeight]/2);
-             
-             float maxX = newPoint.x + ([self.player getWidth]/2);
-             float minX = newPoint.x - ([self.player getWidth]/2);
-             
-             //NSLog(@"NEW MOVE ATTEMPT");
-             //NSLog(@"PLAYER INFO:");
-             //NSLog(@"Player X coodinate: %f", newPoint.x);
-             //NSLog(@"Player Y coodinate: %f", newPoint.y);
-             
-             //Tässä pitäs lähtee tarkastaan jostain suunnasta et voidaanko liikkua (otus, item jne)
-             for (Monster *mons in [self monsterArray]) {
-                                  
-                 [self isInBoundaries:CGPointMake([mons getXCoordinate], [mons getYCoordinate]) :[mons getHeight] :CGPointMake(minX, minY) :self.player.getHeight];
-             }
-             
-             // move to new location
-             SKAction *action = [SKAction moveTo:newPoint duration:1];
-             [self.player runAction:action];
-         }
+        if (fabs(data.acceleration.x) > 0.1 || fabs(data.acceleration.y) > 0.1) {
+            [self.player.character.physicsBody applyForce:CGVectorMake(-50.0*data.acceleration.y, 50.0*data.acceleration.x)];
+        }
     }];
 };
 
@@ -179,28 +137,6 @@
 
 - (void)vibrate {
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-}
-
-
-/*
- * Function that checks if the given coordinates are within the screen.
- * If coordinates are ok, returns coordinates, else changes the coordinate to 
- * coordinate of side + player.width/2
-*/
-- (CGPoint)isInsideLimits:(CGPoint)coordinates {
-    if (coordinates.x < [self.player getHeight]/2) {
-        coordinates.x = [self.player getHeight]/2;
-    } else if (coordinates.x > self.frame.size.width-[self.player getHeight]/2) {
-        coordinates.x = self.frame.size.width-[self.player getHeight]/2;
-    }
-    
-    if (coordinates.y < [self.player getWidth]/2) {
-        coordinates.y = [self.player getWidth]/2;
-    } else if (coordinates.y > self.frame.size.height-[self.player getWidth]/2) {
-        coordinates.y = self.frame.size.height-[self.player getWidth]/2;
-    }
-
-    return coordinates;
 }
 
 /* THESE CAN BE USED TO SPAWN MONSTERS AT CERTAIN TIMERATE
