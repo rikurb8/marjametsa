@@ -54,7 +54,13 @@
     [exitbutton setTitle:@"Click me" forState:UIControlStateNormal];
     [self.view addSubview:exitbutton];
 
- 
+
+    [self addChild: [self ButtonNode:@"Highscore"]];
+    UIButton *highbutton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    highbutton.frame =CGRectMake(100, 170, 100, 30);
+    [highbutton setTitle:@"Click me" forState:UIControlStateNormal];
+    [self.view addSubview:highbutton];
+    
     return self;
 
 }
@@ -63,7 +69,7 @@
 {
     if([buttonType isEqualToString:@"Menu"]){
     SKSpriteNode *MenuNode = [SKSpriteNode spriteNodeWithImageNamed:@"StartButton.png"];
-    MenuNode.position = CGPointMake(300, 150);
+    MenuNode.position = CGPointMake(300, 200);
     MenuNode.name = @"startButton";//how the node is identified later
     
     
@@ -74,13 +80,14 @@
         ExitNode.name = @"exitButton";
         return ExitNode;
     
-    }else{
-        SKSpriteNode *ExitNode = [SKSpriteNode spriteNodeWithImageNamed:@"exitButton.png"];
-        ExitNode.position = CGPointMake(300, 80);
-        ExitNode.name = @"exitButton";
-        return ExitNode;
+    } else if ([buttonType isEqualToString:@"Highscore"]) {
+        SKSpriteNode *HighNode = [SKSpriteNode spriteNodeWithImageNamed:@"bestPlayers.png"];
+        HighNode.position = CGPointMake(300, 140);
+        HighNode.name = @"exitButton";
+        return HighNode;
     }
     
+    return nil;
 }
 
 
