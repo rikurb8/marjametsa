@@ -33,6 +33,8 @@ static const uint32_t borderCategory = 0x1 << 2;  // 000000000000000000000000000
 @property (nonatomic) int secTimer;
 @property (nonatomic) SKLabelNode *hits;
 @property (nonatomic) SKLabelNode *timer;
+
+@property (nonatomic) int aliveMonsters;
 - (void) vibrate;
 
 @end
@@ -169,6 +171,8 @@ static const uint32_t borderCategory = 0x1 << 2;  // 000000000000000000000000000
     
     [newMonster setName:[self.monsterArray count]];
     
+    self.aliveMonsters += 1;
+    
     [self.monsterArray addObject:newMonster];
     
  }
@@ -195,8 +199,9 @@ static const uint32_t borderCategory = 0x1 << 2;  // 000000000000000000000000000
             if([secondBody.node.name isEqualToString:[monster getName]]) {
                 if ([monster isVulnerable]) {
                     [monster.character removeFromParent];
+                    self.aliveMonsters -= 1;
                     
-                    //TODO: remove monster from array?
+                    //TODO: remove monster from array? do we need monsterArray? what the fuck?
                 } else {
                     self.hitCount += 1;
                     NSMutableString *tmpHits = [NSMutableString stringWithString:@"LIVES: "];
@@ -215,7 +220,7 @@ static const uint32_t borderCategory = 0x1 << 2;  // 000000000000000000000000000
             GameEndedScene* gameWon = [[GameEndedScene alloc] initWithSize:self.frame.size won:NO];
             [self.view presentScene:gameWon];
             
-        } else if ([self.monsterArray count] <= 0) {
+        } else if (self.aliveMonsters <= 0) {
             GameEndedScene* gameWon = [[GameEndedScene alloc] initWithSize:self.frame.size won:YES];
             [self.view presentScene:gameWon];
         }
