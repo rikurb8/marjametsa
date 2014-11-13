@@ -15,6 +15,10 @@
 #define kPlayerSpeed 700
 #define kUpdateInterval (1.0f / 60.0f) //60fps
 
+static const uint32_t heroCategory  = 0x1 << 0;  // 00000000000000000000000000000001
+static const uint32_t monsterCategory = 0x1 << 1; // 00000000000000000000000000000010
+static const uint32_t borderCategory = 0x1 << 2;  // 00000000000000000000000000000100
+//static const uint32_t paddleCategory = 0x1 << 3; // 00000000000000000000000000001000
 
 @interface GameScene ()
 @property (nonatomic) Hero *player;
@@ -71,6 +75,14 @@
         hero.physicsBody.allowsRotation = NO;
         
         
+        hero.physicsBody.categoryBitMask = heroCategory;
+        // borderBody.categoryBitMask = borderCategory;
+        
+        hero.physicsBody.contactTestBitMask = monsterCategory;
+        
+        self.physicsWorld.contactDelegate = self;
+        
+        
         SKLabelNode *tmp = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
         tmp.fontSize = 16;
         tmp.text = @"HITS: 0";
@@ -91,6 +103,8 @@
         if ([self.motionManager isAccelerometerAvailable] == YES) {
             [self setUpMotionManager];
         }
+        
+        
 
     }
     return self;
@@ -184,9 +198,41 @@
     // 6
     newMonster.character.physicsBody.allowsRotation = YES;
     
+    newMonster.character.physicsBody.categoryBitMask = monsterCategory;
+    
     [self.monsterArray addObject:newMonster];
     
  }
 
+
+- (void)didBeginContact:(SKPhysicsContact*)contact {
+    // 1 Create local variables for two physics bodies
+    SKPhysicsBody* firstBody;
+    SKPhysicsBody* secondBody;
+    // 2 Assign the two physics bodies so that the one with the lower category is always stored in firstBody
+    if (contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask) {
+        firstBody = contact.bodyA;
+        secondBody = contact.bodyB;
+    } else {
+        firstBody = contact.bodyB;
+        secondBody = contact.bodyA;
+    }
+    // 3 react to the contact between hero and monster
+    if (firstBody.categoryBitMask == heroCategory && secondBody.categoryBitMask == monsterCategory) {
+        self.hitCount += 1;
+        NSMutableString *tmpHits = [NSMutableString stringWithString:@"HITS: "];
+        [tmpHits appendFormat:@"%i", self.hitCount];
+        self.hits.text = tmpHits;
+    }
+    /*
+    if (firstBody.categoryBitMask == ballCategory && secondBody.categoryBitMask == blockCategory) {
+        [secondBody.node removeFromParent];
+        if ([self isGameWon]) {
+            GameOverScene* gameWonScene = [[GameOverScene alloc] initWithSize:self.frame.size playerWon:YES];
+            [self.view presentScene:gameWonScene];
+        }
+    }
+     */
+}
 
 @end
