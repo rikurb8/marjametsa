@@ -14,12 +14,10 @@
 
 @implementation Character
 
-
 - (SKSpriteNode*)setUpSprite: (int)width
                       height:(int)height{
     self.character = [SKSpriteNode spriteNodeWithImageNamed:self.image];
     self.character.position = CGPointMake(width, height);
-    self.character.name = @"asd";
     return self.character;
 }
 

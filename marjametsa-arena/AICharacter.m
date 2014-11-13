@@ -9,18 +9,24 @@
 #import "AICharacter.h"
 
 @interface AICharacter ()
-@property (getter=isVulnerable) BOOL vulnerable;
+@property (nonatomic) BOOL vulnerable;
 
 @end
 
 @implementation AICharacter
+
+- (void) handleTimer: (NSTimer *) timer {
+    self.vulnerable = !self.vulnerable;
+}
+
 
 - (void) setUpAI {
     /*
      * Creates the SKActions for the color changes of AICharacter
      */
     
-    self.vulnerable = YES;
+    //TODO: loop YES/NO according to the coloring below. How?
+    self.vulnerable = NO;
     
     SKAction *colorize = [SKAction colorizeWithColor: [UIColor redColor] colorBlendFactor: 0.5 duration: 0.1];
     SKAction *wait1 = [SKAction waitForDuration: 3];
@@ -30,13 +36,7 @@
     SKAction *colorizeSeq = [SKAction sequence:@[wait2, colorizePulse]];
     SKAction *colorizeForever = [SKAction repeatActionForever:colorizeSeq];
     
-    [self.character runAction:colorizePulse completion:^{
-        self.vulnerable = NO;
-    }];
-    
     [self.character runAction:colorizeForever];
-    
-    
 
     CGSize tmp = CGSizeMake(self.character.size.height*0.70, self.character.size.width*0.70);
     
@@ -49,12 +49,19 @@
     self.character.physicsBody.linearDamping = 0.0f;
     
     self.character.physicsBody.allowsRotation = YES;
+    
+    // TODO: make the interval same as the colorizePulse. now just a lucky guess :)
+    NSTimer *timer;
+    timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(handleTimer:) userInfo:nil repeats:YES];
 }
 
 
 - (void) setName:(int)index {
-    NSLog(@"setting name: %d", index);
     self.character.name = [NSString stringWithFormat:@"%d", index];
+}
+
+- (BOOL) isVulnerable {
+    return self.vulnerable;
 }
 
 - (NSString*) getName{

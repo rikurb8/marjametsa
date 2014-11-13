@@ -14,5 +14,5 @@
 - (void) setUpAI;
 - (void) setName:(int)index;
 - (NSString*) getName;
-- (bool) isVulnerable;
+- (BOOL) isVulnerable;
 @end
