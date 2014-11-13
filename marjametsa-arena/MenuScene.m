@@ -12,6 +12,10 @@
 #import "GameScene.h"
 #import "ViewController.h"
 #import "Hero.h"
+#import "Highscore.h"   
+
+
+
 //@import CoreMotion;
 #import <UIKit/UIKit.h>
 
@@ -50,8 +54,7 @@
     [exitbutton setTitle:@"Click me" forState:UIControlStateNormal];
     [self.view addSubview:exitbutton];
 
-    
-    
+ 
     return self;
 
 }
@@ -94,9 +97,7 @@
     
     //if StartButton touched start the GameScene
     if ([node.name isEqualToString:@"startButton"]) {
-        NSLog(@"Start Pressed");
-
-        SKView * sView = (SKView *)self.view;
+               SKView * sView = (SKView *)self.view;
 
         
         SKScene * Gscene = [GameScene sceneWithSize:sView.bounds.size];

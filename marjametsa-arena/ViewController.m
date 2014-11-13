@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "GameScene.h"
 #import "MenuScene.h"
+#import "Highscore.h"   
 
 
 @implementation ViewController
