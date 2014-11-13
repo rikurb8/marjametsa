@@ -52,4 +52,13 @@
 }
 
 
+- (void) setName:(int)index {
+    NSLog(@"setting name: %d", index);
+    self.character.name = [NSString stringWithFormat:@"%d", index];
+}
+
+- (NSString*) getName{
+    return self.character.name;
+}
+
 @end

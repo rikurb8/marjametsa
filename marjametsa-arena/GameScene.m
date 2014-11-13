@@ -168,6 +168,9 @@ static const uint32_t borderCategory = 0x1 << 2;  // 000000000000000000000000000
     
     newMonster.character.physicsBody.categoryBitMask = monsterCategory;
     
+    
+    [newMonster setName:[self.monsterArray count]];
+    
     [self.monsterArray addObject:newMonster];
     
  }
@@ -190,8 +193,11 @@ static const uint32_t borderCategory = 0x1 << 2;  // 000000000000000000000000000
     // 3 react to the contact between hero and monster
     if (firstBody.categoryBitMask == heroCategory && secondBody.categoryBitMask == monsterCategory) {
         
-        if ([secondBody.node.name isEqualToString:@"asd"]) {
-            NSLog(@"tunnistettiin nimi");
+        for (Monster *monster in self.monsterArray){
+            if([secondBody.node.name isEqualToString:[monster getName]]) {
+                [monster.character removeFromParent];
+                
+            }
         }
         
         
