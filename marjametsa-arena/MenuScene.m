@@ -2,7 +2,7 @@
 //  MenuScene.m
 //  marjametsa-arena
 //
-//  Created on 14.10.2014 by Henkka
+//  Created by HK on 14.10.2014 by Henkka
 //  Copyright (c). All rights reserved.
 //
 
@@ -10,9 +10,10 @@
 
 #import "MenuScene.h"
 #import "GameScene.h"
+#import "ScoresScene.h"
 #import "ViewController.h"
-#import "Hero.h"
-//@import CoreMotion;
+#import "levelSelectScene.h"
+
 #import <UIKit/UIKit.h>
 
 
@@ -41,14 +42,23 @@
     [self addChild: [self ButtonNode:@"Menu"]];
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     button.frame =CGRectMake(100, 170, 100, 30);
-    [button setTitle:@"Click me" forState:UIControlStateNormal];
+    [button setTitle:@"menu" forState:UIControlStateNormal];
     [self.view addSubview:button];
     
     [self addChild: [self ButtonNode:@"Exit"]];
     UIButton *exitbutton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     exitbutton.frame =CGRectMake(100, 170, 100, 30);
-    [exitbutton setTitle:@"Click me" forState:UIControlStateNormal];
+    [exitbutton setTitle:@"exit" forState:UIControlStateNormal];
     [self.view addSubview:exitbutton];
+    
+    
+    [self addChild: [self ButtonNode:@"bestPlayers"]];
+    UIButton *bestplayers = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    bestplayers.frame =CGRectMake(100, 170, 100, 30);
+    [bestplayers setTitle:@"best" forState:UIControlStateNormal];
+    [self.view addSubview:bestplayers];
+    
+    
 
     
     
@@ -62,7 +72,7 @@
 {
     if([buttonType isEqualToString:@"Menu"]){
     SKSpriteNode *MenuNode = [SKSpriteNode spriteNodeWithImageNamed:@"StartButton.png"];
-    MenuNode.position = CGPointMake(300, 150);
+    MenuNode.position = CGPointMake(300, 200);
     MenuNode.name = @"startButton";//how the node is identified later
     
     
@@ -73,13 +83,13 @@
         ExitNode.name = @"exitButton";
         return ExitNode;
     
-    }else{
-        SKSpriteNode *ExitNode = [SKSpriteNode spriteNodeWithImageNamed:@"exitButton.png"];
-        ExitNode.position = CGPointMake(300, 80);
-        ExitNode.name = @"exitButton";
-        return ExitNode;
+    }else if([buttonType isEqualToString:@"bestPlayers"]){
+        SKSpriteNode *BestNode = [SKSpriteNode spriteNodeWithImageNamed:@"bestPlayers.png"];
+        BestNode.position = CGPointMake(300, 140);
+        BestNode.name = @"BestPlayers";
+        return BestNode;
     }
-    
+    return NULL;
 }
 
 
@@ -96,20 +106,29 @@
     
     //if StartButton touched start the GameScene
     if ([node.name isEqualToString:@"startButton"]) {
-        NSLog(@"Start Pressed");
-
-        SKView * sView = (SKView *)self.view;
-
         
-        SKScene * Gscene = [GameScene sceneWithSize:sView.bounds.size];
-        Gscene.scaleMode = SKSceneScaleModeAspectFill;
+        // Create new scene
+        SKView * sView = (SKView *)self.view;
+        SKScene * levelSelectscene = [levelSelectScene sceneWithSize:sView.bounds.size];
+        levelSelectscene.scaleMode = SKSceneScaleModeAspectFill;
         
         // Present the scene.
-        [sView presentScene:Gscene];
+        [sView presentScene:levelSelectscene];
+    }
+    
+    // if highScores is pressed
+    if ([node.name isEqualToString:@"BestPlayers"]) {
+        
+        SKView * sView = (SKView *)self.view;
+        SKScene * Sscene = [ScoresScene sceneWithSize:sView.bounds.size];
+        Sscene.scaleMode = SKSceneScaleModeAspectFill;
+        
+        // Present the scene.
+        [sView presentScene:Sscene];
         
         
     }
-    
+    // if Exit is pressed quit the game
     if ([node.name isEqualToString:@"exitButton"]) {
         exit(0);
     }
