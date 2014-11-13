@@ -23,7 +23,7 @@
     if (!skView.scene) {
         skView.showsFPS = YES;
         skView.showsNodeCount = NO;
-        skView.showsPhysics = YES;
+        skView.showsPhysics = NO;
         
         // Create and configure the scene.
         //SKScene * scene =

@@ -56,8 +56,6 @@
 
 }
 
-
-// Menu Button node
 - (SKSpriteNode *)ButtonNode:(NSString *) buttonType
 {
     if([buttonType isEqualToString:@"Menu"]){

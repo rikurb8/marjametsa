@@ -7,6 +7,7 @@
 //
 
 #import "GameEndedScene.h"
+#import "GameScene.h"
 
 @implementation GameEndedScene
 
@@ -33,11 +34,60 @@
         textLabel.text = text;
         
         [self addChild:textLabel];
+        
+        // Add MenuButton
+        [self addChild: [self ButtonNode:@"Menu"]];
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        button.frame =CGRectMake(100, 170, 100, 30);
+        [button setTitle:@"Click me" forState:UIControlStateNormal];
+        [self.view addSubview:button];
+        
+        [self addChild: [self ButtonNode:@"Exit"]];
+        UIButton *exitbutton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        exitbutton.frame =CGRectMake(100, 170, 100, 30);
+        [exitbutton setTitle:@"Click me" forState:UIControlStateNormal];
+        [self.view addSubview:exitbutton];
+
+        
     }
-    
     
     return self;
 }
+- (SKSpriteNode *)ButtonNode:(NSString *) buttonType
+{
+    SKSpriteNode *button;
+    
+    if([buttonType isEqualToString:@"Menu"]){
+        button = [SKSpriteNode spriteNodeWithImageNamed:@"StartButton.png"];
+        button.position = CGPointMake(150, 80);
+        button.name = @"startButton";
+    
+    }else if([buttonType isEqualToString:@"Exit"]){
+        button = [SKSpriteNode spriteNodeWithImageNamed:@"exitButton.png"];
+        button.position = CGPointMake(300, 80);
+        button.name = @"exitButton";
+    }
+    
+    return button;
+}
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    CGPoint location = [[touches anyObject] locationInNode:self];
+    SKNode *pressedNode = [self nodeAtPoint:location];
+    
+    if ([pressedNode.name isEqualToString:@"startButton"]) {
+        SKView *sView = (SKView *)self.view;
+        SKScene *Gscene = [GameScene sceneWithSize:sView.bounds.size];
+        Gscene.scaleMode = SKSceneScaleModeAspectFill;
+        
+        [sView presentScene:Gscene];
+    }
+    
+    if ([pressedNode.name isEqualToString:@"exitButton"]) {
+        exit(0);
+    }
+    return;
+}
 
 @end

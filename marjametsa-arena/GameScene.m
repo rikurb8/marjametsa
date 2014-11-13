@@ -163,9 +163,6 @@ static const uint32_t borderCategory = 0x1 << 2;  // 000000000000000000000000000
     //TODO: move to monsterInit or setUpSprite
     [newMonster setUpAI];
     
-   
-    
-    
     [self addChild:newMonster.character];
     CGSize tmp = CGSizeMake(newMonster.character.size.height*0.70, newMonster.character.size.width*0.70);
     newMonster.character.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:tmp];
@@ -197,6 +194,8 @@ static const uint32_t borderCategory = 0x1 << 2;  // 000000000000000000000000000
         firstBody = contact.bodyB;
         secondBody = contact.bodyA;
     }
+    
+
     // 3 react to the contact between hero and monster
     if (firstBody.categoryBitMask == heroCategory && secondBody.categoryBitMask == monsterCategory) {
         self.hitCount += 1;
@@ -204,7 +203,9 @@ static const uint32_t borderCategory = 0x1 << 2;  // 000000000000000000000000000
         [tmpHits appendFormat:@"%i", self.hitCount];
         self.hits.text = tmpHits;
         
-        if (self.hitCount >= 10) {
+        AudioServicesPlaySystemSound(1104);
+        
+        if (self.hitCount >= 3) {
             GameEndedScene* gameWon = [[GameEndedScene alloc] initWithSize:self.frame.size won:NO];
             [self.view presentScene:gameWon];
             
