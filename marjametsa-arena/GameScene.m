@@ -82,6 +82,7 @@ static const uint32_t borderCategory = 0x1 << 2;  // 000000000000000000000000000
         
         self.physicsWorld.contactDelegate = self;
         
+        [hero.physicsBody applyImpulse:CGVectorMake(100.0f, -100.0f)];
         
         self.hits = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
         self.hits.fontSize = 16;
@@ -164,16 +165,6 @@ static const uint32_t borderCategory = 0x1 << 2;  // 000000000000000000000000000
     [newMonster setUpAI];
     
     [self addChild:newMonster.character];
-    CGSize tmp = CGSizeMake(newMonster.character.size.height*0.70, newMonster.character.size.width*0.70);
-    newMonster.character.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:tmp];
-    // 3
-    newMonster.character.physicsBody.friction = 0.0f;
-    // 4
-    newMonster.character.physicsBody.restitution = 1.0f;
-    // 5
-    newMonster.character.physicsBody.linearDamping = 0.0f;
-    // 6
-    newMonster.character.physicsBody.allowsRotation = YES;
     
     newMonster.character.physicsBody.categoryBitMask = monsterCategory;
     
@@ -198,6 +189,12 @@ static const uint32_t borderCategory = 0x1 << 2;  // 000000000000000000000000000
 
     // 3 react to the contact between hero and monster
     if (firstBody.categoryBitMask == heroCategory && secondBody.categoryBitMask == monsterCategory) {
+        
+        if ([secondBody.node.name isEqualToString:@"asd"]) {
+            NSLog(@"tunnistettiin nimi");
+        }
+        
+        
         self.hitCount += 1;
         NSMutableString *tmpHits = [NSMutableString stringWithString:@"HITS: "];
         [tmpHits appendFormat:@"%i", self.hitCount];

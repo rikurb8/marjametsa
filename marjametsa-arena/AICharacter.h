@@ -12,4 +12,6 @@
 
 //TODO: params in the future?
 - (void) setUpAI;
+
+- (bool) isVulnerable;
 @end
