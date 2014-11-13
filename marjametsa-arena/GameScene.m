@@ -7,6 +7,7 @@
 //
 
 #import "GameScene.h"
+#import "GameEndedScene.h"
 #import "Hero.h"
 #import "Monster.h"
 #import "Boss.h"
@@ -28,7 +29,6 @@ static const uint32_t borderCategory = 0x1 << 2;  // 000000000000000000000000000
 @property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
 @property (nonatomic) CMMotionManager *motionManager;
 
-@property (nonatomic) int monsterCount;
 @property (nonatomic) int hitCount;
 @property (nonatomic) int secTimer;
 @property (nonatomic) SKLabelNode *hits;
@@ -203,16 +203,15 @@ static const uint32_t borderCategory = 0x1 << 2;  // 000000000000000000000000000
         NSMutableString *tmpHits = [NSMutableString stringWithString:@"HITS: "];
         [tmpHits appendFormat:@"%i", self.hitCount];
         self.hits.text = tmpHits;
-    }
-    /*
-    if (firstBody.categoryBitMask == ballCategory && secondBody.categoryBitMask == blockCategory) {
-        [secondBody.node removeFromParent];
-        if ([self isGameWon]) {
-            GameOverScene* gameWonScene = [[GameOverScene alloc] initWithSize:self.frame.size playerWon:YES];
-            [self.view presentScene:gameWonScene];
+        
+        if (self.hitCount >= 10) {
+            GameEndedScene* gameWon = [[GameEndedScene alloc] initWithSize:self.frame.size won:NO];
+            [self.view presentScene:gameWon];
+            
+        } else if ([self.monsterArray count] <= 0) {
+            //TODO
         }
     }
-     */
 }
 
 @end

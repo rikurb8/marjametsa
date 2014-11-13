@@ -32,6 +32,7 @@
 		11C41AF519D29D3200468EE4 /* grass_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C41AF219D29D3200468EE4 /* grass_bg.png */; };
 		11C41AF619D29D3200468EE4 /* hero.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C41AF319D29D3200468EE4 /* hero.png */; };
 		11C41AF719D29D3200468EE4 /* monster.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C41AF419D29D3200468EE4 /* monster.png */; };
+		11EBFC711A149BF8005FFBF9 /* GameEndedScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EBFC701A149BF8005FFBF9 /* GameEndedScene.m */; };
 		7C0D63A319ED509E001294CE /* MenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0D63A219ED509E001294CE /* MenuScene.m */; };
 		7CBB97BE1A0E7111008F03B6 /* exitButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CBB97BD1A0E7111008F03B6 /* exitButton.png */; };
 		7CBB97C01A0E718D008F03B6 /* StartButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CBB97BF1A0E718D008F03B6 /* StartButton.png */; };
@@ -84,6 +85,8 @@
 		11C41AF219D29D3200468EE4 /* grass_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass_bg.png; sourceTree = "<group>"; };
 		11C41AF319D29D3200468EE4 /* hero.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hero.png; sourceTree = "<group>"; };
 		11C41AF419D29D3200468EE4 /* monster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monster.png; sourceTree = "<group>"; };
+		11EBFC6F1A149BF8005FFBF9 /* GameEndedScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameEndedScene.h; sourceTree = "<group>"; };
+		11EBFC701A149BF8005FFBF9 /* GameEndedScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameEndedScene.m; sourceTree = "<group>"; };
 		7C0D63A219ED509E001294CE /* MenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuScene.m; sourceTree = "<group>"; };
 		7C0D63A419ED5154001294CE /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
 		7CBB97BD1A0E7111008F03B6 /* exitButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exitButton.png; sourceTree = "<group>"; };
@@ -188,6 +191,8 @@
 				11C41AD019D29C5300468EE4 /* GameScene.h */,
 				11C41AD119D29C5300468EE4 /* GameScene.m */,
 				7C0D63A419ED5154001294CE /* MenuScene.h */,
+				11EBFC6F1A149BF8005FFBF9 /* GameEndedScene.h */,
+				11EBFC701A149BF8005FFBF9 /* GameEndedScene.m */,
 				7C0D63A219ED509E001294CE /* MenuScene.m */,
 				116C663519ED293900215E51 /* Resources */,
 				11C41AD519D29C5300468EE4 /* Images.xcassets */,
@@ -333,6 +338,7 @@
 			files = (
 				11C41AD219D29C5300468EE4 /* GameScene.m in Sources */,
 				7C0D63A319ED509E001294CE /* MenuScene.m in Sources */,
+				11EBFC711A149BF8005FFBF9 /* GameEndedScene.m in Sources */,
 				116C663419ED283400215E51 /* Hero.m in Sources */,
 				116C663119ED22E500215E51 /* Character.m in Sources */,
 				11C41ACF19D29C5300468EE4 /* ViewController.m in Sources */,
