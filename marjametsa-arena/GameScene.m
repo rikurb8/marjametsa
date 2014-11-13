@@ -83,11 +83,11 @@ static const uint32_t borderCategory = 0x1 << 2;  // 000000000000000000000000000
         self.physicsWorld.contactDelegate = self;
         
         
-        SKLabelNode *tmp = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
-        tmp.fontSize = 16;
-        tmp.text = @"HITS: 0";
-        tmp.position = CGPointMake(150, 10);
-        [self addChild:tmp];
+        self.hits = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
+        self.hits.fontSize = 16;
+        self.hits.text = @"HITS: 0";
+        self.hits.position = CGPointMake(150, 10);
+        [self addChild:self.hits];
         
         self.timer = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
         self.timer.fontSize = 16;
@@ -124,26 +124,6 @@ static const uint32_t borderCategory = 0x1 << 2;  // 000000000000000000000000000
         }
     }];
 };
-
-- (BOOL)isInBoundaries:(CGPoint)monsterCoordinates :(int)monsterHeight :(CGPoint)playerCoordinates :(int)playerHeight{
-    
-    CGFloat xDiff = monsterCoordinates.x - playerCoordinates.x;
-    CGFloat yDiff = monsterCoordinates.y - playerCoordinates.y;
-    
-    if (xDiff < 0) {
-        xDiff = xDiff * -1;
-    }
-    
-    if (yDiff < 0) {
-        yDiff = yDiff * -1;
-    }
-    
-    if (xDiff < playerHeight && yDiff < playerHeight) {
-        return true;
-    } else {
-        return false;
-    }
-}
 
 - (void)vibrate {
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
@@ -187,8 +167,8 @@ static const uint32_t borderCategory = 0x1 << 2;  // 000000000000000000000000000
     
     
     [self addChild:newMonster.character];
-    
-    newMonster.character.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:newMonster.character.size];
+    CGSize tmp = CGSizeMake(newMonster.character.size.height*0.70, newMonster.character.size.width*0.70);
+    newMonster.character.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:tmp];
     // 3
     newMonster.character.physicsBody.friction = 0.0f;
     // 4

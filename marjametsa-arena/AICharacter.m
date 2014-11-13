@@ -15,10 +15,10 @@
      * Creates the SKActions for the movement and color changes of monster
      */
     
-    SKAction *colorize = [SKAction colorizeWithColor: [UIColor redColor] colorBlendFactor: 0.5 duration: 1];
+    SKAction *colorize = [SKAction colorizeWithColor: [UIColor redColor] colorBlendFactor: 0.5 duration: 0.1];
     SKAction *wait1 = [SKAction waitForDuration: 3];
-    SKAction *uncolorize = [SKAction colorizeWithColorBlendFactor: 0.0 duration: 1];
-    SKAction *wait2 = [SKAction waitForDuration: 10];
+    SKAction *uncolorize = [SKAction colorizeWithColorBlendFactor: 0.0 duration: 0.1];
+    SKAction *wait2 = [SKAction waitForDuration: 5];
     SKAction *colorizePulse = [SKAction sequence:@[colorize, wait1, uncolorize, wait2]];
     SKAction *colorizeForever = [SKAction repeatActionForever:colorizePulse];
     
