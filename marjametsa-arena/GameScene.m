@@ -92,7 +92,7 @@ static const uint32_t borderCategory = 0x1 << 2;  // 000000000000000000000000000
         
         self.timer = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
         self.timer.fontSize = 16;
-        self.timer.text = @"TTIMER: 0";
+        self.timer.text = @"POINTS: 0";
         self.secTimer = 0;
         self.timer.position = CGPointMake(250, 10);
         [self addChild:self.timer];
@@ -133,11 +133,11 @@ static const uint32_t borderCategory = 0x1 << 2;  // 000000000000000000000000000
 - (void)updateWithTimeSinceLastUpdate:(CFTimeInterval)timeSinceLast {
     
     self.lastSpawnTimeInterval += timeSinceLast;
-    if (self.lastSpawnTimeInterval > 1) {
+    if (self.lastSpawnTimeInterval > 0.1) {
         self.lastSpawnTimeInterval = 0;
 
         self.secTimer += 1;
-        NSMutableString *tmpSecs = [NSMutableString stringWithString:@"TIMER: "];
+        NSMutableString *tmpSecs = [NSMutableString stringWithString:@"POINTS: "];
         [tmpSecs appendFormat:@"%i", self.secTimer];
         self.timer.text = tmpSecs;
     }
