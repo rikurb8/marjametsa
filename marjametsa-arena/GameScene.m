@@ -82,11 +82,9 @@ static const uint32_t borderCategory = 0x1 << 2;  // 000000000000000000000000000
         
         self.physicsWorld.contactDelegate = self;
         
-        [hero.physicsBody applyImpulse:CGVectorMake(100.0f, -100.0f)];
-        
         self.hits = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
         self.hits.fontSize = 16;
-        self.hits.text = @"HITS: 0";
+        self.hits.text = @"LIVES: 5/5";
         self.hits.position = CGPointMake(150, 10);
         [self addChild:self.hits];
         
@@ -195,25 +193,31 @@ static const uint32_t borderCategory = 0x1 << 2;  // 000000000000000000000000000
         
         for (Monster *monster in self.monsterArray){
             if([secondBody.node.name isEqualToString:[monster getName]]) {
-                [monster.character removeFromParent];
-                
+                if ([monster isVulnerable]) {
+                    [monster.character removeFromParent];
+                    
+                    //TODO: remove monster from array?
+                } else {
+                    self.hitCount += 1;
+                    NSMutableString *tmpHits = [NSMutableString stringWithString:@"LIVES: "];
+                    int livesLeft = 5 - self.hitCount;
+                    [tmpHits appendFormat:@"%i", livesLeft];
+                    [tmpHits appendString:@"/5"];
+                    self.hits.text = tmpHits;
+                }
             }
         }
         
-        
-        self.hitCount += 1;
-        NSMutableString *tmpHits = [NSMutableString stringWithString:@"HITS: "];
-        [tmpHits appendFormat:@"%i", self.hitCount];
-        self.hits.text = tmpHits;
-        
+        //TODO: maybe we should get a cool hit sound
         AudioServicesPlaySystemSound(1104);
         
-        if (self.hitCount >= 3) {
+        if (self.hitCount >= 5) {
             GameEndedScene* gameWon = [[GameEndedScene alloc] initWithSize:self.frame.size won:NO];
             [self.view presentScene:gameWon];
             
         } else if ([self.monsterArray count] <= 0) {
-            //TODO
+            GameEndedScene* gameWon = [[GameEndedScene alloc] initWithSize:self.frame.size won:YES];
+            [self.view presentScene:gameWon];
         }
     }
 }
