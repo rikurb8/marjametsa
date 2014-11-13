@@ -8,6 +8,7 @@
 
 #import "GameScene.h"
 #import "GameEndedScene.h"
+#import "Highscore.h"   
 #import "Hero.h"
 #import "Monster.h"
 #import "Boss.h"
@@ -81,6 +82,9 @@ static const uint32_t borderCategory = 0x1 << 2;  // 000000000000000000000000000
         hero.physicsBody.contactTestBitMask = monsterCategory;
         
         self.physicsWorld.contactDelegate = self;
+        
+        // IF you want to guys spin around by themselves
+       // [hero.physicsBody applyImpulse:CGVectorMake(100.0f, -100.0f)];
         
         self.hits = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
         self.hits.fontSize = 16;
@@ -215,9 +219,18 @@ static const uint32_t borderCategory = 0x1 << 2;  // 000000000000000000000000000
             GameEndedScene* gameWon = [[GameEndedScene alloc] initWithSize:self.frame.size won:NO];
             [self.view presentScene:gameWon];
             
+            Highscore *high = [[Highscore alloc] init];
+            
+            
+            [high scores:self.secTimer];
+            
         } else if ([self.monsterArray count] <= 0) {
             GameEndedScene* gameWon = [[GameEndedScene alloc] initWithSize:self.frame.size won:YES];
             [self.view presentScene:gameWon];
+     
+            Highscore *high = [[Highscore alloc] init];
+            [high scores:self.secTimer];
+            
         }
     }
 }

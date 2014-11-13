@@ -8,6 +8,7 @@
 
 #import "GameEndedScene.h"
 #import "GameScene.h"
+#import "Highscore.h"   
 
 @implementation GameEndedScene
 

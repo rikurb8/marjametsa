@@ -34,10 +34,16 @@
     if(highscore < bestscore){
         [[NSUserDefaults standardUserDefaults] setInteger: bestscore forKey: @"highScore_1"];
         
-        NSLog(@"Paras tulos on tähän mennessä %d", bestscore);
+    
+        NSLog(@"Nyt sait %d", bestscore);
+        NSLog(@"ja nyt tuli %ld", highscore);
+        
         return true;
     }
-
+    
+    
+    NSLog(@"Nyt sait %d", bestscore);
+    NSLog(@"ja nyt tuli %ld", highscore);
     
     return false;
 }
