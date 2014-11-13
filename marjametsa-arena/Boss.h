@@ -10,4 +10,6 @@
 
 @interface Boss : AICharacter
 
+-(void) setUpAI;
+
 @end

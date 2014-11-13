@@ -10,4 +10,6 @@
 
 @interface Monster : AICharacter
 
+- (void) setUpAI;
+
 @end

@@ -42,11 +42,7 @@
     
     self.character.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:tmp];
     
-    self.character.physicsBody.friction = 0.0f;
     
-    self.character.physicsBody.restitution = 1.0f;
-    
-    self.character.physicsBody.linearDamping = 0.0f;
     
     self.character.physicsBody.allowsRotation = YES;
     
