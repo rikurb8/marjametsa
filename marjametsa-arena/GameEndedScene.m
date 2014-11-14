@@ -17,10 +17,10 @@
         NSString *text = @"";
         //TODO: get other bg? for both?
         if (didWin) {
-            bgImage = @"grass_bg.png";
+            bgImage = @"space_bg.png";
             text = @"YAY! YOU WON!";
         } else {
-            bgImage = @"grass_bg.png";
+            bgImage = @"space_bg.png";
             text = @"HAAHAA! YOU LOST!";
         }
         

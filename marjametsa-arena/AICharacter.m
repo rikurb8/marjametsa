@@ -16,7 +16,7 @@
 @implementation AICharacter
 
 - (void) handleTimer: (NSTimer *) timer {
-    self.vulnerable = !self.vulnerable;
+    //self.vulnerable = !self.vulnerable;
 }
 
 
@@ -38,10 +38,11 @@
     
     [self.character runAction:colorizeForever];
 
-    CGSize tmp = CGSizeMake(self.character.size.height*0.70, self.character.size.width*0.70);
+    //CGSize tmp = CGSizeMake(self.character.size.width*0.95, self.character.size.height*0.95);
     
-    self.character.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:tmp];
     
+    //self.character.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:tmp];
+    self.character.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.character.size.width/2];
     
     
     self.character.physicsBody.allowsRotation = YES;

@@ -35,7 +35,7 @@
 -(id)initWithSize:(CGSize)size {
     
     if (self = [super initWithSize:size]) {
-        SKSpriteNode *bgImage = [SKSpriteNode spriteNodeWithImageNamed:@"grass_bg"];
+        SKSpriteNode *bgImage = [SKSpriteNode spriteNodeWithImageNamed:@"space_bg"];
         bgImage.position = CGPointMake(self.size.width/2, self.size.height/2);
         [self addChild:bgImage];
 
@@ -68,20 +68,20 @@
 - (SKSpriteNode *)ButtonNode:(NSString *) buttonType
 {
     if([buttonType isEqualToString:@"Menu"]){
-    SKSpriteNode *MenuNode = [SKSpriteNode spriteNodeWithImageNamed:@"StartButton.png"];
+    SKSpriteNode *MenuNode = [SKSpriteNode spriteNodeWithImageNamed:@"testButton.png"];
     MenuNode.position = CGPointMake(300, 200);
     MenuNode.name = @"startButton";//how the node is identified later
     
     
     return MenuNode;
     }else if([buttonType isEqualToString:@"Exit"]){
-        SKSpriteNode *ExitNode = [SKSpriteNode spriteNodeWithImageNamed:@"exitButton.png"];
+        SKSpriteNode *ExitNode = [SKSpriteNode spriteNodeWithImageNamed:@"testButton.png"];
         ExitNode.position = CGPointMake(300, 80);
         ExitNode.name = @"exitButton";
         return ExitNode;
     
     } else if ([buttonType isEqualToString:@"Highscore"]) {
-        SKSpriteNode *HighNode = [SKSpriteNode spriteNodeWithImageNamed:@"bestPlayers.png"];
+        SKSpriteNode *HighNode = [SKSpriteNode spriteNodeWithImageNamed:@"testButton.png"];
         HighNode.position = CGPointMake(300, 140);
         HighNode.name = @"exitButton";
         return HighNode;

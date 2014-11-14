@@ -17,7 +17,7 @@
     self = [super init];
     
     if (self) {
-        self.image = @"hero";
+        self.image = @"heroInSpace.png";
         self.character = nil;
     }
     

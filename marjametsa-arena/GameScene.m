@@ -47,7 +47,7 @@ static const uint32_t borderCategory = 0x1 << 2;  // 000000000000000000000000000
     if (self = [super initWithSize:size]) {
         
         //set the bg image and position it
-        SKSpriteNode *bgImage = [SKSpriteNode spriteNodeWithImageNamed:@"grass_bg"];
+        SKSpriteNode *bgImage = [SKSpriteNode spriteNodeWithImageNamed:@"space_bg"];
         bgImage.position = CGPointMake(self.size.width/2, self.size.height/2);
         [self addChild:bgImage];
         
@@ -69,12 +69,18 @@ static const uint32_t borderCategory = 0x1 << 2;  // 000000000000000000000000000
         SKSpriteNode *hero = [self.player setUpSprite:self.frame.size.width/2 height:self.frame.size.height/2];
         [self addChild:hero];
         
-        hero.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:hero.frame.size.width/3];
+        
+        CGSize tmp = CGSizeMake(hero.frame.size.width*0.95, hero.frame.size.height*0.95);
+        
+        
+        hero.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:tmp];
+        
+        //hero.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:hero.frame.size.width/3];
         hero.physicsBody.friction = 0.0f;
         hero.physicsBody.restitution = 0.05f;
         hero.physicsBody.linearDamping = 0.1f;
         hero.physicsBody.mass = 0.05f;
-        hero.physicsBody.allowsRotation = NO;
+        hero.physicsBody.allowsRotation = YES;
         
         
         hero.physicsBody.categoryBitMask = heroCategory;
@@ -215,8 +221,9 @@ static const uint32_t borderCategory = 0x1 << 2;  // 000000000000000000000000000
         
         //TODO: maybe we should get a cool hit sound
         AudioServicesPlaySystemSound(1104);
+        [self vibrate];
         
-        if (self.hitCount >= 5) {
+        if (self.hitCount >= 50) {
             GameEndedScene* gameWon = [[GameEndedScene alloc] initWithSize:self.frame.size won:NO];
             [self.view presentScene:gameWon];
             
