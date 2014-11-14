@@ -41,14 +41,6 @@
         button.frame =CGRectMake(100, 170, 100, 30);
         [button setTitle:@"Click me" forState:UIControlStateNormal];
         [self.view addSubview:button];
-        
-        [self addChild: [self ButtonNode:@"Exit"]];
-        UIButton *exitbutton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        exitbutton.frame =CGRectMake(100, 170, 100, 30);
-        [exitbutton setTitle:@"Click me" forState:UIControlStateNormal];
-        [self.view addSubview:exitbutton];
-
-        
     }
     
     return self;
@@ -58,14 +50,10 @@
     SKSpriteNode *button;
     
     if([buttonType isEqualToString:@"Menu"]){
-        button = [SKSpriteNode spriteNodeWithImageNamed:@"StartButton.png"];
-        button.position = CGPointMake(150, 80);
+        button = [SKSpriteNode spriteNodeWithImageNamed:@"bestPlayButton.png"];
+        button.position = CGPointMake(240, 80);
         button.name = @"startButton";
     
-    }else if([buttonType isEqualToString:@"Exit"]){
-        button = [SKSpriteNode spriteNodeWithImageNamed:@"exitButton.png"];
-        button.position = CGPointMake(300, 80);
-        button.name = @"exitButton";
     }
     
     return button;

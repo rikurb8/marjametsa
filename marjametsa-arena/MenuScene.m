@@ -48,13 +48,6 @@
     [button setTitle:@"Click me" forState:UIControlStateNormal];
     [self.view addSubview:button];
     
-    [self addChild: [self ButtonNode:@"Exit"]];
-    UIButton *exitbutton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    exitbutton.frame =CGRectMake(100, 170, 100, 30);
-    [exitbutton setTitle:@"Click me" forState:UIControlStateNormal];
-    [self.view addSubview:exitbutton];
-
-
     [self addChild: [self ButtonNode:@"Highscore"]];
     UIButton *highbutton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     highbutton.frame =CGRectMake(100, 170, 100, 30);
@@ -68,23 +61,17 @@
 - (SKSpriteNode *)ButtonNode:(NSString *) buttonType
 {
     if([buttonType isEqualToString:@"Menu"]){
-    SKSpriteNode *MenuNode = [SKSpriteNode spriteNodeWithImageNamed:@"testButton.png"];
-    MenuNode.position = CGPointMake(300, 200);
+    SKSpriteNode *MenuNode = [SKSpriteNode spriteNodeWithImageNamed:@"bestPlayButton.png"];
+    MenuNode.position = CGPointMake(300, 140);
     MenuNode.name = @"startButton";//how the node is identified later
     
-    
     return MenuNode;
-    }else if([buttonType isEqualToString:@"Exit"]){
-        SKSpriteNode *ExitNode = [SKSpriteNode spriteNodeWithImageNamed:@"testButton.png"];
+    }else if([buttonType isEqualToString:@"Highscore"]){
+        SKSpriteNode *ExitNode = [SKSpriteNode spriteNodeWithImageNamed:@"bestHighscoreButton.png"];
         ExitNode.position = CGPointMake(300, 80);
         ExitNode.name = @"exitButton";
         return ExitNode;
     
-    } else if ([buttonType isEqualToString:@"Highscore"]) {
-        SKSpriteNode *HighNode = [SKSpriteNode spriteNodeWithImageNamed:@"testButton.png"];
-        HighNode.position = CGPointMake(300, 140);
-        HighNode.name = @"exitButton";
-        return HighNode;
     }
     
     return nil;
