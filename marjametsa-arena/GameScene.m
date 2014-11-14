@@ -11,6 +11,8 @@
 #import "Hero.h"
 #import "Monster.h"
 #import "Boss.h"
+#import "Banana.h"
+
 @import CoreMotion;
 
 #define kPlayerSpeed 700
@@ -41,6 +43,22 @@ static const uint32_t borderCategory = 0x1 << 2;  // 000000000000000000000000000
 
 
 @implementation GameScene
+
+-(void)createObstacle: (NSTimer *) timer {
+    [self addMonster:CGPointMake(400, 150)];
+}
+
+-(void)bananaSpawner: (NSTimer *) timer {
+    Banana *newBanana = [[Banana alloc] init];
+
+    newBanana.character = [newBanana setUpSprite:self.frame.size.width/2 height:self.frame.size.height/2];
+    
+    [newBanana setUpAI];
+    
+    [self addChild:newBanana.character];
+    
+    newBanana.character.physicsBody.categoryBitMask = monsterCategory;
+}
 
 -(id)initWithSize:(CGSize)size {
     
@@ -111,8 +129,13 @@ static const uint32_t borderCategory = 0x1 << 2;  // 000000000000000000000000000
             [self setUpMotionManager];
         }
         
+        // Extra monsters!
+        NSTimer *timer;
+        timer = [NSTimer scheduledTimerWithTimeInterval:20 target:self selector:@selector(createObstacle:) userInfo:nil repeats:YES];
         
-
+        //Health! FUCK YEAH!
+        NSTimer *bananaTimer;
+        bananaTimer = [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(bananaSpawner:) userInfo:nil repeats:YES];
     }
     return self;
 }
