@@ -14,7 +14,7 @@
     self = [super init];
     
     if (self) {
-        self.image = @"boss.png";
+        self.image = @"banana.png";
     }
     
     return self;
