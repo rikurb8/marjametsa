@@ -20,8 +20,8 @@
 
 static const uint32_t heroCategory  = 0x1 << 0;  // 00000000000000000000000000000001
 static const uint32_t monsterCategory = 0x1 << 1; // 00000000000000000000000000000010
-static const uint32_t borderCategory = 0x1 << 2;  // 00000000000000000000000000000100
-//static const uint32_t paddleCategory = 0x1 << 3; // 00000000000000000000000000001000
+//static const uint32_t borderCategory = 0x1 << 2;  // 00000000000000000000000000000100
+static const uint32_t bananaCategory = 0x1 << 2; // 0000000000000000000000000000100
 
 @interface GameScene ()
 @property (nonatomic) Hero *player;
@@ -57,7 +57,7 @@ static const uint32_t borderCategory = 0x1 << 2;  // 000000000000000000000000000
     
     [self addChild:newBanana.character];
     
-    newBanana.character.physicsBody.categoryBitMask = monsterCategory;
+    newBanana.character.physicsBody.categoryBitMask = bananaCategory;
 }
 
 -(id)initWithSize:(CGSize)size {
@@ -219,11 +219,9 @@ static const uint32_t borderCategory = 0x1 << 2;  // 000000000000000000000000000
         firstBody = contact.bodyB;
         secondBody = contact.bodyA;
     }
-    
 
     // 3 react to the contact between hero and monster
     if (firstBody.categoryBitMask == heroCategory && secondBody.categoryBitMask == monsterCategory) {
-        
         for (Monster *monster in self.monsterArray){
             if([secondBody.node.name isEqualToString:[monster getName]]) {
                 if ([monster isVulnerable]) {
@@ -254,7 +252,12 @@ static const uint32_t borderCategory = 0x1 << 2;  // 000000000000000000000000000
             GameEndedScene* gameWon = [[GameEndedScene alloc] initWithSize:self.frame.size won:YES];
             [self.view presentScene:gameWon];
         }
+    } else if (firstBody.categoryBitMask == heroCategory && secondBody.categoryBitMask == bananaCategory) {
+        [secondBody.node removeFromParent];
+        self.hitCount -= 1;
     }
+    
+    
 }
 
 @end
