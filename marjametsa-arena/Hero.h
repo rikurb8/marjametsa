@@ -9,5 +9,5 @@
 #import "Character.h"
 
 @interface Hero : Character
-
+- (void) unmountSpaceship;
 @end

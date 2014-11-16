@@ -25,4 +25,8 @@
 }
 
 
+- (void) unmountSpaceship {
+        self.image = @"hero.png";
+}
+
 @end

@@ -8,6 +8,7 @@
 
 #import "GameEndedScene.h"
 #import "GameScene.h"
+#import "BossLevelScene.h"
 
 @implementation GameEndedScene
 
@@ -19,6 +20,7 @@
         if (didWin) {
             bgImage = @"space_bg.png";
             text = @"YAY! YOU WON!";
+            
         } else {
             bgImage = @"space_bg.png";
             text = @"HAAHAA! YOU LOST!";
@@ -41,6 +43,15 @@
         button.frame =CGRectMake(100, 170, 100, 30);
         [button setTitle:@"Click me" forState:UIControlStateNormal];
         [self.view addSubview:button];
+        
+        if (didWin) {
+            [self addChild: [self ButtonNode:@"nextLevel"]];
+            UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            button.frame =CGRectMake(100, 170, 100, 30);
+            [button setTitle:@"Click me" forState:UIControlStateNormal];
+            [self.view addSubview:button];
+        }
+        
     }
     
     return self;
@@ -51,9 +62,14 @@
     
     if([buttonType isEqualToString:@"Menu"]){
         button = [SKSpriteNode spriteNodeWithImageNamed:@"bestPlayButton.png"];
-        button.position = CGPointMake(240, 80);
+        button.position = CGPointMake(150, 80);
         button.name = @"startButton";
     
+    } else if ([buttonType isEqualToString:@"nextLevel"]){
+        NSLog(@"Adding nextLevel button");
+        button = [SKSpriteNode spriteNodeWithImageNamed:@"bestPlayButton.png"];
+        button.position = CGPointMake(340, 80);
+        button.name = @"nextLevel";
     }
     
     return button;
@@ -71,6 +87,15 @@
         
         [sView presentScene:Gscene];
     }
+    
+    if ([pressedNode.name isEqualToString:@"nextLevel"]) {
+        SKView *sView = (SKView *)self.view;
+        SKScene *Gscene = [BossLevelScene sceneWithSize:sView.bounds.size];
+        Gscene.scaleMode = SKSceneScaleModeAspectFill;
+        
+        [sView presentScene:Gscene];
+    }
+    
     
     if ([pressedNode.name isEqualToString:@"exitButton"]) {
         exit(0);
