@@ -66,8 +66,7 @@
         button.name = @"startButton";
     
     } else if ([buttonType isEqualToString:@"nextLevel"]){
-        NSLog(@"Adding nextLevel button");
-        button = [SKSpriteNode spriteNodeWithImageNamed:@"bestPlayButton.png"];
+        button = [SKSpriteNode spriteNodeWithImageNamed:@"nextLevelButton.png"];
         button.position = CGPointMake(340, 80);
         button.name = @"nextLevel";
     }

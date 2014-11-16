@@ -23,6 +23,7 @@
 		11987CC91A16A3AB00B53334 /* banana.png in Resources */ = {isa = PBXBuildFile; fileRef = 11987CC81A16A3AB00B53334 /* banana.png */; };
 		11987CCC1A1927E200B53334 /* BossLevelScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 11987CCB1A1927E200B53334 /* BossLevelScene.m */; };
 		11987CD01A192A2200B53334 /* dungeon_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 11987CCF1A192A2200B53334 /* dungeon_bg.png */; };
+		11987CD21A19338C00B53334 /* nextLevelButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 11987CD11A19338C00B53334 /* nextLevelButton.png */; };
 		11C41AB719D29C5300468EE4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11C41AB619D29C5300468EE4 /* Foundation.framework */; };
 		11C41AB919D29C5300468EE4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11C41AB819D29C5300468EE4 /* CoreGraphics.framework */; };
 		11C41ABB19D29C5300468EE4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11C41ABA19D29C5300468EE4 /* UIKit.framework */; };
@@ -85,6 +86,7 @@
 		11987CCA1A1927E200B53334 /* BossLevelScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BossLevelScene.h; sourceTree = "<group>"; };
 		11987CCB1A1927E200B53334 /* BossLevelScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BossLevelScene.m; sourceTree = "<group>"; };
 		11987CCF1A192A2200B53334 /* dungeon_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dungeon_bg.png; sourceTree = "<group>"; };
+		11987CD11A19338C00B53334 /* nextLevelButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nextLevelButton.png; sourceTree = "<group>"; };
 		11C41AB319D29C5300468EE4 /* marjametsa-arena.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "marjametsa-arena.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		11C41AB619D29C5300468EE4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		11C41AB819D29C5300468EE4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -150,6 +152,7 @@
 		116C663519ED293900215E51 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				11987CD11A19338C00B53334 /* nextLevelButton.png */,
 				11987CCF1A192A2200B53334 /* dungeon_bg.png */,
 				11987CC81A16A3AB00B53334 /* banana.png */,
 				11987CBF1A1694C900B53334 /* bestPlayButton.png */,
@@ -355,6 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				11987CBE1A1694BD00B53334 /* bestHighscoreButton.png in Resources */,
+				11987CD21A19338C00B53334 /* nextLevelButton.png in Resources */,
 				11C41AC319D29C5300468EE4 /* InfoPlist.strings in Resources */,
 				11C41AF519D29D3200468EE4 /* grass_bg.png in Resources */,
 				11987CBA1A16785D00B53334 /* monsterInSpace.png in Resources */,
