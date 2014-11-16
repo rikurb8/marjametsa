@@ -104,13 +104,13 @@ static const uint32_t bananaCategory = 0x1 << 2; // 0000000000000000000000000000
         hero.physicsBody.categoryBitMask = heroCategory;
         // borderBody.categoryBitMask = borderCategory;
         
-        hero.physicsBody.contactTestBitMask = monsterCategory;
+        hero.physicsBody.contactTestBitMask = monsterCategory | bananaCategory;
         
         self.physicsWorld.contactDelegate = self;
         
         self.hits = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
         self.hits.fontSize = 16;
-        self.hits.text = @"LIVES: 5/5";
+        self.hits.text = @"LIVES: 10/10";
         self.hits.position = CGPointMake(150, 10);
         [self addChild:self.hits];
         
