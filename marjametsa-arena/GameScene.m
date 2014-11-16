@@ -232,9 +232,9 @@ static const uint32_t bananaCategory = 0x1 << 2; // 0000000000000000000000000000
                 } else {
                     self.hitCount += 1;
                     NSMutableString *tmpHits = [NSMutableString stringWithString:@"LIVES: "];
-                    int livesLeft = 5 - self.hitCount;
+                    int livesLeft = 10 - self.hitCount;
                     [tmpHits appendFormat:@"%i", livesLeft];
-                    [tmpHits appendString:@"/5"];
+                    [tmpHits appendString:@"/10"];
                     self.hits.text = tmpHits;
                 }
             }
@@ -244,7 +244,7 @@ static const uint32_t bananaCategory = 0x1 << 2; // 0000000000000000000000000000
         AudioServicesPlaySystemSound(1104);
         [self vibrate];
         
-        if (self.hitCount >= 50) {
+        if (self.hitCount >= 10) {
             GameEndedScene* gameWon = [[GameEndedScene alloc] initWithSize:self.frame.size won:NO];
             [self.view presentScene:gameWon];
             

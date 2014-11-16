@@ -16,7 +16,7 @@
 @implementation AICharacter
 
 - (void) handleTimer: (NSTimer *) timer {
-    //self.vulnerable = !self.vulnerable;
+    self.vulnerable = !self.vulnerable;
 }
 
 
@@ -31,7 +31,7 @@
     SKAction *colorize = [SKAction colorizeWithColor: [UIColor redColor] colorBlendFactor: 0.5 duration: 0.1];
     SKAction *wait1 = [SKAction waitForDuration: 3];
     SKAction *uncolorize = [SKAction colorizeWithColorBlendFactor: 0.0 duration: 0.1];
-    SKAction *wait2 = [SKAction waitForDuration: 5];
+    SKAction *wait2 = [SKAction waitForDuration: 3];
     SKAction *colorizePulse = [SKAction sequence:@[colorize, wait1, uncolorize]];
     SKAction *colorizeSeq = [SKAction sequence:@[wait2, colorizePulse]];
     SKAction *colorizeForever = [SKAction repeatActionForever:colorizeSeq];
