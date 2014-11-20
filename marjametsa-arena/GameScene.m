@@ -85,26 +85,8 @@ static const uint32_t bananaCategory = 0x1 << 2; // 0000000000000000000000000000
         // Initialize the hero and its physic abilities
         self.player = [[Hero alloc] init];
         SKSpriteNode *hero = [self.player setUpSprite:self.frame.size.width/2 height:self.frame.size.height/2];
+        [self.player setPhysicsAbilities];
         [self addChild:hero];
-        
-        
-        CGSize tmp = CGSizeMake(hero.frame.size.width*0.95, hero.frame.size.height*0.95);
-        
-        
-        hero.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:tmp];
-        
-        //hero.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:hero.frame.size.width/3];
-        hero.physicsBody.friction = 0.0f;
-        hero.physicsBody.restitution = 0.05f;
-        hero.physicsBody.linearDamping = 0.1f;
-        hero.physicsBody.mass = 0.05f;
-        hero.physicsBody.allowsRotation = YES;
-        
-        
-        hero.physicsBody.categoryBitMask = heroCategory;
-        // borderBody.categoryBitMask = borderCategory;
-        
-        hero.physicsBody.contactTestBitMask = monsterCategory | bananaCategory;
         
         self.physicsWorld.contactDelegate = self;
         

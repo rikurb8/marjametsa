@@ -19,5 +19,6 @@
 - (int)getHeight;
 - (int)getWidth;
 - (void)runAction: (SKAction*)action;
+- (void) setPhysicsAbilities;
 
 @end
