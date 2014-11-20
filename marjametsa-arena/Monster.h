@@ -10,6 +10,17 @@
 
 @interface Monster : AICharacter
 
+{
+    float colorizeSequence;
+    NSString *movePattern;
+    int coordinateX;
+    int coordinateY;
+    BOOL vulnerable;
+}
+
 - (void) setUpAI;
+- (void) setName:(int)index;
+- (NSString*) getName;
+- (BOOL) isVulnerable;
 
 @end
