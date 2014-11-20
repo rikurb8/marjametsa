@@ -12,7 +12,4 @@
 
 //TODO: params in the future?
 - (void) setUpAI;
-- (void) setName:(int)index;
-- (NSString*) getName;
-- (BOOL) isVulnerable;
 @end

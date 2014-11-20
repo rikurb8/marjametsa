@@ -9,60 +9,25 @@
 #import "AICharacter.h"
 
 @interface AICharacter ()
-@property (nonatomic) BOOL vulnerable;
 
 @end
 
 @implementation AICharacter
 
-- (void) handleTimer: (NSTimer *) timer {
-    self.vulnerable = !self.vulnerable;
-}
-
 
 - (void) setUpAI {
     /*
-     * Creates the SKActions for the color changes of AICharacter
+     * Creates the PhysicsBody features
      */
     
-    //TODO: loop YES/NO according to the coloring below. How?
-    self.vulnerable = NO;
-    
-    SKAction *colorize = [SKAction colorizeWithColor: [UIColor redColor] colorBlendFactor: 0.5 duration: 0.1];
-    SKAction *wait1 = [SKAction waitForDuration: 3];
-    SKAction *uncolorize = [SKAction colorizeWithColorBlendFactor: 0.0 duration: 0.1];
-    SKAction *wait2 = [SKAction waitForDuration: 3];
-    SKAction *colorizePulse = [SKAction sequence:@[colorize, wait1, uncolorize]];
-    SKAction *colorizeSeq = [SKAction sequence:@[wait2, colorizePulse]];
-    SKAction *colorizeForever = [SKAction repeatActionForever:colorizeSeq];
-    
-    [self.character runAction:colorizeForever];
-
-    //CGSize tmp = CGSizeMake(self.character.size.width*0.95, self.character.size.height*0.95);
-    
-    
-    //self.character.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:tmp];
     self.character.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.character.size.width/2];
-    
+    self.character.physicsBody.friction = 50.0f;
+    self.character.physicsBody.restitution = 1.0f;
+    self.character.physicsBody.linearDamping = 0.0f;
+    self.character.physicsBody.mass = 0.005f;
+
     
     self.character.physicsBody.allowsRotation = YES;
-    
-    // TODO: make the interval same as the colorizePulse. now just a lucky guess :)
-    NSTimer *timer;
-    timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(handleTimer:) userInfo:nil repeats:YES];
-}
-
-
-- (void) setName:(int)index {
-    self.character.name = [NSString stringWithFormat:@"%d", index];
-}
-
-- (BOOL) isVulnerable {
-    return self.vulnerable;
-}
-
-- (NSString*) getName{
-    return self.character.name;
 }
 
 @end
