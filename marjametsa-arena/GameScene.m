@@ -185,7 +185,11 @@ static const uint32_t bananaCategory = 0x1 << 2; // 0000000000000000000000000000
 
 - (void)addMonster:(CGPoint)position {
     
-    Monster *newMonster = [[Monster alloc] init];
+    Monster *newMonster = [[Monster alloc] initWithImage:@"monsterInSpace"
+                                            andColorizeSequence:3
+                                            andMovePattern:(NSString*)@"pattern2"
+                                                    andX:(int)0
+                                                    andY:(int)0 ];
     
     //onko x ja y oikein?
     newMonster.character = [newMonster setUpSprite:position.x height:position.y];

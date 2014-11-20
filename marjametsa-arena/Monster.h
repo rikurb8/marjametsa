@@ -18,6 +18,11 @@
     BOOL vulnerable;
 }
 
+- (id)initWithImage:(NSString*)image
+andColorizeSequence:(float)cSequence
+     andMovePattern:(NSString*)mPattern
+               andX:(int)x
+               andY:(int)y;
 - (void) setUpAI;
 - (void) setName:(int)index;
 - (NSString*) getName;
