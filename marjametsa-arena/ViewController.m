@@ -11,12 +11,44 @@
 #import "MenuScene.h"
 #import "Highscore.h"   
 
+@interface ViewController()
+
+@property (strong, nonatomic) NSArray *monsterArray;
+
+
+@end
 
 @implementation ViewController
+
+
 
 - (void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
+    
+    
+    
+    
+    // ADD plist read temporarily. Check the correct place later
+    
+    NSString *plistName = [[NSBundle mainBundle] pathForResource:@"Property List" ofType:@"plist"];
+    NSDictionary *creatureDict = [[NSDictionary alloc] initWithContentsOfFile:plistName];
+    
+    self.monsterArray = creatureDict[@"Monster"];
+   // id obj;
+   // for (obj in self.monsterArray) {
+        
+    NSLog(self.monsterArray[0][@"Image"]);
+    NSLog(self.monsterArray[0][@"Health"]);
+    NSLog(self.monsterArray[0][@"xPosition"]);
+    NSLog(self.monsterArray[0][@"yPosition"]);
+
+   // }
+    
+    
+    
+
+    
     
     // Configure the view.
     

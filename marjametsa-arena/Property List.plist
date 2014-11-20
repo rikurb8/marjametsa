@@ -1,0 +1,67 @@
+
+<!--?xml version="1.0" encoding="UTF-8"?-->
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>Monster</key>
+        <array>
+            <dict>
+                <key>Image</key>
+                <string>heroInSpace1.png</string>
+                <key>Health</key>
+                <string>10</string>
+                <key>xPosition</key>
+                <string>100</string>
+                <key>yPosition</key>
+                <string>150</string>
+            </dict>
+            <dict>
+                <key>Image</key>
+                <string>heroInSpace2.png</string>
+                <key>Health</key>
+                <string>10</string>
+                <key>xPosition</key>
+                <string>100</string>
+                <key>yPosition</key>
+                <string>150</string>
+            </dict>
+            <dict>
+                <key>Image</key>
+                <string>heroInSpace.png</string>
+                <key>Health</key>
+                <string>10</string>
+                <key>xPosition</key>
+                <string>100</string>
+                <key>yPosition</key>
+                <string>150</string>
+            </dict>
+        </array>
+        
+        
+        <key>Animals</key>
+        <array>
+            <dict>
+                <key>Scientific Name</key>
+                <string>Felis catus</string>
+                <key>Name</key>
+                <string>Cat</string>
+            </dict>
+            <dict>
+                <key>Scientific Name</key>
+                <string>Canis lupus familiaris</string>
+                <key>Name</key>
+                <string>Dog</string>
+            </dict>
+            <dict>
+                <key>Scientific Name</key>
+                <string>Homo sapiens hisutii</string>
+                <key>Name</key>
+                <string>Bigfoot</string>
+            </dict>
+        </array>
+    </dict>
+</plist>
+
+
