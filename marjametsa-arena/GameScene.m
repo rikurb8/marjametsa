@@ -13,6 +13,8 @@
 #import "Boss.h"
 #import "Banana.h"
 
+#import "MonsterDTO.h"
+
 @import CoreMotion;
 
 #define kPlayerSpeed 700
@@ -45,7 +47,7 @@ static const uint32_t bananaCategory = 0x1 << 2; // 0000000000000000000000000000
 @implementation GameScene
 
 -(void)createObstacle: (NSTimer *) timer {
-    [self addMonster:CGPointMake(400, 150)];
+    //[self addMonster:CGPointMake(400, 150)];
 }
 
 -(void)bananaSpawner: (NSTimer *) timer {
@@ -77,10 +79,25 @@ static const uint32_t bananaCategory = 0x1 << 2; // 0000000000000000000000000000
         
         self.monsterArray = [[NSMutableArray alloc] initWithCapacity:10];
         
-        // TODO: move these to a generic place where x monster can be summed to diffrent locations
-        [self addMonster:CGPointMake(400, 150)];
-        [self addMonster:CGPointMake(150, 150)];
-        [self addMonster:CGPointMake(225, 75)];
+        MonsterDTO *monster = [MonsterDTO alloc];
+        
+        /*
+        monster.x = [self.monsterArray[0][@"xPosition"] integerValue];
+        monster.y = [self.monsterArray[0][@"yPosition"] integerValue];
+        monster.image = self.monsterArray[0][@"Image"];
+        monster.movePattern = [self.monsterArray[0][@"movePattern"] integerValue];
+        monster.colorizeSequence = [self.monsterArray[0][@"colorizeSequence"] floatValue];
+        */
+        
+        monster.x = 150;
+        monster.y = 150;
+        monster.image = @"monsterInSpace";
+        monster.movePattern = 3;
+        monster.colorizeSequence = 4.0f;
+        
+        [self addMonster:monster.image x:monster.x y:monster.y movePattern:monster.movePattern colorizeSequence:monster.colorizeSequence];
+        
+        
         
         // Initialize the hero and its physic abilities
         self.player = [[Hero alloc] init];
@@ -165,24 +182,18 @@ static const uint32_t bananaCategory = 0x1 << 2; // 0000000000000000000000000000
     [self updateWithTimeSinceLastUpdate:timeSinceLast];
 }
 
-- (void)addMonster:(CGPoint)position {
+- (void)addMonster:(NSString*)image x:(int)x y:(int)y
+       movePattern:(int)pattern colorizeSequence:(float)cSeq{
     
-    Monster *newMonster = [[Monster alloc] initWithImage:@"monsterInSpace"
-                                            andColorizeSequence:3
-                                            andMovePattern:(NSString*)@"pattern2"
-                                                    andX:(int)0
-                                                    andY:(int)0 ];
+    Monster *newMonster = [[Monster alloc] initWithImage:image
+                                            andColorizeSequence:cSeq
+                                            andMovePattern:pattern
+                                                    andX:x
+                                                    andY:y ];
     
-    //onko x ja y oikein?
-    newMonster.character = [newMonster setUpSprite:position.x height:position.y];
-    
-    //TODO: move to monsterInit or setUpSprite
     [newMonster setUpAI];
     
     [self addChild:newMonster.character];
-    
-    newMonster.character.physicsBody.categoryBitMask = monsterCategory;
-    
     
     [newMonster setName:[self.monsterArray count]];
     

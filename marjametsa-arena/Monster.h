@@ -12,7 +12,7 @@
 
 {
     float colorizeSequence;
-    NSString *movePattern;
+    int movePattern;
     int coordinateX;
     int coordinateY;
     BOOL vulnerable;
@@ -20,7 +20,7 @@
 
 - (id)initWithImage:(NSString*)image
 andColorizeSequence:(float)cSequence
-     andMovePattern:(NSString*)mPattern
+     andMovePattern:(int)mPattern
                andX:(int)x
                andY:(int)y;
 - (void) setUpAI;

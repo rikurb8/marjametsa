@@ -7,6 +7,7 @@
 //
 
 #import "Monster.h"
+#import "Constants.h"
 
 
 @implementation Monster
@@ -18,7 +19,7 @@
 
 - (id)initWithImage:(NSString*)image
         andColorizeSequence:(float)cSequence
-        andMovePattern:(NSString*)mPattern
+        andMovePattern:(int)mPattern
                andX:(int)x
                andY:(int)y  {
     
@@ -37,6 +38,9 @@
 };
 
 -(void) setUpAI {
+    
+    self.character = [super setUpSprite:coordinateX height:coordinateY];
+    
     [super setUpAI];
     
     //TODO: loop YES/NO according to the coloring below. How?
@@ -56,22 +60,22 @@
     timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(handleTimer:) userInfo:nil repeats:YES];
        
     SKAction *wait = [SKAction waitForDuration: 3];
-    SKAction *moveNodeUp = [SKAction moveByX:0.0 y:200.0 duration:1.0];
-    SKAction *moveNodeDown = [SKAction moveByX:0.0 y:-200.0 duration:1.0];
-    SKAction *moveNodeRight = [SKAction moveByX:200.0 y:0.0 duration:1.0];
-    SKAction *moveNodeLeft = [SKAction moveByX:-200.0 y:0.0 duration:1.0];
+    SKAction *moveNodeUp = [SKAction moveByX:0.0 y:110.0 duration:1.0];
+    SKAction *moveNodeDown = [SKAction moveByX:0.0 y:-110.0 duration:1.0];
+    SKAction *moveNodeRight = [SKAction moveByX:110.0 y:0.0 duration:1.0];
+    SKAction *moveNodeLeft = [SKAction moveByX:-110.0 y:0.0 duration:1.0];
     SKAction *moveSequence;
     
     // Chooses movement pattern
-    if([movePattern isEqualToString: @"pattern1"]){
+    if(movePattern == 1){
         
         moveSequence = [SKAction sequence:@[wait, moveNodeUp, wait, moveNodeDown, wait, moveNodeRight, wait, moveNodeLeft]];
     
-    } else if([movePattern isEqualToString: @"pattern2"]){
+    } else if(movePattern == 2){
         
         moveSequence = [SKAction sequence:@[moveNodeDown, moveNodeUp, moveNodeUp, moveNodeDown, moveNodeRight, moveNodeLeft, moveNodeLeft, moveNodeRight]];
         
-    } else if([movePattern isEqualToString: @"pattern3"]){
+    } else if(movePattern == 3){
     
         moveSequence = [SKAction sequence:@[moveNodeRight, moveNodeRight, moveNodeUp, moveNodeUp, moveNodeLeft, moveNodeLeft, moveNodeDown, moveNodeDown]];
     }
@@ -79,6 +83,8 @@
     SKAction *movement = [SKAction repeatActionForever:moveSequence];
 
     [self.character runAction:movement];
+    
+    self.character.physicsBody.categoryBitMask = monsterCategory;
 };
 
 - (void) setName:(int)index {
