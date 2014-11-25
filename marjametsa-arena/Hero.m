@@ -8,22 +8,30 @@
 
 #import "Hero.h"
 #import "Constants.h"
+
 @interface Hero ()
 @end
 
 @implementation Hero
 
-- (id)init {
+- (id)initWithImage:(NSString*)image
+          andHealth:(int)health
+               andX:(int)x
+               andY:(int)y {
+
     self = [super init];
     
     if (self) {
-        self.image = @"heroInSpace.png";
+        self.image = image;
         self.character = nil;
+        
+        playerHealth = health;
+        coordinateX = x;
+        coordinateY = y;
     }
     
     return self;
 }
-
 
 - (void) unmountSpaceship {
         self.image = @"hero.png";
@@ -42,5 +50,8 @@
 
 }
 
+- (int) getHealth {
+    return playerHealth;
+}
 
 @end

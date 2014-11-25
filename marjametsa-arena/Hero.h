@@ -9,5 +9,24 @@
 #import "Character.h"
 
 @interface Hero : Character
+
+{
+    int playerHealth;
+    int coordinateX;
+    int coordinateY;
+}
+
+- (id)initWithImage:(NSString*)image
+          andHealth:(int)health
+               andX:(int)x
+               andY:(int)y;
+
+- (void)setPhysicsAbilities;
+
 - (void) unmountSpaceship;
+
+- (int) getHealth;
+
 @end
+
+

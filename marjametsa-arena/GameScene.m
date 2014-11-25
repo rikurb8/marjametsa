@@ -15,6 +15,7 @@
 #import "Constants.h"
 
 #import "MonsterDTO.h"
+#import "HeroDTO.h"
 
 @import CoreMotion;
 
@@ -88,24 +89,34 @@
         monster.x = 150;
         monster.y = 150;
         monster.image = @"monsterInSpace";
-        monster.movePattern = 3;
-        monster.colorizeSequence = 4.0f;
+        monster.movePattern = 2;
+        monster.colorizeSequence = 1.0f;
         
-        [self addMonster:monster.image x:monster.x y:monster.y movePattern:monster.movePattern colorizeSequence:monster.colorizeSequence];
+        [self addMonster:monster.image
+                       x:monster.x
+                       y:monster.y
+             movePattern:monster.movePattern
+        colorizeSequence:monster.colorizeSequence];
         
         
+        HeroDTO *hero = [HeroDTO alloc];
         
-        // Initialize the hero and its physic abilities
-        self.player = [[Hero alloc] init];
-        SKSpriteNode *hero = [self.player setUpSprite:self.frame.size.width/2 height:self.frame.size.height/2];
-        [self.player setPhysicsAbilities];
-        [self addChild:hero];
+        hero.image = @"heroInSpace";
+        hero.health = 5;
+        hero.x = 300;
+        hero.y = 150;
         
+        [self addHero:hero.image
+               health:hero.health
+                    x:hero.x
+                    y:hero.y];
+         
         self.physicsWorld.contactDelegate = self;
         
         self.hits = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
         self.hits.fontSize = 16;
-        self.hits.text = @"LIVES: 10/10";
+        self.hits.text = [NSString stringWithFormat:@"LIVES: %d/%d", self.player.getHealth - self.hitCount, self.player.getHealth];
+        
         self.hits.position = CGPointMake(150, 10);
         [self addChild:self.hits];
         
@@ -178,8 +189,11 @@
     [self updateWithTimeSinceLastUpdate:timeSinceLast];
 }
 
-- (void)addMonster:(NSString*)image x:(int)x y:(int)y
-       movePattern:(int)pattern colorizeSequence:(float)cSeq{
+- (void)addMonster:(NSString*)image
+                 x:(int)x
+                 y:(int)y
+       movePattern:(int)pattern
+  colorizeSequence:(float)cSeq{
     
     Monster *newMonster = [[Monster alloc] initWithImage:image
                                             andColorizeSequence:cSeq
@@ -199,6 +213,22 @@
     
  }
 
+- (void)addHero:(NSString*)image
+         health:(int)health
+              x:(int)x
+              y:(int)y {
+
+    self.player = [[Hero alloc] initWithImage:image
+                                    andHealth:health
+                                         andX:x
+                                         andY:y];
+    
+    SKSpriteNode *hero = [self.player setUpSprite:x height:y];
+    [self.player setPhysicsAbilities];
+    [self addChild:hero];
+}
+
+
 
 - (void)didBeginContact:(SKPhysicsContact*)contact {
     // 1 Create local variables for two physics bodies
@@ -215,19 +245,19 @@
 
     // 3 react to the contact between hero and monster
     if (firstBody.categoryBitMask == heroCategory && secondBody.categoryBitMask == monsterCategory) {
+        
         for (Monster *monster in self.monsterArray){
             if([secondBody.node.name isEqualToString:[monster getName]]) {
                 if ([monster isVulnerable]) {
                     [monster.character removeFromParent];
                     self.aliveMonsters -= 1;
                     
-                    //TODO: remove monster from array? do we need monsterArray? what the fuck?
                 } else {
                     self.hitCount += 1;
                     NSMutableString *tmpHits = [NSMutableString stringWithString:@"LIVES: "];
-                    int livesLeft = 10 - self.hitCount;
+                    int livesLeft = self.player.getHealth - self.hitCount;
                     [tmpHits appendFormat:@"%i", livesLeft];
-                    [tmpHits appendString:@"/10"];
+                    [tmpHits appendString:[NSString stringWithFormat: @"/%d", self.player.getHealth]];
                     self.hits.text = tmpHits;
                 }
             }
@@ -237,7 +267,7 @@
         AudioServicesPlaySystemSound(1104);
         [self vibrate];
         
-        if (self.hitCount >= 10) {
+        if (self.hitCount >= self.player.getHealth) {
             GameEndedScene* gameWon = [[GameEndedScene alloc] initWithSize:self.frame.size won:NO];
             [self.view presentScene:gameWon];
             

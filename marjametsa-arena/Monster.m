@@ -21,7 +21,7 @@
         andColorizeSequence:(float)cSequence
         andMovePattern:(int)mPattern
                andX:(int)x
-               andY:(int)y  {
+               andY:(int)y {
     
     self = [super init];
     
@@ -47,7 +47,7 @@
     vulnerable = NO;
     
     SKAction *colorize = [SKAction colorizeWithColor: [UIColor redColor] colorBlendFactor: 0.5 duration: 0.1];
-    SKAction *wait1 = [SKAction waitForDuration: colorizeSequence];
+    SKAction *wait1 = [SKAction waitForDuration: colorizeSequence+0.1];
     SKAction *uncolorize = [SKAction colorizeWithColorBlendFactor: 0.0 duration: 0.1];
     SKAction *colorizePulse = [SKAction sequence:@[colorize, wait1, uncolorize]];
     SKAction *colorizeSeq = [SKAction sequence:@[wait1, colorizePulse]];
@@ -57,13 +57,13 @@
     
     // TODO: make the interval same as the colorizePulse. now just a lucky guess :)
     NSTimer *timer;
-    timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(handleTimer:) userInfo:nil repeats:YES];
+    timer = [NSTimer scheduledTimerWithTimeInterval:colorizeSequence+0.1 target:self selector:@selector(handleTimer:) userInfo:nil repeats:YES];
        
     SKAction *wait = [SKAction waitForDuration: 3];
-    SKAction *moveNodeUp = [SKAction moveByX:0.0 y:110.0 duration:1.0];
-    SKAction *moveNodeDown = [SKAction moveByX:0.0 y:-110.0 duration:1.0];
-    SKAction *moveNodeRight = [SKAction moveByX:110.0 y:0.0 duration:1.0];
-    SKAction *moveNodeLeft = [SKAction moveByX:-110.0 y:0.0 duration:1.0];
+    SKAction *moveNodeUp = [SKAction moveByX:0.0 y:110.0 duration:0.5];
+    SKAction *moveNodeDown = [SKAction moveByX:0.0 y:-110.0 duration:0.5];
+    SKAction *moveNodeRight = [SKAction moveByX:110.0 y:0.0 duration:0.5];
+    SKAction *moveNodeLeft = [SKAction moveByX:-110.0 y:0.0 duration:0.5];
     SKAction *moveSequence;
     
     // Chooses movement pattern
