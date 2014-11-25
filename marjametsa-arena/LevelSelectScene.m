@@ -84,11 +84,11 @@
     CGPoint location = [touch locationInNode:self];
     SKNode *node = [self nodeAtPoint:location];
     
-    NSLog(node.name);
-    
+    //TODO: actually get this DTO from an array containing all the level DTO's
     int level = [node.name intValue];
+    SceneDTO* scene = [SceneDTO alloc];
     
-    SKScene * Gscene = [[GameScene alloc] initWithSize:self.frame.size];
+    SKScene * Gscene = [[GameScene alloc] initWithSize:self.frame.size andInfo:scene];
     Gscene.scaleMode = SKSceneScaleModeAspectFill;
         
     // Present the scene.

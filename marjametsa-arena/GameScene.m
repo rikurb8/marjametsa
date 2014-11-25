@@ -59,12 +59,12 @@
     newItem.character.physicsBody.categoryBitMask = itemCategory;
 }
 
--(id)initWithSize:(CGSize)size {
+-(id)initWithSize:(CGSize)size andInfo:(SceneDTO*)sceneInfo {
     
     if (self = [super initWithSize:size]) {
         
         //set the bg image and position it
-        SKSpriteNode *bgImage = [SKSpriteNode spriteNodeWithImageNamed:@"space_bg"];
+        SKSpriteNode *bgImage = [SKSpriteNode spriteNodeWithImageNamed:@"space_bg.png"];
         bgImage.position = CGPointMake(self.size.width/2, self.size.height/2);
         [self addChild:bgImage];
         
