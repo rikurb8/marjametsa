@@ -1,6 +1,10 @@
-marjametsa
+marjametsae: the space odyssey
 ==========
 
-Marjametsä: Arena
+An awesome motioncontrolled game where you travel through space to save the princess!
 
-jeejee
+donations: riku.marttila@student.tut.fi
+complaints: ilari.kampman@student.tut.fi / henri.kuokkanen@student.tut.fi
+
+(c) 2014. Riku Marttila, Ilari Kampman, Henri Kuokkanen
+
