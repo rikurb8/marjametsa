@@ -11,7 +11,7 @@
 #import "Hero.h"
 #import "Monster.h"
 #import "Boss.h"
-#import "Banana.h"
+#import "Item.h"
 
 #import "MonsterDTO.h"
 
@@ -51,15 +51,15 @@ static const uint32_t bananaCategory = 0x1 << 2; // 0000000000000000000000000000
 }
 
 -(void)bananaSpawner: (NSTimer *) timer {
-    Banana *newBanana = [[Banana alloc] init];
-
-    newBanana.character = [newBanana setUpSprite:self.frame.size.width/2 height:self.frame.size.height/2];
+    Item *newItem = [[Item alloc] init];
     
-    [newBanana setUpAI];
+    newItem.character = [newItem setUpSprite:self.frame.size.width/2 height:self.frame.size.height/2];
     
-    [self addChild:newBanana.character];
+    [newItem setUpAI];
     
-    newBanana.character.physicsBody.categoryBitMask = bananaCategory;
+    [self addChild:newItem.character];
+    
+    newItem.character.physicsBody.categoryBitMask = bananaCategory;
 }
 
 -(id)initWithSize:(CGSize)size {

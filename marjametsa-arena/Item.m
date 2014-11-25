@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 rb8. All rights reserved.
 //
 
-#import "Banana.h"
+#import "Item.h"
 
-@implementation Banana
+@implementation Item
 
 - (id)init {
     self = [super init];

@@ -8,6 +8,6 @@
 
 #import "Character.h"
 
-@interface Banana : Character
+@interface Item : Character
 - (void)setUpAI;
 @end

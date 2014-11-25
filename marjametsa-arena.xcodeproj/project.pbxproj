@@ -19,7 +19,7 @@
 		11987CBC1A1690C300B53334 /* testBestButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 11987CBB1A1690C300B53334 /* testBestButton.png */; };
 		11987CBE1A1694BD00B53334 /* bestHighscoreButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 11987CBD1A1694BD00B53334 /* bestHighscoreButton.png */; };
 		11987CC01A1694C900B53334 /* bestPlayButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 11987CBF1A1694C900B53334 /* bestPlayButton.png */; };
-		11987CC31A169C2F00B53334 /* Banana.m in Sources */ = {isa = PBXBuildFile; fileRef = 11987CC21A169C2F00B53334 /* Banana.m */; };
+		11987CC31A169C2F00B53334 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 11987CC21A169C2F00B53334 /* Item.m */; };
 		11987CC91A16A3AB00B53334 /* banana.png in Resources */ = {isa = PBXBuildFile; fileRef = 11987CC81A16A3AB00B53334 /* banana.png */; };
 		11987CCC1A1927E200B53334 /* BossLevelScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 11987CCB1A1927E200B53334 /* BossLevelScene.m */; };
 		11987CD01A192A2200B53334 /* dungeon_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 11987CCF1A192A2200B53334 /* dungeon_bg.png */; };
@@ -85,8 +85,8 @@
 		11987CBB1A1690C300B53334 /* testBestButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testBestButton.png; sourceTree = "<group>"; };
 		11987CBD1A1694BD00B53334 /* bestHighscoreButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bestHighscoreButton.png; sourceTree = "<group>"; };
 		11987CBF1A1694C900B53334 /* bestPlayButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bestPlayButton.png; sourceTree = "<group>"; };
-		11987CC11A169C2F00B53334 /* Banana.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Banana.h; sourceTree = "<group>"; };
-		11987CC21A169C2F00B53334 /* Banana.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Banana.m; sourceTree = "<group>"; };
+		11987CC11A169C2F00B53334 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		11987CC21A169C2F00B53334 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
 		11987CC81A16A3AB00B53334 /* banana.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banana.png; sourceTree = "<group>"; };
 		11987CCA1A1927E200B53334 /* BossLevelScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BossLevelScene.h; sourceTree = "<group>"; };
 		11987CCB1A1927E200B53334 /* BossLevelScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BossLevelScene.m; sourceTree = "<group>"; };
@@ -193,8 +193,8 @@
 				116C662F19ED22E500215E51 /* Character.h */,
 				116C663019ED22E500215E51 /* Character.m */,
 				116C663819ED2CAE00215E51 /* AICharacter.m */,
-				11987CC11A169C2F00B53334 /* Banana.h */,
-				11987CC21A169C2F00B53334 /* Banana.m */,
+				11987CC11A169C2F00B53334 /* Item.h */,
+				11987CC21A169C2F00B53334 /* Item.m */,
 				116C663719ED2CAE00215E51 /* AICharacter.h */,
 				116C663A19ED447800215E51 /* Monster.h */,
 				116C663D19ED547000215E51 /* Boss.h */,
@@ -441,7 +441,7 @@
 				11987CD91A1E214800B53334 /* HeroDTO.m in Sources */,
 				11C41AC919D29C5300468EE4 /* AppDelegate.m in Sources */,
 				11987CDC1A1E215A00B53334 /* ItemDTO.m in Sources */,
-				11987CC31A169C2F00B53334 /* Banana.m in Sources */,
+				11987CC31A169C2F00B53334 /* Item.m in Sources */,
 				116C663F19ED547000215E51 /* Boss.m in Sources */,
 				116C663919ED2CAE00215E51 /* AICharacter.m in Sources */,
 				11987CCC1A1927E200B53334 /* BossLevelScene.m in Sources */,
