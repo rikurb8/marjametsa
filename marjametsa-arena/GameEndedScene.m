@@ -8,6 +8,7 @@
 
 #import "GameEndedScene.h"
 #import "GameScene.h"
+#import "LevelSelectScene.h"
 
 @implementation GameEndedScene
 
@@ -80,7 +81,7 @@
     
     if ([pressedNode.name isEqualToString:@"startButton"]) {
         SKView *sView = (SKView *)self.view;
-        SKScene *Gscene = [GameScene sceneWithSize:sView.bounds.size];
+        SKScene *Gscene = [LevelSelectScene sceneWithSize:sView.bounds.size];
         Gscene.scaleMode = SKSceneScaleModeAspectFill;
         
         [sView presentScene:Gscene];

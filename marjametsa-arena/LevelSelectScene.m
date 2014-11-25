@@ -54,22 +54,23 @@
     
 }
 
-- (SKSpriteNode *)ButtonNode:(int) buttonLevel
+- (SKLabelNode *)ButtonNode:(int) buttonLevel
 {
-
-    int width = 75 + (buttonLevel % 5) *90;
-    int height = 250;
+    int width = 90 + (buttonLevel % 5) *90;
+    int height = 225;
     
     if (buttonLevel >= 10) {
-        height = 100;
+        height = 75;
     } else if (buttonLevel >= 5) {
-        height = 175;
+        height = 150;
     }
     
-    SKSpriteNode *levelNode = [SKSpriteNode spriteNodeWithImageNamed:@"banana.png"];
-    levelNode.position = CGPointMake(width, height);
-    levelNode.name = [NSString stringWithFormat:@"%d",buttonLevel];
-    return levelNode;
+    SKLabelNode* textLabel = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
+    textLabel.fontSize = 42;
+    textLabel.position = CGPointMake(width, height);
+    textLabel.text = [NSString stringWithFormat:@"%d",buttonLevel+1];
+    
+    return textLabel;
  }
 
 
