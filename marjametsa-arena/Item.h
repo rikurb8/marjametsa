@@ -8,6 +8,8 @@
 
 #import "Character.h"
 
-@interface Item : Character
+@interface Item : Character {
+    int effect;
+}
 - (void)setUpAI;
 @end

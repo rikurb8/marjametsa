@@ -12,6 +12,7 @@
 #import "Monster.h"
 #import "Boss.h"
 #import "Item.h"
+#import "Constants.h"
 
 #import "MonsterDTO.h"
 
@@ -19,11 +20,6 @@
 
 #define kPlayerSpeed 700
 #define kUpdateInterval (1.0f / 60.0f) //60fps
-
-static const uint32_t heroCategory  = 0x1 << 0;  // 00000000000000000000000000000001
-static const uint32_t monsterCategory = 0x1 << 1; // 00000000000000000000000000000010
-//static const uint32_t borderCategory = 0x1 << 2;  // 00000000000000000000000000000100
-static const uint32_t bananaCategory = 0x1 << 2; // 0000000000000000000000000000100
 
 @interface GameScene ()
 @property (nonatomic) Hero *player;
@@ -59,7 +55,7 @@ static const uint32_t bananaCategory = 0x1 << 2; // 0000000000000000000000000000
     
     [self addChild:newItem.character];
     
-    newItem.character.physicsBody.categoryBitMask = bananaCategory;
+    newItem.character.physicsBody.categoryBitMask = itemCategory;
 }
 
 -(id)initWithSize:(CGSize)size {
@@ -249,7 +245,7 @@ static const uint32_t bananaCategory = 0x1 << 2; // 0000000000000000000000000000
             GameEndedScene* gameWon = [[GameEndedScene alloc] initWithSize:self.frame.size won:YES];
             [self.view presentScene:gameWon];
         }
-    } else if (firstBody.categoryBitMask == heroCategory && secondBody.categoryBitMask == bananaCategory) {
+    } else if (firstBody.categoryBitMask == heroCategory && secondBody.categoryBitMask == itemCategory) {
         [secondBody.node removeFromParent];
         self.hitCount -= 1;
     }

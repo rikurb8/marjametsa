@@ -38,7 +38,7 @@
     self.character.physicsBody.mass = 0.05f;
     self.character.physicsBody.allowsRotation = YES;
     self.character.physicsBody.categoryBitMask = heroCategory;
-    self.character.physicsBody.contactTestBitMask = monsterCategory | bananaCategory;
+    self.character.physicsBody.contactTestBitMask = monsterCategory | itemCategory;
 
 }
 
