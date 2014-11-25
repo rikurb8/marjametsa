@@ -8,7 +8,6 @@
 
 #import "GameEndedScene.h"
 #import "GameScene.h"
-#import "BossLevelScene.h"
 
 @implementation GameEndedScene
 
@@ -88,11 +87,7 @@
     }
     
     if ([pressedNode.name isEqualToString:@"nextLevel"]) {
-        SKView *sView = (SKView *)self.view;
-        SKScene *Gscene = [BossLevelScene sceneWithSize:sView.bounds.size];
-        Gscene.scaleMode = SKSceneScaleModeAspectFill;
-        
-        [sView presentScene:Gscene];
+        exit(0);
     }
     
     
