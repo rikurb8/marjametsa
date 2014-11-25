@@ -7,7 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HeroDTO.h"
+#import "GameDTO.h"
 
 @interface SceneDTO : NSObject
+
+@property (nonatomic) NSMutableArray *monsterArray;
+@property (nonatomic) NSMutableArray *itemArray;
+@property (nonatomic) HeroDTO *hero;
+@property (nonatomic) GameDTO *game;
 
 @end
