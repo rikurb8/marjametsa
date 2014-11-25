@@ -13,6 +13,7 @@
 #import "ViewController.h"
 #import "Hero.h"
 #import "Highscore.h"   
+#import "LevelSelectScene.h"
 
 
 
@@ -94,7 +95,7 @@
                SKView * sView = (SKView *)self.view;
 
         
-        SKScene * Gscene = [GameScene sceneWithSize:sView.bounds.size];
+        SKScene * Gscene = [LevelSelectScene sceneWithSize:sView.bounds.size];
         Gscene.scaleMode = SKSceneScaleModeAspectFill;
         
         // Present the scene.

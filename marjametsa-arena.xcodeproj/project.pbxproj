@@ -13,6 +13,7 @@
 		116C663C19ED447800215E51 /* Monster.m in Sources */ = {isa = PBXBuildFile; fileRef = 116C663B19ED447800215E51 /* Monster.m */; };
 		116C663F19ED547000215E51 /* Boss.m in Sources */ = {isa = PBXBuildFile; fileRef = 116C663E19ED547000215E51 /* Boss.m */; };
 		118DB8181A24DCCE0085F883 /* SceneDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = 118DB8171A24DCCE0085F883 /* SceneDTO.m */; };
+		118DB81B1A24EACD0085F883 /* LevelSelectScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 118DB81A1A24EACD0085F883 /* LevelSelectScene.m */; };
 		118EEF5819D2F51500899286 /* boss.png in Resources */ = {isa = PBXBuildFile; fileRef = 118EEF5719D2F51500899286 /* boss.png */; };
 		11987CAC1A166B1900B53334 /* space_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 11987CAB1A166B1900B53334 /* space_bg.png */; };
 		11987CB61A16744A00B53334 /* heroInSpace.png in Resources */ = {isa = PBXBuildFile; fileRef = 11987CB51A16744A00B53334 /* heroInSpace.png */; };
@@ -80,6 +81,8 @@
 		116C663E19ED547000215E51 /* Boss.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Boss.m; sourceTree = "<group>"; };
 		118DB8161A24DCCE0085F883 /* SceneDTO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneDTO.h; sourceTree = "<group>"; };
 		118DB8171A24DCCE0085F883 /* SceneDTO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneDTO.m; sourceTree = "<group>"; };
+		118DB8191A24EACD0085F883 /* LevelSelectScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelSelectScene.h; sourceTree = "<group>"; };
+		118DB81A1A24EACD0085F883 /* LevelSelectScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelSelectScene.m; sourceTree = "<group>"; };
 		118EEF5719D2F51500899286 /* boss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boss.png; sourceTree = "<group>"; };
 		11987CAB1A166B1900B53334 /* space_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = space_bg.png; sourceTree = "<group>"; };
 		11987CB51A16744A00B53334 /* heroInSpace.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heroInSpace.png; sourceTree = "<group>"; };
@@ -270,6 +273,8 @@
 				7C0D63A419ED5154001294CE /* MenuScene.h */,
 				11EBFC6F1A149BF8005FFBF9 /* GameEndedScene.h */,
 				11EBFC701A149BF8005FFBF9 /* GameEndedScene.m */,
+				118DB8191A24EACD0085F883 /* LevelSelectScene.h */,
+				118DB81A1A24EACD0085F883 /* LevelSelectScene.m */,
 				7C0D63A219ED509E001294CE /* MenuScene.m */,
 				116C663519ED293900215E51 /* Resources */,
 				11C41AD519D29C5300468EE4 /* Images.xcassets */,
@@ -443,6 +448,7 @@
 				11987CDC1A1E215A00B53334 /* ItemDTO.m in Sources */,
 				11987CC31A169C2F00B53334 /* Item.m in Sources */,
 				116C663F19ED547000215E51 /* Boss.m in Sources */,
+				118DB81B1A24EACD0085F883 /* LevelSelectScene.m in Sources */,
 				116C663919ED2CAE00215E51 /* AICharacter.m in Sources */,
 				11C41AC519D29C5300468EE4 /* main.m in Sources */,
 				11987CDF1A1E21A600B53334 /* GameDTO.m in Sources */,
