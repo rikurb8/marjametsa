@@ -43,8 +43,21 @@
 
 @implementation GameScene
 
--(void)createObstacle: (NSTimer *) timer {
-    //[self addMonster:CGPointMake(400, 150)];
+-(void)createMonster: (NSTimer *) timer {
+    MonsterDTO *monster = [MonsterDTO alloc];
+
+    monster.x = 150;
+    monster.y = 150;
+    monster.image = @"monsterInSpace";
+    monster.movePattern = 2;
+    monster.colorizeSequence = 1.0f;
+    
+    [self addMonster:monster.image
+                   x:monster.x
+                   y:monster.y
+         movePattern:monster.movePattern
+    colorizeSequence:monster.colorizeSequence];
+
 }
 
 -(void)bananaSpawner: (NSTimer *) timer {
@@ -137,11 +150,11 @@
         
         // Extra monsters!
         NSTimer *timer;
-        timer = [NSTimer scheduledTimerWithTimeInterval:20 target:self selector:@selector(createObstacle:) userInfo:nil repeats:YES];
+        timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(createMonster:) userInfo:nil repeats:YES];
         
         //Health! FUCK YEAH!
         NSTimer *bananaTimer;
-        bananaTimer = [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(bananaSpawner:) userInfo:nil repeats:YES];
+        bananaTimer = [NSTimer scheduledTimerWithTimeInterval:8 target:self selector:@selector(bananaSpawner:) userInfo:nil repeats:YES];
     }
     return self;
 }
