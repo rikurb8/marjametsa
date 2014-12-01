@@ -10,4 +10,5 @@
 
 @interface LevelSelectScene : SKScene
 
+-(id)initWithSize:(CGSize)size andLevelInfo:(NSMutableArray*)levelInfo;
 @end

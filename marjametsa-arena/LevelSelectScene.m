@@ -22,6 +22,7 @@
 
 @interface LevelSelectScene()
 
+@property (nonatomic) NSMutableArray *levels;
 
 @end
 
@@ -30,7 +31,7 @@
 
 
 // Initialize Menu
--(id)initWithSize:(CGSize)size {
+-(id)initWithSize:(CGSize)size andLevelInfo:(NSMutableArray*)levelInfo {
     
     if (self = [super initWithSize:size]) {
         SKSpriteNode *bgImage = [SKSpriteNode spriteNodeWithImageNamed:@"space_bg"];
@@ -39,9 +40,9 @@
         
     }
     
-    //TODO: generic for loop for creating buttons
+    self.levels = levelInfo;
     
-    for (int i = 0; i < 15; ++i) {
+    for (int i = 0; i < [levelInfo count]; ++i) {
         
         [self addChild: [self ButtonNode:i]];
         UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -87,7 +88,7 @@
     
     //TODO: actually get this DTO from an array containing all the level DTO's
     int level = [node.name intValue];
-    SceneDTO* scene = [SceneDTO alloc];
+    SceneDTO* scene = [self.levels objectAtIndex:level];
     
     SKScene * Gscene = [[GameScene alloc] initWithSize:self.frame.size andInfo:scene];
     Gscene.scaleMode = SKSceneScaleModeAspectFill;
