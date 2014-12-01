@@ -16,6 +16,8 @@
 		118DB8181A24DCCE0085F883 /* SceneDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = 118DB8171A24DCCE0085F883 /* SceneDTO.m */; };
 		118DB81B1A24EACD0085F883 /* LevelSelectScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 118DB81A1A24EACD0085F883 /* LevelSelectScene.m */; };
 		118EEF5819D2F51500899286 /* boss.png in Resources */ = {isa = PBXBuildFile; fileRef = 118EEF5719D2F51500899286 /* boss.png */; };
+		1192A4C51A28F07A0054865E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1192A4C31A28F07A0054865E /* Crashlytics.framework */; };
+		1192A4C61A28F07A0054865E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1192A4C41A28F07A0054865E /* Fabric.framework */; };
 		11987CAC1A166B1900B53334 /* space_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 11987CAB1A166B1900B53334 /* space_bg.png */; };
 		11987CB61A16744A00B53334 /* heroInSpace.png in Resources */ = {isa = PBXBuildFile; fileRef = 11987CB51A16744A00B53334 /* heroInSpace.png */; };
 		11987CBA1A16785D00B53334 /* monsterInSpace.png in Resources */ = {isa = PBXBuildFile; fileRef = 11987CB91A16785D00B53334 /* monsterInSpace.png */; };
@@ -92,6 +94,8 @@
 		118DB8191A24EACD0085F883 /* LevelSelectScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelSelectScene.h; sourceTree = "<group>"; };
 		118DB81A1A24EACD0085F883 /* LevelSelectScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelSelectScene.m; sourceTree = "<group>"; };
 		118EEF5719D2F51500899286 /* boss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boss.png; sourceTree = "<group>"; };
+		1192A4C31A28F07A0054865E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
+		1192A4C41A28F07A0054865E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
 		11987CAB1A166B1900B53334 /* space_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = space_bg.png; sourceTree = "<group>"; };
 		11987CB51A16744A00B53334 /* heroInSpace.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heroInSpace.png; sourceTree = "<group>"; };
 		11987CB91A16785D00B53334 /* monsterInSpace.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monsterInSpace.png; sourceTree = "<group>"; };
@@ -161,9 +165,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				11C41AB919D29C5300468EE4 /* CoreGraphics.framework in Frameworks */,
+				1192A4C51A28F07A0054865E /* Crashlytics.framework in Frameworks */,
 				11C41ABB19D29C5300468EE4 /* UIKit.framework in Frameworks */,
 				11C41ABD19D29C5300468EE4 /* SpriteKit.framework in Frameworks */,
 				11C41AB719D29C5300468EE4 /* Foundation.framework in Frameworks */,
+				1192A4C61A28F07A0054865E /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +288,8 @@
 			children = (
 				11C41AC719D29C5300468EE4 /* AppDelegate.h */,
 				11C41AC819D29C5300468EE4 /* AppDelegate.m */,
+				1192A4C31A28F07A0054865E /* Crashlytics.framework */,
+				1192A4C41A28F07A0054865E /* Fabric.framework */,
 				11987CD31A1E1AA600B53334 /* Constants.h */,
 				11C41ACA19D29C5300468EE4 /* Main.storyboard */,
 				11C41ACD19D29C5300468EE4 /* ViewController.h */,
@@ -346,6 +354,7 @@
 				11C41AAF19D29C5300468EE4 /* Sources */,
 				11C41AB019D29C5300468EE4 /* Frameworks */,
 				11C41AB119D29C5300468EE4 /* Resources */,
+				1192A4BE1A28EEA70054865E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -453,6 +462,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1192A4BE1A28EEA70054865E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 868c34a0aa78489f2686aefcc6aea6e88447fbb0 092c528e2b2b8b64413656c1d43a52efabe77db3ae8925d6bd0cfd1fbf64dd4a";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		11C41AAF19D29C5300468EE4 /* Sources */ = {
@@ -605,6 +630,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "marjametsa-arena/marjametsa-arena-Prefix.pch";
 				INFOPLIST_FILE = "marjametsa-arena/marjametsa-arena-Info.plist";
@@ -622,6 +651,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "marjametsa-arena/marjametsa-arena-Prefix.pch";
 				INFOPLIST_FILE = "marjametsa-arena/marjametsa-arena-Info.plist";
