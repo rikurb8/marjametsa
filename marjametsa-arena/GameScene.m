@@ -94,61 +94,24 @@
         self.physicsBody.friction = 0.0f;
         
         self.monsterArray = [[NSMutableArray alloc] initWithCapacity:10];
-        
-        MonsterDTO *monster = [MonsterDTO alloc];
-        
-        /*
-        monster.x = [self.monsterArray[0][@"xPosition"] integerValue];
-        monster.y = [self.monsterArray[0][@"yPosition"] integerValue];
-        monster.image = self.monsterArray[0][@"Image"];
-        monster.movePattern = [self.monsterArray[0][@"movePattern"] integerValue];
-        monster.colorizeSequence = [self.monsterArray[0][@"colorizeSequence"] floatValue];
-        */
-        
-        ItemDTO *item = [ItemDTO alloc];
-        
-        item.image = @"asteroid.png";
-        item.type = 0;
-        item.x = 200;
-        item.y = 150;
-        
-        [self addItem:item.image
-               effect:item.type
-                    x:item.x
-                    y:item.y];
-        
-        
-        item.image = @"planet.png";
-        item.type = 0;
-        item.x = 20;
-        item.y = 150;
-        
-        [self addItem:item.image
-               effect:item.type
-                    x:item.x
-                    y:item.y];
-        
-        monster.x = 150;
-        monster.y = 150;
-        monster.image = @"monsterInSpace";
-        monster.movePattern = 2;
-        monster.colorizeSequence = 1.0f;
-        
-        
-        [self addMonster:monster.image
-                       x:monster.x
-                       y:monster.y
-             movePattern:monster.movePattern
-        colorizeSequence:monster.colorizeSequence];
-        
-        
-        HeroDTO *hero = [HeroDTO alloc];
-        
-        hero.image = @"heroInSpace";
-        hero.health = 5;
-        hero.x = 300;
-        hero.y = 150;
-        
+                
+        // Add found monsters from plist file
+        for (MonsterDTO *monster in sceneInfo.monsterArray) {
+            [self addMonster:monster.image
+                           x:monster.x
+                           y:monster.y
+                 movePattern:monster.movePattern
+            colorizeSequence:monster.colorizeSequence];
+        }
+
+        for (ItemDTO *item in sceneInfo.itemArray) {
+            [self addItem:item.image
+                   effect:item.type
+                        x:item.x
+                        y:item.y];
+        }
+
+        HeroDTO *hero = sceneInfo.hero;
         [self addHero:hero.image
                health:hero.health
                     x:hero.x

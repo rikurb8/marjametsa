@@ -14,6 +14,7 @@
 #import "SceneDTO.h"
 #import "MonsterDTO.h"
 #import "HeroDTO.h"
+#import "ItemDTO.h"
 
 @interface ViewController()
 
@@ -84,6 +85,15 @@
     [scene.monsterArray addObject:monster2];
     
     
+    ItemDTO *item = [ItemDTO alloc];
+    item.image = @"asteroid.png";
+    item.type = 0;
+    item.x = 200;
+    item.y = 150;
+    
+    scene.itemArray = [[NSMutableArray alloc] initWithCapacity:100];
+    [scene.itemArray addObject:item];
+
     [sceneArray addObject:scene];
     [sceneArray addObject:scene];
     [sceneArray addObject:scene];
