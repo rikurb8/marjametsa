@@ -6,10 +6,21 @@
 //  Copyright (c) 2014 rb8. All rights reserved.
 //
 
-#import "AICharacter.h"
+#import "Monster.h"
 
-@interface Boss : AICharacter
+@interface Boss : Monster {
+
+    int health;
+}
+
+- (id)initWithImage:(NSString *)image
+          andHealth:(int)hlth
+andColorizeSequence:(float)cSequence
+     andMovePattern:(int)mPattern
+               andX:(int)x
+               andY:(int)y;
 
 -(void) setUpAI;
 
+- (int) getHealth;
 @end

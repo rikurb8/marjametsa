@@ -26,6 +26,7 @@
 
 @interface GameScene ()
 @property (nonatomic) Hero *player;
+@property (nonatomic) Boss *boss;
 @property (nonatomic) NSMutableArray *monsterArray;
 @property (nonatomic) NSMutableArray *itemArray;
 
@@ -35,6 +36,7 @@
 
 @property (nonatomic) int hitCount;
 @property (nonatomic) int secTimer;
+@property (nonatomic) int bossHealth;
 @property (nonatomic) SKLabelNode *hits;
 @property (nonatomic) SKLabelNode *timer;
 
@@ -117,7 +119,7 @@
                health:hero.health
                     x:hero.x
                     y:hero.y];
-         
+        
         self.physicsWorld.contactDelegate = self;
         
         self.hits = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
@@ -256,6 +258,27 @@
     [self.itemArray addObject:newItem];
 }
 
+- (void)addBoss:(NSString*)image
+         health:(int)health
+              x:(int)x
+              y:(int)y
+    movePattern:(int)pattern
+colorizeSequence:(float)cSeq{
+    
+    self.boss = [[Boss alloc] initWithImage:image
+                                         andHealth:health
+                                     andColorizeSequence:cSeq
+                                          andMovePattern:pattern
+                                                    andX:x
+                                                    andY:y ];
+    
+    [self.boss setUpAI];
+    
+    self.bossHealth = [self.boss getHealth];
+    
+    [self addChild:self.boss.character];
+}
+
 
 - (void)didBeginContact:(SKPhysicsContact*)contact {
     // 1 Create local variables for two physics bodies
@@ -344,9 +367,29 @@
             [self.view presentScene:gameWon];
         }
 
+    } else if (firstBody.categoryBitMask == heroCategory && secondBody.categoryBitMask == bossCategory) {
+    
+        if([self.boss isVulnerable]){
+            self.bossHealth -= 1;
+            
+            if(self.bossHealth <= 0){
+                GameEndedScene* gameWon = [[GameEndedScene alloc] initWithSize:self.frame.size won:YES];
+                [self.view presentScene:gameWon];
+            }
+        } else {
+            self.hitCount += 2;
+            
+            livesLeft = self.player.getHealth - self.hitCount;
+            [tmpHits appendFormat:@"%i", livesLeft];
+            [tmpHits appendString:[NSString stringWithFormat: @"/%d", self.player.getHealth]];
+            self.hits.text = tmpHits;
+        }
+        if (self.hitCount >= self.player.getHealth) {
+            GameEndedScene* gameWon = [[GameEndedScene alloc] initWithSize:self.frame.size won:NO];
+            [self.view presentScene:gameWon];
+            
+        }
     }
-    
-    
 }
 
 @end

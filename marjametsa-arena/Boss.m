@@ -7,13 +7,25 @@
 //
 
 #import "Boss.h"
+#import "Constants.h"
 
 @implementation Boss
-- (id)init {
-    self = [super init];
+
+- (id)initWithImage:(NSString *)image
+          andHealth:(int)hlth
+andColorizeSequence:(float)cSequence
+     andMovePattern:(int)mPattern
+               andX:(int)x
+               andY:(int)y {
+    
+    self = [super initWithImage:image
+            andColorizeSequence:cSequence
+                 andMovePattern:mPattern
+                           andX:x
+                           andY:y];
     
     if (self) {
-        self.image = @"boss";
+        health = hlth;
     }
     
     return self;
@@ -22,13 +34,18 @@
 -(void) setUpAI {
     [super setUpAI];
     
-    self.character.physicsBody.friction = 0.0f;
+    SKAction *moveNodeRight = [SKAction moveByX:10.0 y:0.0 duration:0.1];
+    SKAction *moveNodeLeft = [SKAction moveByX:-10.0 y:0.0 duration:0.1];
+    SKAction *vibrate = [SKAction sequence:@[moveNodeLeft, moveNodeRight]];
+    SKAction *vibrateForever = [SKAction repeatActionForever:vibrate];
     
-    self.character.physicsBody.restitution = 1.0f;
+    [self runAction:vibrateForever];
     
-    self.character.physicsBody.linearDamping = 0.0f;
-    
-    self.character.physicsBody.mass = 0.01f;
+    self.character.physicsBody.categoryBitMask = bossCategory;
 };
+
+- (int) getHealth {
+    return health;
+}
 
 @end

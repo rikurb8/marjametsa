@@ -60,17 +60,6 @@
     // Monster starts from an unvulnerable state
     vulnerable = NO;
     
-    /*
-    SKAction *colorize = [SKAction colorizeWithColor: [UIColor redColor] colorBlendFactor: 0.5 duration: 0.1];
-    SKAction *wait1 = [SKAction waitForDuration: colorizeSequence+0.1];
-    SKAction *uncolorize = [SKAction colorizeWithColorBlendFactor: 0.0 duration: 0.1];
-    SKAction *colorizePulse = [SKAction sequence:@[colorize, wait1, uncolorize]];
-    SKAction *colorizeSeq = [SKAction sequence:@[wait1, colorizePulse]];
-    SKAction *colorizeForever = [SKAction repeatActionForever:colorizeSeq];
-    
-    [self.character runAction:colorizeForever];
-    */
-
     NSTimer *timer;
     timer = [NSTimer scheduledTimerWithTimeInterval: colorizeSequence target:self selector:@selector(handleTimer:) userInfo:nil repeats:YES];
        
