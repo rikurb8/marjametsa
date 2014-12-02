@@ -16,6 +16,8 @@
 
 #import "MonsterDTO.h"
 #import "HeroDTO.h"
+#import "ItemDTO.h"
+
 
 @import CoreMotion;
 
@@ -61,15 +63,19 @@
 }
 
 -(void)bananaSpawner: (NSTimer *) timer {
-    Item *newItem = [[Item alloc] init];
     
-    newItem.character = [newItem setUpSprite:self.frame.size.width/2 height:self.frame.size.height/2];
+    ItemDTO *item = [ItemDTO alloc];
     
-    [newItem setUpAI];
+    item.image = @"banana.png";
+    item.type = 1;
+    item.x = 200;
+    item.y = 200;
     
-    [self addChild:newItem.character];
+    [self addItem:item.image
+           effect:item.type
+                x:item.x
+                y:item.y];
     
-    newItem.character.physicsBody.categoryBitMask = itemCategory;
 }
 
 -(id)initWithSize:(CGSize)size andInfo:(SceneDTO*)sceneInfo {
@@ -89,15 +95,59 @@
         
         self.monsterArray = [[NSMutableArray alloc] initWithCapacity:10];
         
-        for (MonsterDTO *monster in sceneInfo.monsterArray) {
-            [self addMonster:monster.image
-                           x:monster.x
-                           y:monster.y
-                 movePattern:monster.movePattern
-            colorizeSequence:monster.colorizeSequence];
-        }
-
-        HeroDTO *hero = sceneInfo.hero;
+        MonsterDTO *monster = [MonsterDTO alloc];
+        
+        /*
+        monster.x = [self.monsterArray[0][@"xPosition"] integerValue];
+        monster.y = [self.monsterArray[0][@"yPosition"] integerValue];
+        monster.image = self.monsterArray[0][@"Image"];
+        monster.movePattern = [self.monsterArray[0][@"movePattern"] integerValue];
+        monster.colorizeSequence = [self.monsterArray[0][@"colorizeSequence"] floatValue];
+        */
+        
+        ItemDTO *item = [ItemDTO alloc];
+        
+        item.image = @"asteroid.png";
+        item.type = 0;
+        item.x = 200;
+        item.y = 150;
+        
+        [self addItem:item.image
+               effect:item.type
+                    x:item.x
+                    y:item.y];
+        
+        
+        item.image = @"planet.png";
+        item.type = 0;
+        item.x = 20;
+        item.y = 150;
+        
+        [self addItem:item.image
+               effect:item.type
+                    x:item.x
+                    y:item.y];
+        
+        monster.x = 150;
+        monster.y = 150;
+        monster.image = @"monsterInSpace";
+        monster.movePattern = 2;
+        monster.colorizeSequence = 1.0f;
+        
+        
+        [self addMonster:monster.image
+                       x:monster.x
+                       y:monster.y
+             movePattern:monster.movePattern
+        colorizeSequence:monster.colorizeSequence];
+        
+        
+        HeroDTO *hero = [HeroDTO alloc];
+        
+        hero.image = @"heroInSpace";
+        hero.health = 5;
+        hero.x = 300;
+        hero.y = 150;
         
         [self addHero:hero.image
                health:hero.health
@@ -220,7 +270,23 @@
     [self.player setPhysicsAbilities];
     [self addChild:hero];
 }
+- (void)addItem:(NSString*)image
+         effect:(int)eff
+              x:(int)x
+              y:(int)y {
 
+    
+    Item *newItem = [[Item alloc] initWithImage:image
+                                      andEffect:eff
+                                           andX:x
+                                           andY:y];
+    
+    newItem.character = [newItem setUpSprite:x height:y];
+    
+    [newItem setUpAI];
+    
+    [self addChild:newItem.character];
+}
 
 
 - (void)didBeginContact:(SKPhysicsContact*)contact {
