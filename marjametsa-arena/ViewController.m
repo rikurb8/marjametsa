@@ -50,55 +50,6 @@
 
    // }
     
-    
-    NSMutableArray *sceneArray = [[NSMutableArray alloc] initWithCapacity:15];
-    
-    //Mock sceneDTO to represent entire level info read from plist
-    SceneDTO *scene = [SceneDTO alloc];
-    
-    scene.game = [GameDTO alloc];
-    scene.game.image = @"space_bg";
-    
-    scene.hero = [HeroDTO alloc];
-    scene.hero.image = @"heroInSpace";
-    scene.hero.health = 5;
-    scene.hero.x = 200;
-    scene.hero.y = 200;
-    
-    //Couple of mock monsters
-    MonsterDTO *monster = [MonsterDTO alloc];
-    monster.x = 150;
-    monster.y = 150;
-    monster.image = @"monsterInSpace";
-    monster.movePattern = 2;
-    monster.colorizeSequence = 1.0f;
-    
-    MonsterDTO *monster2 = [MonsterDTO alloc];
-    monster2.x = 250;
-    monster2.y = 250;
-    monster2.image = @"monsterInSpace";
-    monster2.movePattern = 2;
-    monster2.colorizeSequence = 1.0f;
-
-    scene.monsterArray = [[NSMutableArray alloc] initWithCapacity:10];
-    [scene.monsterArray addObject:monster];
-    [scene.monsterArray addObject:monster2];
-    
-    
-    ItemDTO *item = [ItemDTO alloc];
-    item.image = @"asteroid.png";
-    item.type = 0;
-    item.x = 200;
-    item.y = 150;
-    
-    scene.itemArray = [[NSMutableArray alloc] initWithCapacity:100];
-    [scene.itemArray addObject:item];
-
-    [sceneArray addObject:scene];
-    [sceneArray addObject:scene];
-    [sceneArray addObject:scene];
-    [sceneArray addObject:scene];
-    
     // Configure the view.
     
     SKView * skView = (SKView *)self.view;
@@ -108,8 +59,7 @@
         skView.showsPhysics = NO;
         
         // Create and configure the scene.
-        LevelSelectScene *scene = [[LevelSelectScene alloc] initWithSize:skView.bounds.size andLevelInfo:sceneArray];
-        //SKScene * scene = [MenuScene sceneWithSize:skView.bounds.size];
+        SKScene * scene = [MenuScene sceneWithSize:skView.bounds.size];
         scene.scaleMode = SKSceneScaleModeAspectFill;
         
         // Present the scene.

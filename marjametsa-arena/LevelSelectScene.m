@@ -10,6 +10,8 @@
 #import "GameScene.h"
 #import "ViewController.h"
 #import "Hero.h"
+#import "MonsterDTO.h"
+#import "ItemDTO.h"
 #import "Highscore.h"
 
 
@@ -31,7 +33,7 @@
 
 
 // Initialize Menu
--(id)initWithSize:(CGSize)size andLevelInfo:(NSMutableArray*)levelInfo {
+-(id)initWithSize:(CGSize)size {
     
     if (self = [super initWithSize:size]) {
         SKSpriteNode *bgImage = [SKSpriteNode spriteNodeWithImageNamed:@"space_bg"];
@@ -40,9 +42,8 @@
         
     }
     
-    self.levels = levelInfo;
-    
-    for (int i = 0; i < [levelInfo count]; ++i) {
+    //TODO: get amount of levels from plistfile
+    for (int i = 0; i < 10; ++i) {
         
         [self addChild: [self ButtonNode:i]];
         UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -88,8 +89,47 @@
     
     //TODO: actually get this DTO from an array containing all the level DTO's
     int level = [node.name intValue];
-    SceneDTO* scene = [self.levels objectAtIndex:level];
     
+    //Mock sceneDTO to represent entire level info read from plist
+    SceneDTO *scene = [SceneDTO alloc];
+    
+    scene.game = [GameDTO alloc];
+    scene.game.image = @"space_bg";
+    
+    scene.hero = [HeroDTO alloc];
+    scene.hero.image = @"heroInSpace";
+    scene.hero.health = 5;
+    scene.hero.x = 200;
+    scene.hero.y = 200;
+    
+    //Couple of mock monsters
+    MonsterDTO *monster = [MonsterDTO alloc];
+    monster.x = 150;
+    monster.y = 150;
+    monster.image = @"monsterInSpace";
+    monster.movePattern = 2;
+    monster.colorizeSequence = 1.0f;
+    
+    MonsterDTO *monster2 = [MonsterDTO alloc];
+    monster2.x = 250;
+    monster2.y = 250;
+    monster2.image = @"monsterInSpace";
+    monster2.movePattern = 2;
+    monster2.colorizeSequence = 1.0f;
+    
+    scene.monsterArray = [[NSMutableArray alloc] initWithCapacity:10];
+    [scene.monsterArray addObject:monster];
+    [scene.monsterArray addObject:monster2];
+    
+    ItemDTO *item = [ItemDTO alloc];
+    item.image = @"asteroid.png";
+    item.type = 0;
+    item.x = 200;
+    item.y = 150;
+    
+    scene.itemArray = [[NSMutableArray alloc] initWithCapacity:100];
+    [scene.itemArray addObject:item];
+
     SKScene * Gscene = [[GameScene alloc] initWithSize:self.frame.size andInfo:scene];
     Gscene.scaleMode = SKSceneScaleModeAspectFill;
         
