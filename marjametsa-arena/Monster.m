@@ -12,8 +12,22 @@
 
 @implementation Monster
 
+
+// Handles the state changes of monster's vulnerability
 - (void) handleTimer: (NSTimer *) timer {
+    
+    
+    SKAction *colorize = [SKAction colorizeWithColor: [UIColor redColor]colorBlendFactor: 0.5 duration: 0.1];
+    SKAction *uncolorize = [SKAction colorizeWithColorBlendFactor: 0.0 duration: 0.1];
+    
+    
     vulnerable = !vulnerable;
+    
+    if (vulnerable){
+        [self.character runAction:colorize];
+    } else {
+        [self.character runAction:uncolorize];
+    }
 }
 
 
@@ -43,9 +57,10 @@
     
     [super setUpAI];
     
-    //TODO: loop YES/NO according to the coloring below. How?
+    // Monster starts from an unvulnerable state
     vulnerable = NO;
     
+    /*
     SKAction *colorize = [SKAction colorizeWithColor: [UIColor redColor] colorBlendFactor: 0.5 duration: 0.1];
     SKAction *wait1 = [SKAction waitForDuration: colorizeSequence+0.1];
     SKAction *uncolorize = [SKAction colorizeWithColorBlendFactor: 0.0 duration: 0.1];
@@ -54,10 +69,10 @@
     SKAction *colorizeForever = [SKAction repeatActionForever:colorizeSeq];
     
     [self.character runAction:colorizeForever];
-    
-    // TODO: make the interval same as the colorizePulse. now just a lucky guess :)
+    */
+
     NSTimer *timer;
-    timer = [NSTimer scheduledTimerWithTimeInterval:colorizeSequence+0.1 target:self selector:@selector(handleTimer:) userInfo:nil repeats:YES];
+    timer = [NSTimer scheduledTimerWithTimeInterval: colorizeSequence target:self selector:@selector(handleTimer:) userInfo:nil repeats:YES];
        
     SKAction *wait = [SKAction waitForDuration: 3];
     SKAction *moveNodeUp = [SKAction moveByX:0.0 y:110.0 duration:0.5];
@@ -91,6 +106,7 @@
     self.character.name = [NSString stringWithFormat:@"%d", index];
 }
 
+// Returns true if monster is in a vulnerable state (colorized with red)
 - (BOOL) isVulnerable {
     return vulnerable;
 }
