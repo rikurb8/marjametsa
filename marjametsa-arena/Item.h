@@ -21,4 +21,11 @@
                andY:(int)y;
 
 - (void)setUpAI;
+
+- (void) setName:(int)index;
+
+- (NSString*) getName;
+
+- (int) getEffect;
+
 @end

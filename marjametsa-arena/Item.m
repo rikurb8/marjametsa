@@ -58,4 +58,17 @@
 
 };
 
+- (void) setName:(int)index {
+    self.character.name = [NSString stringWithFormat:@"%d", index];
+}
+
+- (NSString*) getName{
+    return self.character.name;
+}
+
+- (int) getEffect{
+    return effect;
+}
+
+
 @end
