@@ -52,6 +52,8 @@
 		11EBFC731A14EE6D005FFBF9 /* bestPlayers.png in Resources */ = {isa = PBXBuildFile; fileRef = 11EBFC721A14EE6D005FFBF9 /* bestPlayers.png */; };
 		1DD5FE791A2E023400D294B9 /* planet.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DD5FE771A2E023400D294B9 /* planet.png */; };
 		1DD5FE7A1A2E023400D294B9 /* asteroid.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DD5FE781A2E023400D294B9 /* asteroid.png */; };
+		1DD5FE7D1A2E3EA000D294B9 /* monster2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DD5FE7B1A2E3EA000D294B9 /* monster2.png */; };
+		1DD5FE7E1A2E3EA000D294B9 /* mine.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DD5FE7C1A2E3EA000D294B9 /* mine.png */; };
 		7C0D63A319ED509E001294CE /* MenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0D63A219ED509E001294CE /* MenuScene.m */; };
 		7CBB97BE1A0E7111008F03B6 /* exitButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CBB97BD1A0E7111008F03B6 /* exitButton.png */; };
 		7CBB97C01A0E718D008F03B6 /* StartButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CBB97BF1A0E718D008F03B6 /* StartButton.png */; };
@@ -136,6 +138,8 @@
 		11EBFC721A14EE6D005FFBF9 /* bestPlayers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bestPlayers.png; sourceTree = "<group>"; };
 		1DD5FE771A2E023400D294B9 /* planet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = planet.png; sourceTree = "<group>"; };
 		1DD5FE781A2E023400D294B9 /* asteroid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asteroid.png; sourceTree = "<group>"; };
+		1DD5FE7B1A2E3EA000D294B9 /* monster2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monster2.png; sourceTree = "<group>"; };
+		1DD5FE7C1A2E3EA000D294B9 /* mine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine.png; sourceTree = "<group>"; };
 		7C0D63A219ED509E001294CE /* MenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuScene.m; sourceTree = "<group>"; };
 		7C0D63A419ED5154001294CE /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
 		7CBB97BD1A0E7111008F03B6 /* exitButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exitButton.png; sourceTree = "<group>"; };
@@ -174,6 +178,8 @@
 		116C663519ED293900215E51 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1DD5FE7B1A2E3EA000D294B9 /* monster2.png */,
+				1DD5FE7C1A2E3EA000D294B9 /* mine.png */,
 				1DD5FE771A2E023400D294B9 /* planet.png */,
 				1DD5FE781A2E023400D294B9 /* asteroid.png */,
 				11987CD11A19338C00B53334 /* nextLevelButton.png */,
@@ -402,6 +408,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				11987CBE1A1694BD00B53334 /* bestHighscoreButton.png in Resources */,
+				1DD5FE7D1A2E3EA000D294B9 /* monster2.png in Resources */,
 				11987CD21A19338C00B53334 /* nextLevelButton.png in Resources */,
 				11C41AC319D29C5300468EE4 /* InfoPlist.strings in Resources */,
 				11C41AF519D29D3200468EE4 /* grass_bg.png in Resources */,
@@ -421,6 +428,7 @@
 				11C41AF719D29D3200468EE4 /* monster.png in Resources */,
 				11987CC01A1694C900B53334 /* bestPlayButton.png in Resources */,
 				11C41AF619D29D3200468EE4 /* hero.png in Resources */,
+				1DD5FE7E1A2E3EA000D294B9 /* mine.png in Resources */,
 				11987CB61A16744A00B53334 /* heroInSpace.png in Resources */,
 				7CBB97BE1A0E7111008F03B6 /* exitButton.png in Resources */,
 				1DD5FE7A1A2E023400D294B9 /* asteroid.png in Resources */,
