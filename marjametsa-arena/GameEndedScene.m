@@ -43,15 +43,6 @@
         button.frame =CGRectMake(100, 170, 100, 30);
         [button setTitle:@"Click me" forState:UIControlStateNormal];
         [self.view addSubview:button];
-        
-        if (didWin) {
-            [self addChild: [self ButtonNode:@"nextLevel"]];
-            UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-            button.frame =CGRectMake(100, 170, 100, 30);
-            [button setTitle:@"Click me" forState:UIControlStateNormal];
-            [self.view addSubview:button];
-        }
-        
     }
     
     return self;
@@ -62,13 +53,9 @@
     
     if([buttonType isEqualToString:@"Menu"]){
         button = [SKSpriteNode spriteNodeWithImageNamed:@"bestPlayButton.png"];
-        button.position = CGPointMake(150, 80);
+        button.position = CGPointMake(275, 80);
         button.name = @"startButton";
     
-    } else if ([buttonType isEqualToString:@"nextLevel"]){
-        button = [SKSpriteNode spriteNodeWithImageNamed:@"nextLevelButton.png"];
-        button.position = CGPointMake(340, 80);
-        button.name = @"nextLevel";
     }
     
     return button;
