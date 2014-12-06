@@ -10,11 +10,11 @@
             <array>
                 <dict>
         			<key>x</key>
-                	<string>100</string>
+                	<string>380</string>
                 	<key>colorizeSequence</key>
                 	<string>1.0</string>
         			<key>y</key>
-                	<string>150</string>
+                	<string>250</string>
                 	<key>image</key>
                 	<string>monsterInSpace.png</string>
                 	<key>movePattern</key>
@@ -24,42 +24,27 @@
                 </dict>
                 <dict>
                 	<key>x</key>
-                    <string>150</string>
+                    <string>380</string>
                 	<key>colorizeSequence</key>
                 	<string>2.0</string>
                     <key>y</key>
-                	<string>300</string>
+                	<string>120</string>
                 	<key>image</key>
                 	<string>monsterInSpace.png</string>
                 	<key>movePattern</key>
             	    <string>2</string>
                     <key>health</key>
                     <string>0</string>     
-
             	</dict>
-            	<dict>
-            		<key>x</key>
-                    <string>150</string>
-                	<key>colorizeSequence</key>
-                	<string>3.0</string>
-                	<key>y</key>
-                	<string>300</string>
-                	<key>image</key>
-                	<string>monsterInSpace.png</string>
-                	<key>movePattern</key>
-                	<string>3</string>
-                    <key>health</key>
-                    <string>0</string>
-                </dict>
             </array>
         <key>hero</key>
         <dict>
             <key>health</key>
             <string>10</string>
             <key>x</key>
-            <string>40</string>
+            <string>80</string>
             <key>y</key>
-            <string>40</string>
+            <string>170</string>
             <key>image</key>
             <string>heroInSpace.png</string>
         </dict>
@@ -67,31 +52,21 @@
             <array>
                 <dict>
                     <key>image</key>
-                    <string>banana.png</string>
+                    <string>planet.png</string>
                     <key>x</key>
-                    <string>10</string>
+                    <string>400</string>
                     <key>y</key>
-                    <string>40</string>
+                    <string>170</string>
                     <key>type</key>
-                    <string>10</string>
+                    <string>0</string>
                 </dict>
                 <dict>
                     <key>image</key>
                     <string>banana.png</string>
                     <key>x</key>
-                    <string>10</string>
+                    <string>500</string>
                     <key>y</key>
-                    <string>40</string>
-                    <key>type</key>
-                    <string>10</string>
-                </dict>
-                <dict>
-                    <key>image</key>
-                    <string>banana.png</string>
-                    <key>x</key>
-                    <string>10</string>
-                    <key>y</key>
-                    <string>40</string>
+                    <string>170</string>
                     <key>type</key>
                     <string>10</string>
                 </dict>
@@ -105,11 +80,11 @@
             <array>
                 <dict>
                     <key>x</key>
-                    <string>100</string>
+                    <string>350</string>
                     <key>colorizeSequence</key>
                     <string>1.0</string>
                     <key>y</key>
-                    <string>150</string>
+                    <string>250</string>
                     <key>image</key>
                     <string>monsterInSpace.png</string>
                     <key>movePattern</key>
@@ -119,29 +94,15 @@
                 </dict>
                 <dict>
                     <key>x</key>
-                    <string>150</string>
+                    <string>350</string>
                     <key>colorizeSequence</key>
                     <string>2.0</string>
                     <key>y</key>
-                    <string>300</string>
+                    <string>100</string>
                     <key>image</key>
                     <string>monsterInSpace.png</string>
                     <key>movePattern</key>
                     <string>2</string>
-                    <key>health</key>
-                    <string>0</string>
-                </dict>
-                <dict>
-                    <key>x</key>
-                    <string>150</string>
-                    <key>colorizeSequence</key>
-                    <string>3.0</string>
-                    <key>y</key>
-                    <string>300</string>
-                    <key>image</key>
-                    <string>monsterInSpace.png</string>
-                    <key>movePattern</key>
-                    <string>3</string>
                     <key>health</key>
                     <string>0</string>
                 </dict>
@@ -151,9 +112,9 @@
             <key>health</key>
             <string>10</string>
             <key>x</key>
-            <string>40</string>
+            <string>80</string>
             <key>y</key>
-            <string>40</string>
+            <string>170</string>
             <key>image</key>
             <string>heroInSpace.png</string>
         </dict>
@@ -161,11 +122,21 @@
             <array>
                 <dict>
                     <key>image</key>
-                    <string>banana.png</string>
+                    <string>planet.png</string>
                     <key>x</key>
-                    <string>10</string>
+                    <string>400</string>
                     <key>y</key>
-                    <string>40</string>
+                    <string>170</string>
+                    <key>type</key>
+                    <string>0</string>
+                </dict>
+                <dict>
+                    <key>image</key>
+                    <string>asteroid.png</string>
+                    <key>x</key>
+                    <string>200</string>
+                    <key>y</key>
+                    <string>170</string>
                     <key>type</key>
                     <string>10</string>
                 </dict>
@@ -173,19 +144,9 @@
                     <key>image</key>
                     <string>banana.png</string>
                     <key>x</key>
-                    <string>10</string>
+                    <string>500</string>
                     <key>y</key>
-                    <string>40</string>
-                    <key>type</key>
-                    <string>10</string>
-                </dict>
-                <dict>
-                    <key>image</key>
-                    <string>banana.png</string>
-                    <key>x</key>
-                    <string>10</string>
-                    <key>y</key>
-                    <string>40</string>
+                    <string>170</string>
                     <key>type</key>
                     <string>10</string>
                 </dict>
