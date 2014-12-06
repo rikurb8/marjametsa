@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		110B91261A33925800DC7C22 /* BossDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = 110B91251A33925800DC7C22 /* BossDTO.m */; };
 		116C663119ED22E500215E51 /* Character.m in Sources */ = {isa = PBXBuildFile; fileRef = 116C663019ED22E500215E51 /* Character.m */; };
 		116C663419ED283400215E51 /* Hero.m in Sources */ = {isa = PBXBuildFile; fileRef = 116C663319ED283400215E51 /* Hero.m */; };
 		116C663919ED2CAE00215E51 /* AICharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = 116C663819ED2CAE00215E51 /* AICharacter.m */; };
@@ -73,6 +74,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		110B91241A33925800DC7C22 /* BossDTO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BossDTO.h; sourceTree = "<group>"; };
+		110B91251A33925800DC7C22 /* BossDTO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BossDTO.m; sourceTree = "<group>"; };
 		116C662F19ED22E500215E51 /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Character.h; sourceTree = "<group>"; };
 		116C663019ED22E500215E51 /* Character.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Character.m; sourceTree = "<group>"; };
 		116C663219ED283400215E51 /* Hero.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hero.h; sourceTree = "<group>"; };
@@ -228,6 +231,8 @@
 				11987CD41A1E212B00B53334 /* MonsterDTO.h */,
 				11987CD71A1E214800B53334 /* HeroDTO.h */,
 				11987CDD1A1E21A600B53334 /* GameDTO.h */,
+				110B91241A33925800DC7C22 /* BossDTO.h */,
+				110B91251A33925800DC7C22 /* BossDTO.m */,
 				11987CDE1A1E21A600B53334 /* GameDTO.m */,
 				118DB8161A24DCCE0085F883 /* SceneDTO.h */,
 				118DB8171A24DCCE0085F883 /* SceneDTO.m */,
@@ -464,6 +469,7 @@
 				11987CDC1A1E215A00B53334 /* ItemDTO.m in Sources */,
 				11987CC31A169C2F00B53334 /* Item.m in Sources */,
 				116C663F19ED547000215E51 /* Boss.m in Sources */,
+				110B91261A33925800DC7C22 /* BossDTO.m in Sources */,
 				118DB81B1A24EACD0085F883 /* LevelSelectScene.m in Sources */,
 				116C663919ED2CAE00215E51 /* AICharacter.m in Sources */,
 				11C41AC519D29C5300468EE4 /* main.m in Sources */,
