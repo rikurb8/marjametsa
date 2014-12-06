@@ -114,11 +114,19 @@
                         y:item.y];
         }
 
-        HeroDTO *hero = sceneInfo.hero;
-        [self addHero:hero.image
-               health:hero.health
-                    x:hero.x
-                    y:hero.y];
+        [self addHero:sceneInfo.hero.image
+               health:sceneInfo.hero.health
+                    x:sceneInfo.hero.x
+                    y:sceneInfo.hero.y];
+        
+        if (sceneInfo.boss != nil) {
+            [self addBoss:sceneInfo.boss.image
+                      health:sceneInfo.boss.health
+                           x:sceneInfo.boss.x
+                           y:sceneInfo.boss.y
+                 movePattern:sceneInfo.boss.movePattern
+            colorizeSequence:sceneInfo.boss.colorizeSequence];
+        }
         
         self.physicsWorld.contactDelegate = self;
         
