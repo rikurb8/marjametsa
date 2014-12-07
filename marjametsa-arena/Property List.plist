@@ -19,8 +19,6 @@
                 	<string>monsterInSpace.png</string>
                 	<key>movePattern</key>
                 	<string>1</string>
-                    <key>health</key>
-                    <string>0</string>
                 </dict>
                 <dict>
                 	<key>x</key>
@@ -32,9 +30,7 @@
                 	<key>image</key>
                 	<string>monsterInSpace.png</string>
                 	<key>movePattern</key>
-            	    <string>2</string>
-                    <key>health</key>
-                    <string>0</string>     
+            	    <string>2</string>     
             	</dict>
             </array>
         <key>hero</key>
@@ -75,7 +71,7 @@
     <key>2</key>
     <dict>
         <key>bg_image</key>
-        <string>dungeon_bg.png</string>
+        <string>space_bg.png</string>
         <key>monsters</key>
             <array>
                 <dict>
@@ -89,22 +85,18 @@
                     <string>monsterInSpace.png</string>
                     <key>movePattern</key>
                     <string>1</string>
-                    <key>health</key>
-                    <string>0</string>
                 </dict>
                 <dict>
                     <key>x</key>
                     <string>350</string>
                     <key>colorizeSequence</key>
-                    <string>2.0</string>
+                    <string>1.0</string>
                     <key>y</key>
-                    <string>100</string>
+                    <string>120</string>
                     <key>image</key>
                     <string>monsterInSpace.png</string>
                     <key>movePattern</key>
-                    <string>2</string>
-                    <key>health</key>
-                    <string>0</string>
+                    <string>3</string>
                 </dict>
             </array>
         <key>hero</key>
@@ -136,7 +128,17 @@
                     <key>x</key>
                     <string>200</string>
                     <key>y</key>
-                    <string>170</string>
+                    <string>270</string>
+                    <key>type</key>
+                    <string>10</string>
+                </dict>
+                <dict>
+                    <key>image</key>
+                    <string>asteroid.png</string>
+                    <key>x</key>
+                    <string>200</string>
+                    <key>y</key>
+                    <string>70</string>
                     <key>type</key>
                     <string>10</string>
                 </dict>
@@ -149,6 +151,87 @@
                     <string>170</string>
                     <key>type</key>
                     <string>10</string>
+                </dict>
+            </array>
+    </dict>
+    <key>3</key>
+    <dict>
+        <key>bg_image</key>
+        <string>dungeon_bg.png</string>
+        <key>boss</key>
+        <dict>
+            <key>x</key>
+            <string>500</string>
+            <key>y</key>
+            <string>170</string>
+            <key>colorizeSequence</key>
+            <string>1.0</string>
+            <key>image</key>
+            <string>boss.png</string>
+            <key>movePattern</key>
+            <string>1</string>
+            <key>health</key>
+            <string>0</string>
+        </dict>
+        <key>hero</key>
+        <dict>
+            <key>health</key>
+            <string>10</string>
+            <key>x</key>
+            <string>80</string>
+            <key>y</key>
+            <string>170</string>
+            <key>image</key>
+            <string>heroInSpace.png</string>
+        </dict>
+        <key>items</key>
+            <array>
+                <dict>
+                    <key>image</key>
+                    <string>brownBlock.png</string>
+                    <key>x</key>
+                    <string>350</string>
+                    <key>y</key>
+                    <string>270</string>
+                    <key>type</key>
+                    <string>10</string>
+                </dict>
+                <dict>
+                    <key>image</key>
+                    <string>brownBlock.png</string>
+                    <key>x</key>
+                    <string>350</string>
+                    <key>y</key>
+                    <string>60</string>
+                    <key>type</key>
+                    <string>10</string>
+                </dict>
+            </array>
+        <key>monsters</key>
+            <array>
+                <dict>
+                    <key>x</key>
+                    <string>250</string>
+                    <key>colorizeSequence</key>
+                    <string>1.0</string>
+                    <key>y</key>
+                    <string>250</string>
+                    <key>image</key>
+                    <string>monster2.png</string>
+                    <key>movePattern</key>
+                    <string>2</string>
+                </dict>
+                <dict>
+                    <key>x</key>
+                    <string>250</string>
+                    <key>colorizeSequence</key>
+                    <string>1.0</string>
+                    <key>y</key>
+                    <string>120</string>
+                    <key>image</key>
+                    <string>monster2.png</string>
+                    <key>movePattern</key>
+                    <string>3</string>
                 </dict>
             </array>
     </dict>
