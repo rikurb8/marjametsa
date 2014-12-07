@@ -27,7 +27,10 @@
     
     return self;
 };
--(void) setUpAI {
+
+-(void) setUp {
+    
+    self.character = [super setUpSprite:coordinateX height:coordinateY];
     
     if (effect == 0){
         

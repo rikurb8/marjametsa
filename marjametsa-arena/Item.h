@@ -20,7 +20,7 @@
                andX:(int)x
                andY:(int)y;
 
-- (void)setUpAI;
+- (void)setUp;
 
 - (void) setName:(int)index;
 

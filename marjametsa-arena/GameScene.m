@@ -97,6 +97,7 @@
         self.physicsBody.friction = 0.0f;
         
         self.monsterArray = [[NSMutableArray alloc] initWithCapacity:10];
+        self.itemArray = [[NSMutableArray alloc] initWithCapacity:10];
                 
         // Add found monsters from plist file
         for (MonsterDTO *monster in sceneInfo.monsterArray) {
@@ -255,9 +256,9 @@
                                            andX:x
                                            andY:y];
     
-    newItem.character = [newItem setUpSprite:x height:y];
     
-    [newItem setUpAI];
+    
+    [newItem setUp];
     
     [self addChild:newItem.character];
     
