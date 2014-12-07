@@ -303,6 +303,7 @@ colorizeSequence:(float)cSeq{
 
     NSMutableString *tmpHits = [NSMutableString stringWithString:@"LIVES: "];
     int livesLeft;
+    
     // 3 react to the contact between hero and monster
     if (firstBody.categoryBitMask == heroCategory && secondBody.categoryBitMask == monsterCategory) {
         
@@ -337,30 +338,29 @@ colorizeSequence:(float)cSeq{
         }
     } else if (firstBody.categoryBitMask == heroCategory && secondBody.categoryBitMask == itemCategory) {
         
+        
         for (Item *item in self.itemArray){
             if([secondBody.node.name isEqualToString:[item getName]]) {
-
+                
                 [item.character removeFromParent];
                 
                 if([item getEffect] > 0){
                     
                     if([item getEffect] > self.hitCount){
                         self.hitCount = 0;
-                        livesLeft = self.player.getHealth;
                     } else {
                         self.hitCount -= [item getEffect];
                     }
                     
                 } else {
                     self.hitCount += [item getEffect];
-                    
-                    livesLeft = self.player.getHealth - self.hitCount;
-                    [tmpHits appendFormat:@"%i", livesLeft];
-                    [tmpHits appendString:[NSString stringWithFormat: @"/%d", self.player.getHealth]];
-                    self.hits.text = tmpHits;
                 }
             }
         }
+        livesLeft = self.player.getHealth - self.hitCount;
+        [tmpHits appendFormat:@"%i", livesLeft];
+        [tmpHits appendString:[NSString stringWithFormat: @"/%d", self.player.getHealth]];
+        self.hits.text = tmpHits;
         
         //TODO: maybe we should get a cool hit sound
         AudioServicesPlaySystemSound(1104);
