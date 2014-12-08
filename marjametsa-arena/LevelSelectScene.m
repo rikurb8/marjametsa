@@ -81,7 +81,7 @@
     }
     
     SKLabelNode* textLabel = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
-    textLabel.fontSize = 42;
+    textLabel.fontSize = 75;
     textLabel.position = CGPointMake(width, height);
     textLabel.text = [NSString stringWithFormat:@"%d",buttonLevel+1];
     textLabel.name = [NSString stringWithFormat:@"%d", buttonLevel+1];
