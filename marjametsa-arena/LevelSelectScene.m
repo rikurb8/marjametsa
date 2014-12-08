@@ -96,6 +96,11 @@
     CGPoint location = [touch locationInNode:self];
     SKNode *node = [self nodeAtPoint:location];
     
+    // If we didn't click anything smart
+    if (node.name == nil) {
+        return;
+    }
+    
     //Create and read plist
     NSString *plistName = [[NSBundle mainBundle] pathForResource:@"Property List" ofType:@"plist"];
     NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:plistName];
