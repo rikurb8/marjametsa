@@ -35,7 +35,8 @@
         andColorizeSequence:(float)cSequence
         andMovePattern:(int)mPattern
                andX:(int)x
-               andY:(int)y {
+               andY:(int)y
+          andHealth:(int)monsHealth{
     
     self = [super init];
     
@@ -46,6 +47,7 @@
         movePattern = mPattern;
         coordinateX = x;
         coordinateY = y;
+        health = monsHealth;
     }
     
     return self;
@@ -102,6 +104,14 @@
 
 - (NSString*) getName{
     return self.character.name;
+}
+
+- (int) getHealth {
+    return health;
+}
+
+- (void) removeHealth {
+    health -= 1;
 }
 
 

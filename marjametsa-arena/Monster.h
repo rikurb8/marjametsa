@@ -16,16 +16,20 @@
     int coordinateX;
     int coordinateY;
     BOOL vulnerable;
+    int health;
 }
 
 - (id)initWithImage:(NSString*)image
 andColorizeSequence:(float)cSequence
      andMovePattern:(int)mPattern
                andX:(int)x
-               andY:(int)y;
+               andY:(int)y
+          andHealth:(int)health;
 - (void) setUpAI;
 - (void) setName:(int)index;
 - (NSString*) getName;
 - (BOOL) isVulnerable;
+- (int) getHealth;
+- (void) removeHealth;
 
 @end

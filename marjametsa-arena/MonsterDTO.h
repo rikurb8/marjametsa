@@ -14,5 +14,6 @@
 @property (nonatomic) int y;
 @property (nonatomic) int movePattern;
 @property (nonatomic) float colorizeSequence;
+@property (nonatomic) int health;
 
 @end

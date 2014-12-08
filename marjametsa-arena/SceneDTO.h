@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "HeroDTO.h"
 #import "GameDTO.h"
-#import "BossDTO.h"
 
 @interface SceneDTO : NSObject
 
@@ -17,6 +16,5 @@
 @property (nonatomic) NSMutableArray *itemArray;
 @property (nonatomic) HeroDTO *hero;
 @property (nonatomic) GameDTO *game;
-@property (nonatomic) BossDTO *boss;
 
 @end

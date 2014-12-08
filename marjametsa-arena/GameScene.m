@@ -10,7 +10,6 @@
 #import "GameEndedScene.h"
 #import "Hero.h"
 #import "Monster.h"
-#import "Boss.h"
 #import "Item.h"
 #import "Constants.h"
 
@@ -26,7 +25,6 @@
 
 @interface GameScene ()
 @property (nonatomic) Hero *player;
-@property (nonatomic) Boss *boss;
 @property (nonatomic) NSMutableArray *monsterArray;
 @property (nonatomic) NSMutableArray *itemArray;
 
@@ -55,12 +53,14 @@
     monster.y = 150;
     monster.image = @"monster2.png";
     monster.movePattern = 2;
+    monster.health = 1;
     monster.colorizeSequence = 1.0f;
     
     [self addMonster:monster.image
                    x:monster.x
                    y:monster.y
          movePattern:monster.movePattern
+     monsterHealth:monster.health
     colorizeSequence:monster.colorizeSequence];
 
 }
@@ -105,6 +105,7 @@
                            x:monster.x
                            y:monster.y
                  movePattern:monster.movePattern
+             monsterHealth:monster.health
             colorizeSequence:monster.colorizeSequence];
         }
 
@@ -119,15 +120,6 @@
                health:sceneInfo.hero.health
                     x:sceneInfo.hero.x
                     y:sceneInfo.hero.y];
-        
-        if (sceneInfo.boss != nil) {
-            [self addBoss:sceneInfo.boss.image
-                      health:sceneInfo.boss.health
-                           x:sceneInfo.boss.x
-                           y:sceneInfo.boss.y
-                 movePattern:sceneInfo.boss.movePattern
-            colorizeSequence:sceneInfo.boss.colorizeSequence];
-        }
         
         self.physicsWorld.contactDelegate = self;
         
@@ -211,13 +203,15 @@
                  x:(int)x
                  y:(int)y
        movePattern:(int)pattern
+     monsterHealth:(int)health
   colorizeSequence:(float)cSeq{
     
     Monster *newMonster = [[Monster alloc] initWithImage:image
                                             andColorizeSequence:cSeq
                                             andMovePattern:pattern
                                                     andX:x
-                                                    andY:y ];
+                                                    andY:y
+                                               andHealth:health];
     
     [newMonster setUpAI];
     
@@ -267,28 +261,6 @@
     [self.itemArray addObject:newItem];
 }
 
-- (void)addBoss:(NSString*)image
-         health:(int)health
-              x:(int)x
-              y:(int)y
-    movePattern:(int)pattern
-colorizeSequence:(float)cSeq{
-    
-    self.boss = [[Boss alloc] initWithImage:image
-                                  andHealth:health
-                        andColorizeSequence:cSeq
-                             andMovePattern:pattern
-                                       andX:x
-                                       andY:y ];
-    
-    [self.boss setUpAI];
-    
-    self.bossHealth = [self.boss getHealth];
-    
-    [self addChild:self.boss.character];
-}
-
-
 - (void)didBeginContact:(SKPhysicsContact*)contact {
     
     SKPhysicsBody* firstBody;
@@ -312,13 +284,23 @@ colorizeSequence:(float)cSeq{
                 //TODO: maybe we should get a cool hit sound
                 AudioServicesPlaySystemSound(1104);
                 if ([monster isVulnerable]) {
+                    
+                    if([monster getHealth] != 1) {
+                        [monster removeHealth];
+                        break;
+                    }
+                    
                     [monster.character removeFromParent];
                     self.aliveMonsters -= 1;
                     
                 } else {
                     [self vibrate];
-                    
-                    self.hitCount += 1;
+                   
+                    if ([monster getHealth] != 1) {
+                        self.hitCount += 2;
+                    } else {
+                        self.hitCount += 1;
+                    }
                 }
             }
         }
@@ -346,7 +328,10 @@ colorizeSequence:(float)cSeq{
             }
         }
       
-    } else if (firstBody.categoryBitMask == heroCategory && secondBody.categoryBitMask == bossCategory) {
+    }
+    
+    /*
+    else if (firstBody.categoryBitMask == heroCategory && secondBody.categoryBitMask == bossCategory) {
     
         AudioServicesPlaySystemSound(1104);
         if([self.boss isVulnerable]){
@@ -360,6 +345,8 @@ colorizeSequence:(float)cSeq{
             self.hitCount += 2;
         }
     }
+     
+    */
     
     livesLeft = self.player.getHealth - self.hitCount;
     [tmpHits appendFormat:@"%i", livesLeft];
@@ -370,15 +357,10 @@ colorizeSequence:(float)cSeq{
         GameEndedScene* gameEnded = [[GameEndedScene alloc] initWithSize:self.frame.size won:NO];
         [self.view presentScene:gameEnded];
         
-    } else if (self.aliveMonsters <= 0 && self.boss == nil) {
-        NSLog(@"boss == nil");
+    } else if (self.aliveMonsters <= 0 ) {
         GameEndedScene* gameWon = [[GameEndedScene alloc] initWithSize:self.frame.size won:YES];
         [self.view presentScene:gameWon];
         
-    } else if (self.aliveMonsters <= 0 && self.bossHealth <= 0){
-        NSLog(@"bossHealth <= 0");
-        GameEndedScene* gameWon = [[GameEndedScene alloc] initWithSize:self.frame.size won:YES];
-        [self.view presentScene:gameWon];
     }
 }
 

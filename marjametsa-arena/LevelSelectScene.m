@@ -16,7 +16,6 @@
 #import "GameDTO.h"
 #import "SceneDTO.h"
 #import "ItemDTO.h"
-#import "BossDTO.h"
 
 
 //@import CoreMotion;
@@ -133,6 +132,7 @@
         monster.x = [obj[@"x"] integerValue];
         monster.y = [obj[@"y"] integerValue];
         monster.image = obj[@"image"];
+        monster.health = [obj[@"health"] integerValue];
         monster.colorizeSequence = [obj[@"colorizeSequence"] floatValue];
         monster.movePattern = [obj[@"movePattern"] integerValue];
         
@@ -164,27 +164,11 @@
         loop += 1;
     }
     
-    NSDictionary *bossDictionary = [[NSMutableDictionary alloc] init];
-    bossDictionary = ([_selectedLevel objectForKey:@"boss"]);
-    BossDTO *boss = [BossDTO alloc];
-
-    if (bossDictionary != nil) {
-        boss.health = [bossDictionary[@"health"] integerValue];
-        boss.x = [bossDictionary[@"x"] integerValue];
-        boss.y = [bossDictionary[@"y"] integerValue];
-        boss.image = bossDictionary[@"image"];
-        boss.colorizeSequence = [bossDictionary[@"colorizeSequence"] floatValue];
-        boss.movePattern = [bossDictionary[@"movePattern"] integerValue];
-    } else {
-        boss = nil;
-    }
-    
     SceneDTO * newScene = [[SceneDTO alloc] init];
     newScene.monsterArray = _monsterObjectArray;
     newScene.itemArray = _itemObjectArray;
     newScene.hero = hero;
     newScene.game = game;
-    newScene.boss = boss;
 
     SKScene * Gscene = [[GameScene alloc] initWithSize:self.frame.size andInfo:newScene];
     Gscene.scaleMode = SKSceneScaleModeAspectFill;
