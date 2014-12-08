@@ -53,7 +53,7 @@
 
     monster.x = 150;
     monster.y = 150;
-    monster.image = @"monsterInSpace";
+    monster.image = @"monster2.png";
     monster.movePattern = 2;
     monster.colorizeSequence = 1.0f;
     
@@ -275,11 +275,11 @@
 colorizeSequence:(float)cSeq{
     
     self.boss = [[Boss alloc] initWithImage:image
-                                         andHealth:health
-                                     andColorizeSequence:cSeq
-                                          andMovePattern:pattern
-                                                    andX:x
-                                                    andY:y ];
+                                  andHealth:health
+                        andColorizeSequence:cSeq
+                             andMovePattern:pattern
+                                       andX:x
+                                       andY:y ];
     
     [self.boss setUpAI];
     
@@ -316,29 +316,12 @@ colorizeSequence:(float)cSeq{
                     
                 } else {
                     self.hitCount += 1;
-                    
-                    livesLeft = self.player.getHealth - self.hitCount;
-                    [tmpHits appendFormat:@"%i", livesLeft];
-                    [tmpHits appendString:[NSString stringWithFormat: @"/%d", self.player.getHealth]];
-                    self.hits.text = tmpHits;
                 }
             }
         }
         
-        //TODO: maybe we should get a cool hit sound
-        AudioServicesPlaySystemSound(1104);
-        [self vibrate];
-        
-        if (self.hitCount >= self.player.getHealth) {
-            GameEndedScene* gameWon = [[GameEndedScene alloc] initWithSize:self.frame.size won:NO];
-            [self.view presentScene:gameWon];
-            
-        } else if (self.aliveMonsters <= 0) {
-            GameEndedScene* gameWon = [[GameEndedScene alloc] initWithSize:self.frame.size won:YES];
-            [self.view presentScene:gameWon];
-        }
+       
     } else if (firstBody.categoryBitMask == heroCategory && secondBody.categoryBitMask == itemCategory) {
-        
         
         for (Item *item in self.itemArray){
             if([secondBody.node.name isEqualToString:[item getName]]) {
@@ -358,24 +341,7 @@ colorizeSequence:(float)cSeq{
                 }
             }
         }
-        livesLeft = self.player.getHealth - self.hitCount;
-        [tmpHits appendFormat:@"%i", livesLeft];
-        [tmpHits appendString:[NSString stringWithFormat: @"/%d", self.player.getHealth]];
-        self.hits.text = tmpHits;
-        
-        //TODO: maybe we should get a cool hit sound
-        AudioServicesPlaySystemSound(1104);
-        [self vibrate];
-        
-        if (self.hitCount >= self.player.getHealth) {
-            GameEndedScene* gameWon = [[GameEndedScene alloc] initWithSize:self.frame.size won:NO];
-            [self.view presentScene:gameWon];
-            
-        } else if (self.aliveMonsters <= 0) {
-            GameEndedScene* gameWon = [[GameEndedScene alloc] initWithSize:self.frame.size won:YES];
-            [self.view presentScene:gameWon];
-        }
-
+      
     } else if (firstBody.categoryBitMask == heroCategory && secondBody.categoryBitMask == bossCategory) {
     
         if([self.boss isVulnerable]){
@@ -387,17 +353,29 @@ colorizeSequence:(float)cSeq{
             }
         } else {
             self.hitCount += 2;
-            
-            livesLeft = self.player.getHealth - self.hitCount;
-            [tmpHits appendFormat:@"%i", livesLeft];
-            [tmpHits appendString:[NSString stringWithFormat: @"/%d", self.player.getHealth]];
-            self.hits.text = tmpHits;
         }
-        if (self.hitCount >= self.player.getHealth) {
-            GameEndedScene* gameWon = [[GameEndedScene alloc] initWithSize:self.frame.size won:NO];
-            [self.view presentScene:gameWon];
-            
-        }
+    }
+    
+    livesLeft = self.player.getHealth - self.hitCount;
+    [tmpHits appendFormat:@"%i", livesLeft];
+    [tmpHits appendString:[NSString stringWithFormat: @"/%d", self.player.getHealth]];
+    self.hits.text = tmpHits;
+    
+    //TODO: maybe we should get a cool hit sound
+    AudioServicesPlaySystemSound(1104);
+    [self vibrate];
+    
+    if (self.hitCount >= self.player.getHealth) {
+        GameEndedScene* gameWon = [[GameEndedScene alloc] initWithSize:self.frame.size won:NO];
+        [self.view presentScene:gameWon];
+        
+    } else if (self.aliveMonsters <= 0 && self.boss == nil) {
+        GameEndedScene* gameWon = [[GameEndedScene alloc] initWithSize:self.frame.size won:YES];
+        [self.view presentScene:gameWon];
+        
+    } else if (self.aliveMonsters <= 0 && self.bossHealth <= 0){
+        GameEndedScene* gameWon = [[GameEndedScene alloc] initWithSize:self.frame.size won:YES];
+        [self.view presentScene:gameWon];
     }
 }
 
