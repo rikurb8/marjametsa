@@ -19,6 +19,8 @@
 				<string>monsterInSpace.png</string>
 				<key>movePattern</key>
 				<string>1</string>
+                <key>health</key>
+                <string>1</string>
 			</dict>
 			<dict>
 				<key>x</key>
@@ -31,6 +33,8 @@
 				<string>monsterInSpace.png</string>
 				<key>movePattern</key>
 				<string>2</string>
+                <key>health</key>
+                <string>1</string>
 			</dict>
 		</array>
 		<key>hero</key>
@@ -85,6 +89,8 @@
 				<string>monsterInSpace.png</string>
 				<key>movePattern</key>
 				<string>1</string>
+                <key>health</key>
+                <string>1</string>
 			</dict>
 			<dict>
 				<key>x</key>
@@ -97,6 +103,8 @@
 				<string>monsterInSpace.png</string>
 				<key>movePattern</key>
 				<string>3</string>
+                <key>health</key>
+                <string>1</string>
 			</dict>
 		</array>
 		<key>hero</key>
@@ -130,7 +138,7 @@
 				<key>y</key>
 				<string>270</string>
 				<key>type</key>
-				<string>10</string>
+				<string>0</string>
 			</dict>
 			<dict>
 				<key>image</key>
@@ -140,7 +148,7 @@
 				<key>y</key>
 				<string>70</string>
 				<key>type</key>
-				<string>10</string>
+				<string>0</string>
 			</dict>
 			<dict>
 				<key>image</key>
@@ -158,21 +166,6 @@
 	<dict>
 		<key>bg_image</key>
 		<string>dungeon_bg.png</string>
-		<key>boss</key>
-		<dict>
-			<key>x</key>
-			<string>500</string>
-			<key>y</key>
-			<string>170</string>
-			<key>colorizeSequence</key>
-			<string>1.0</string>
-			<key>image</key>
-			<string>boss.png</string>
-			<key>movePattern</key>
-			<string>1</string>
-			<key>health</key>
-			<string>5</string>
-		</dict>
 		<key>hero</key>
 		<dict>
 			<key>health</key>
@@ -220,6 +213,8 @@
 				<string>monster2.png</string>
 				<key>movePattern</key>
 				<string>2</string>
+                <key>health</key>
+                <string>1</string>
 			</dict>
 			<dict>
 				<key>x</key>
@@ -232,6 +227,8 @@
 				<string>monster2.png</string>
 				<key>movePattern</key>
 				<string>3</string>
+                <key>health</key>
+                <string>1</string>
 			</dict>
 		</array>
 	</dict>

@@ -63,13 +63,13 @@
 {
     if([buttonType isEqualToString:@"Menu"]){
     SKSpriteNode *MenuNode = [SKSpriteNode spriteNodeWithImageNamed:@"bestPlayButton.png"];
-    MenuNode.position = CGPointMake(280, 180);
+    MenuNode.position = CGPointMake(350, 200);
     MenuNode.name = @"startButton";//how the node is identified later
     
     return MenuNode;
     }else if([buttonType isEqualToString:@"Highscore"]){
         SKSpriteNode *ExitNode = [SKSpriteNode spriteNodeWithImageNamed:@"bestHighscoreButton.png"];
-        ExitNode.position = CGPointMake(280, 120);
+        ExitNode.position = CGPointMake(350, 120);
         ExitNode.name = @"hiscoreButton";
         return ExitNode;
     
