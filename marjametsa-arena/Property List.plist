@@ -171,7 +171,7 @@
 			<key>movePattern</key>
 			<string>1</string>
 			<key>health</key>
-			<string>0</string>
+			<string>5</string>
 		</dict>
 		<key>hero</key>
 		<dict>
