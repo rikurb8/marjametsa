@@ -63,7 +63,7 @@
 {
     if([buttonType isEqualToString:@"Menu"]){
     SKSpriteNode *MenuNode = [SKSpriteNode spriteNodeWithImageNamed:@"bestPlayButton.png"];
-    MenuNode.position = CGPointMake(280, 190);
+    MenuNode.position = CGPointMake(280, 180);
     MenuNode.name = @"startButton";//how the node is identified later
     
     return MenuNode;

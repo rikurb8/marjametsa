@@ -60,7 +60,8 @@
 		7CBB97BE1A0E7111008F03B6 /* exitButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CBB97BD1A0E7111008F03B6 /* exitButton.png */; };
 		7CBB97C01A0E718D008F03B6 /* StartButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CBB97BF1A0E718D008F03B6 /* StartButton.png */; };
 		7CCCD2531A36247200803DBA /* bestHighscoreButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CCCD2521A36247200803DBA /* bestHighscoreButton.png */; };
-		7CCCD2551A362F0400803DBA /* background-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CCCD2541A362F0400803DBA /* background-568h@2x.png */; };
+		7CCCD2551A362F0400803DBA /* background-568hSHITVERSION@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CCCD2541A362F0400803DBA /* background-568hSHITVERSION@2x.png */; };
+		7CCCD2571A3635DC00803DBA /* background-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CCCD2561A3635DC00803DBA /* background-568h@2x.png */; };
 		7CCDE13C1A14C5FA00289218 /* Highscore.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCDE13B1A14C5FA00289218 /* Highscore.m */; };
 		7CE16C711A169D3500C29216 /* appIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CE16C701A169D3500C29216 /* appIcon.png */; };
 		7CE16C751A1E128E00C29216 /* Property List.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7CE16C741A1E128E00C29216 /* Property List.plist */; };
@@ -152,7 +153,8 @@
 		7CBB97BD1A0E7111008F03B6 /* exitButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exitButton.png; sourceTree = "<group>"; };
 		7CBB97BF1A0E718D008F03B6 /* StartButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StartButton.png; sourceTree = "<group>"; };
 		7CCCD2521A36247200803DBA /* bestHighscoreButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bestHighscoreButton.png; sourceTree = "<group>"; };
-		7CCCD2541A362F0400803DBA /* background-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-568h@2x.png"; sourceTree = "<group>"; };
+		7CCCD2541A362F0400803DBA /* background-568hSHITVERSION@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-568hSHITVERSION@2x.png"; sourceTree = "<group>"; };
+		7CCCD2561A3635DC00803DBA /* background-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-568h@2x.png"; sourceTree = "<group>"; };
 		7CCDE13A1A14C5FA00289218 /* Highscore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Highscore.h; sourceTree = "<group>"; };
 		7CCDE13B1A14C5FA00289218 /* Highscore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Highscore.m; sourceTree = "<group>"; };
 		7CE16C701A169D3500C29216 /* appIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appIcon.png; sourceTree = "<group>"; };
@@ -187,7 +189,8 @@
 		116C663519ED293900215E51 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				7CCCD2541A362F0400803DBA /* background-568h@2x.png */,
+				7CCCD2561A3635DC00803DBA /* background-568h@2x.png */,
+				7CCCD2541A362F0400803DBA /* background-568hSHITVERSION@2x.png */,
 				7CCCD2521A36247200803DBA /* bestHighscoreButton.png */,
 				7CA980061A3214C0003A8D79 /* brownBlock.png */,
 				1DD5FE7B1A2E3EA000D294B9 /* monster2.png */,
@@ -428,7 +431,7 @@
 				7CCCD2531A36247200803DBA /* bestHighscoreButton.png in Resources */,
 				11C41AF519D29D3200468EE4 /* grass_bg.png in Resources */,
 				11987CBA1A16785D00B53334 /* monsterInSpace.png in Resources */,
-				7CCCD2551A362F0400803DBA /* background-568h@2x.png in Resources */,
+				7CCCD2551A362F0400803DBA /* background-568hSHITVERSION@2x.png in Resources */,
 				118EEF5819D2F51500899286 /* boss.png in Resources */,
 				11987CC91A16A3AB00B53334 /* banana.png in Resources */,
 				7CA980071A3214C0003A8D79 /* brownBlock.png in Resources */,
@@ -448,6 +451,7 @@
 				1DD5FE7E1A2E3EA000D294B9 /* mine.png in Resources */,
 				11987CB61A16744A00B53334 /* heroInSpace.png in Resources */,
 				7CBB97BE1A0E7111008F03B6 /* exitButton.png in Resources */,
+				7CCCD2571A3635DC00803DBA /* background-568h@2x.png in Resources */,
 				1DD5FE7A1A2E023400D294B9 /* asteroid.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
