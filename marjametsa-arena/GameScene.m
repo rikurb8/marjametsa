@@ -290,10 +290,10 @@ colorizeSequence:(float)cSeq{
 
 
 - (void)didBeginContact:(SKPhysicsContact*)contact {
-    // 1 Create local variables for two physics bodies
+    
     SKPhysicsBody* firstBody;
     SKPhysicsBody* secondBody;
-    // 2 Assign the two physics bodies so that the one with the lower category is always stored in firstBody
+    
     if (contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask) {
         firstBody = contact.bodyA;
         secondBody = contact.bodyB;
@@ -305,26 +305,29 @@ colorizeSequence:(float)cSeq{
     NSMutableString *tmpHits = [NSMutableString stringWithString:@"LIVES: "];
     int livesLeft;
     
-    // 3 react to the contact between hero and monster
     if (firstBody.categoryBitMask == heroCategory && secondBody.categoryBitMask == monsterCategory) {
         
         for (Monster *monster in self.monsterArray){
             if([secondBody.node.name isEqualToString:[monster getName]]) {
+                //TODO: maybe we should get a cool hit sound
+                AudioServicesPlaySystemSound(1104);
                 if ([monster isVulnerable]) {
                     [monster.character removeFromParent];
                     self.aliveMonsters -= 1;
                     
                 } else {
+                    [self vibrate];
+                    
                     self.hitCount += 1;
                 }
             }
         }
-        
-       
     } else if (firstBody.categoryBitMask == heroCategory && secondBody.categoryBitMask == itemCategory) {
         
         for (Item *item in self.itemArray){
             if([secondBody.node.name isEqualToString:[item getName]]) {
+                //TODO: maybe we should get a cool hit sound
+                AudioServicesPlaySystemSound(1104);
                 
                 [item.character removeFromParent];
                 
@@ -337,6 +340,7 @@ colorizeSequence:(float)cSeq{
                     }
                     
                 } else {
+                    [self vibrate];
                     self.hitCount += [item getEffect];
                 }
             }
@@ -344,14 +348,15 @@ colorizeSequence:(float)cSeq{
       
     } else if (firstBody.categoryBitMask == heroCategory && secondBody.categoryBitMask == bossCategory) {
     
+        AudioServicesPlaySystemSound(1104);
         if([self.boss isVulnerable]){
             self.bossHealth -= 1;
             
             if(self.bossHealth <= 0){
-                GameEndedScene* gameWon = [[GameEndedScene alloc] initWithSize:self.frame.size won:YES];
-                [self.view presentScene:gameWon];
+                [self.boss.character removeFromParent];
             }
         } else {
+            [self vibrate];
             self.hitCount += 2;
         }
     }
@@ -361,19 +366,17 @@ colorizeSequence:(float)cSeq{
     [tmpHits appendString:[NSString stringWithFormat: @"/%d", self.player.getHealth]];
     self.hits.text = tmpHits;
     
-    //TODO: maybe we should get a cool hit sound
-    AudioServicesPlaySystemSound(1104);
-    [self vibrate];
-    
     if (self.hitCount >= self.player.getHealth) {
-        GameEndedScene* gameWon = [[GameEndedScene alloc] initWithSize:self.frame.size won:NO];
-        [self.view presentScene:gameWon];
+        GameEndedScene* gameEnded = [[GameEndedScene alloc] initWithSize:self.frame.size won:NO];
+        [self.view presentScene:gameEnded];
         
     } else if (self.aliveMonsters <= 0 && self.boss == nil) {
+        NSLog(@"boss == nil");
         GameEndedScene* gameWon = [[GameEndedScene alloc] initWithSize:self.frame.size won:YES];
         [self.view presentScene:gameWon];
         
     } else if (self.aliveMonsters <= 0 && self.bossHealth <= 0){
+        NSLog(@"bossHealth <= 0");
         GameEndedScene* gameWon = [[GameEndedScene alloc] initWithSize:self.frame.size won:YES];
         [self.view presentScene:gameWon];
     }

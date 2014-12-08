@@ -70,7 +70,7 @@
     }else if([buttonType isEqualToString:@"Highscore"]){
         SKSpriteNode *ExitNode = [SKSpriteNode spriteNodeWithImageNamed:@"bestHighscoreButton.png"];
         ExitNode.position = CGPointMake(300, 80);
-        ExitNode.name = @"exitButton";
+        ExitNode.name = @"hiscoreButton";
         return ExitNode;
     
     }
@@ -103,13 +103,7 @@
         
         
     }
-    
-    if ([node.name isEqualToString:@"exitButton"]) {
-        exit(0);
-    }
 
-    
-    
     return;
 }
 @end
