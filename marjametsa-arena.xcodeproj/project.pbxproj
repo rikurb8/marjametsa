@@ -20,7 +20,7 @@
 		11987CB61A16744A00B53334 /* heroInSpace.png in Resources */ = {isa = PBXBuildFile; fileRef = 11987CB51A16744A00B53334 /* heroInSpace.png */; };
 		11987CBA1A16785D00B53334 /* monsterInSpace.png in Resources */ = {isa = PBXBuildFile; fileRef = 11987CB91A16785D00B53334 /* monsterInSpace.png */; };
 		11987CBC1A1690C300B53334 /* testBestButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 11987CBB1A1690C300B53334 /* testBestButton.png */; };
-		11987CBE1A1694BD00B53334 /* bestHighscoreButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 11987CBD1A1694BD00B53334 /* bestHighscoreButton.png */; };
+		11987CBE1A1694BD00B53334 /* highscoreButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 11987CBD1A1694BD00B53334 /* highscoreButton.png */; };
 		11987CC01A1694C900B53334 /* bestPlayButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 11987CBF1A1694C900B53334 /* bestPlayButton.png */; };
 		11987CC31A169C2F00B53334 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 11987CC21A169C2F00B53334 /* Item.m */; };
 		11987CC91A16A3AB00B53334 /* banana.png in Resources */ = {isa = PBXBuildFile; fileRef = 11987CC81A16A3AB00B53334 /* banana.png */; };
@@ -59,6 +59,7 @@
 		7CA980071A3214C0003A8D79 /* brownBlock.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CA980061A3214C0003A8D79 /* brownBlock.png */; };
 		7CBB97BE1A0E7111008F03B6 /* exitButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CBB97BD1A0E7111008F03B6 /* exitButton.png */; };
 		7CBB97C01A0E718D008F03B6 /* StartButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CBB97BF1A0E718D008F03B6 /* StartButton.png */; };
+		7CCCD2531A36247200803DBA /* bestHighscoreButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CCCD2521A36247200803DBA /* bestHighscoreButton.png */; };
 		7CCDE13C1A14C5FA00289218 /* Highscore.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCDE13B1A14C5FA00289218 /* Highscore.m */; };
 		7CE16C711A169D3500C29216 /* appIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CE16C701A169D3500C29216 /* appIcon.png */; };
 		7CE16C751A1E128E00C29216 /* Property List.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7CE16C741A1E128E00C29216 /* Property List.plist */; };
@@ -96,7 +97,7 @@
 		11987CB51A16744A00B53334 /* heroInSpace.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heroInSpace.png; sourceTree = "<group>"; };
 		11987CB91A16785D00B53334 /* monsterInSpace.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monsterInSpace.png; sourceTree = "<group>"; };
 		11987CBB1A1690C300B53334 /* testBestButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testBestButton.png; sourceTree = "<group>"; };
-		11987CBD1A1694BD00B53334 /* bestHighscoreButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bestHighscoreButton.png; sourceTree = "<group>"; };
+		11987CBD1A1694BD00B53334 /* highscoreButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = highscoreButton.png; sourceTree = "<group>"; };
 		11987CBF1A1694C900B53334 /* bestPlayButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bestPlayButton.png; sourceTree = "<group>"; };
 		11987CC11A169C2F00B53334 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		11987CC21A169C2F00B53334 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
@@ -149,6 +150,7 @@
 		7CA980061A3214C0003A8D79 /* brownBlock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brownBlock.png; sourceTree = "<group>"; };
 		7CBB97BD1A0E7111008F03B6 /* exitButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exitButton.png; sourceTree = "<group>"; };
 		7CBB97BF1A0E718D008F03B6 /* StartButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StartButton.png; sourceTree = "<group>"; };
+		7CCCD2521A36247200803DBA /* bestHighscoreButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bestHighscoreButton.png; sourceTree = "<group>"; };
 		7CCDE13A1A14C5FA00289218 /* Highscore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Highscore.h; sourceTree = "<group>"; };
 		7CCDE13B1A14C5FA00289218 /* Highscore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Highscore.m; sourceTree = "<group>"; };
 		7CE16C701A169D3500C29216 /* appIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appIcon.png; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 		116C663519ED293900215E51 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7CCCD2521A36247200803DBA /* bestHighscoreButton.png */,
 				7CA980061A3214C0003A8D79 /* brownBlock.png */,
 				1DD5FE7B1A2E3EA000D294B9 /* monster2.png */,
 				1DD5FE7C1A2E3EA000D294B9 /* mine.png */,
@@ -192,7 +195,7 @@
 				11987CCF1A192A2200B53334 /* dungeon_bg.png */,
 				11987CC81A16A3AB00B53334 /* banana.png */,
 				11987CBF1A1694C900B53334 /* bestPlayButton.png */,
-				11987CBD1A1694BD00B53334 /* bestHighscoreButton.png */,
+				11987CBD1A1694BD00B53334 /* highscoreButton.png */,
 				11987CBB1A1690C300B53334 /* testBestButton.png */,
 				11987CB91A16785D00B53334 /* monsterInSpace.png */,
 				11987CB51A16744A00B53334 /* heroInSpace.png */,
@@ -415,10 +418,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11987CBE1A1694BD00B53334 /* bestHighscoreButton.png in Resources */,
+				11987CBE1A1694BD00B53334 /* highscoreButton.png in Resources */,
 				1DD5FE7D1A2E3EA000D294B9 /* monster2.png in Resources */,
 				11987CD21A19338C00B53334 /* nextLevelButton.png in Resources */,
 				11C41AC319D29C5300468EE4 /* InfoPlist.strings in Resources */,
+				7CCCD2531A36247200803DBA /* bestHighscoreButton.png in Resources */,
 				11C41AF519D29D3200468EE4 /* grass_bg.png in Resources */,
 				11987CBA1A16785D00B53334 /* monsterInSpace.png in Resources */,
 				118EEF5819D2F51500899286 /* boss.png in Resources */,
